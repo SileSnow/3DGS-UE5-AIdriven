@@ -1,0 +1,837 @@
+{
+  "version": "1.1",
+  "updated": "2026-11-08",
+  "spec": "llm_drone/spec/tools.json + llm_drone/spec/PROTOCOL.md (v1.1 FROZEN; v1.1 仅 §15 补充 Phase-2 字段语义，已对齐)",
+  "bridge_target": "DJI Mobile SDK v5 (Android only) -> DJI Mini 4 Pro, RC-N2/RC-N3",
+  "legend": {
+    "verified-from-docs": "类名/方法名来自官方一手资料（developer.dji.com API Reference、官方 GitHub sample 代码、官方 Release Notes），已在 evidence/ 落盘摘录",
+    "unverified": "尚未找到官方一手定义或未在真机验证；代码中以 TODO(未确认) 标注，真机测试前必须逐条确认",
+    "orchestrator-side": "由 Orchestrator 侧确定性代码实现，桥接层不执行；此处仅记录映射关系以覆盖 CONTRACT 工具表"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://developer.dji.com/api-reference-v5/android-api/Components/IKeyManager/Key_FlightController_FlightControllerKey.html",
+      "note": "FlightControllerKey API Reference（镜像：https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/Android_API/en/Components/IKeyManager/Key_FlightController_FlightControllerKey.html）"
+    },
+    {
+      "id": "S2",
+      "url": "https://developer.dji.com/api-reference-v5/android-api/Components/IKeyManager/Key_Camera_CameraKey.html",
+      "note": "CameraKey API Reference"
+    },
+    {
+      "id": "S3",
+      "url": "https://developer.dji.com/api-reference-v5/android-api/Components/IKeyManager/Key_Gimbal_GimbalKey.html",
+      "note": "GimbalKey API Reference"
+    },
+    {
+      "id": "S4",
+      "url": "https://developer.dji.com/api-reference-v5/android-api/Components/IKeyManager/IKeyManager.html",
+      "note": "IKeyManager.getValue/setValue/performAction/listen/cancelListen"
+    },
+    {
+      "id": "S5",
+      "url": "https://developer.dji.com/api-reference-v5/android-api/Components/IWaypointMissionManager/IWaypointMissionManager.html",
+      "note": "IWaypointMissionManager：pushKMZFileToAircraft/startMission/pauseMission/resumeMission/stopMission/queryBreakPointInfoFromAircraft/getAvailableWaylineIDs"
+    },
+    {
+      "id": "S6",
+      "url": "https://developer.dji.com/api-reference-v5/android-api/Components/IMediaDataCenter/IMediaManager.html",
+      "note": "IMediaManager：媒体列表/下载/回放"
+    },
+    {
+      "id": "S7",
+      "url": "https://developer.dji.com/api-reference-v5/android-api/Components/IFlyZoneManager/IFlyZoneManager.html",
+      "note": "IFlyZoneManager：getFlyZonesInSurroundingArea 等，MSDK 5.3.0+"
+    },
+    {
+      "id": "S8",
+      "url": "https://developer.dji.com/api-reference-v5/android-api/Components/ISimulatorManager/ISimulatorManager.html",
+      "note": "ISimulatorManager（可选，未在本桥启用）"
+    },
+    {
+      "id": "S9",
+      "url": "https://developer.dji.com/api-reference-v5/android-api/Components/IVirtualStickManager/IVirtualStickManager.html",
+      "note": "IVirtualStickManager：enableVirtualStick/sendVirtualStickAdvancedParam"
+    },
+    {
+      "id": "S10",
+      "url": "https://developer.dji.com/api-reference-v5/android-api/Components/IKeyManager/KeyTools.html",
+      "note": "KeyTools.createKey/createCameraKey"
+    },
+    {
+      "id": "S11",
+      "url": "https://raw.githubusercontent.com/dji-sdk/Mobile-SDK-Android-V5/dev-sdk-main/README.md",
+      "note": "官方 README V5.20.1：支持机型与 AAR 依赖坐标"
+    },
+    {
+      "id": "S12",
+      "url": "https://raw.githubusercontent.com/dji-sdk/Mobile-SDK-Android-V5/dev-sdk-main/SampleCode-V5/android-sdk-v5-sample/src/main/java/dji/sampleV5/aircraft/models/WayPointV3VM.kt",
+      "note": "官方 sample：WaypointMissionManager 实际调用（pushKMZFileToAircraft/startMission/listener）"
+    },
+    {
+      "id": "S13",
+      "url": "https://raw.githubusercontent.com/dji-sdk/Mobile-SDK-Android-V5/dev-sdk-main/SampleCode-V5/android-sdk-v5-sample/src/main/java/dji/sampleV5/aircraft/models/BasicAircraftControlVM.kt",
+      "note": "官方 sample：FlightControllerKey.KeyStartTakeoff / KeyStartAutoLanding .create().action(...)"
+    },
+    {
+      "id": "S14",
+      "url": "https://raw.githubusercontent.com/dji-sdk/Mobile-SDK-Android-V5/dev-sdk-main/SampleCode-V5/android-sdk-v5-sample/src/main/java/dji/sampleV5/aircraft/models/MediaVM.kt",
+      "note": "官方 sample：MediaDataCenter / CameraKey.KeyCameraMode+KeyStartShootPhoto / MediaFile.pullOriginalMediaFileFromCamera"
+    },
+    {
+      "id": "S15",
+      "url": "https://raw.githubusercontent.com/dji-sdk/Mobile-SDK-Android-V5/dev-sdk-main/SampleCode-V5/android-sdk-v5-sample/src/main/java/dji/sampleV5/aircraft/models/VirtualStickVM.kt",
+      "note": "官方 sample：VirtualStickManager 用法"
+    },
+    {
+      "id": "S16",
+      "url": "https://raw.githubusercontent.com/dji-sdk/Mobile-SDK-Android-V5/dev-sdk-main/SampleCode-V5/android-sdk-v5-sample/src/main/java/dji/sampleV5/aircraft/models/MSDKManagerVM.kt",
+      "note": "官方 sample：SDKManager.init(InitSettings)+registerApp()/SDKManagerCallback"
+    },
+    {
+      "id": "S17",
+      "url": "https://raw.githubusercontent.com/dji-sdk/Mobile-SDK-Android-V5/dev-sdk-main/SampleCode-V5/android-sdk-v5-sample/src/main/AndroidManifest.xml",
+      "note": "官方 sample：com.dji.sdk.API_KEY meta-data、USB accessory intent-filter、extractNativeLibs"
+    },
+    {
+      "id": "S18",
+      "url": "https://developer.dji.com/doc/mobile-sdk-tutorial/en/tutorials/waypoint.html",
+      "note": "Wayline 管理教程：KMZ/WPML、WPMZManager、断点续飞仅 M30/M3E 系列"
+    },
+    {
+      "id": "S19",
+      "url": "https://developer.dji.com/doc/cloud-api-tutorial/en/api-reference/dji-wpml/overview.html",
+      "note": "DJI WPML 规范（KMZ 内 template.kml + waylines.wpml 结构）"
+    },
+    {
+      "id": "S20",
+      "url": "https://developer.dji.com/doc/mobile-sdk-tutorial/en/tutorials/virtual-stick.html",
+      "note": "虚拟摇杆教程：需退出自动任务、遥控器 N 档、5–25Hz"
+    },
+    {
+      "id": "S21",
+      "url": "docs/research/08_MSDKv5_Android使用方法.md",
+      "note": "T9 复核一手来源：MSDK v5 Android 使用方法（10 模块 API 表、真实类名、官方 sample 引用、证据索引）"
+    },
+    {
+      "id": "S22",
+      "url": "docs/research/10_KMZ_WPML航线格式与任务下发.md + docs/research/assets/make_sample_kmz.py",
+      "note": "T9 复核一手来源：KMZ/WPML 字段/action/状态机、12 项自检清单、参考 KMZ 生成器与样例"
+    }
+  ],
+  "tools": [
+    {
+      "name": "get_telemetry",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command (tool=get_telemetry) 或 GET /v1/telemetry",
+        "request_args": "{}"
+      },
+      "local_facade": "bridge/TelemetryPublisher.snapshot()",
+      "calls": [
+        {
+          "class": "dji.v5.manager.KeyManager",
+          "method": "getValue(DJIKey, default)",
+          "callback": "同步（MSDK 缓存）",
+          "since": "5.0.0",
+          "source": "S4",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyAircraftLocation3D / KeyAltitude / KeyTakeoffLocationAltitude / KeyHomeLocation / KeyAircraftVelocity / KeyFlightMode / KeyGPSSatelliteCount / KeyGPSSignalLevel / KeyIsFlying / KeyIsFailsafe / KeyGoHomeStatus",
+          "callback": "listen(listenHolder, KeyListener)",
+          "since": "5.0.0",
+          "source": "S1",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.BatteryKey",
+          "method": "KeyChargeRemainingInPercent（整数电量）",
+          "callback": "getValue/listen",
+          "since": "5.0.0",
+          "source": "S1/官方版本差异表",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.GimbalKey",
+          "method": "KeyGimbalAttitude（Attitude: pitch/roll/yaw）",
+          "callback": "getValue/listen",
+          "since": "5.0.0",
+          "source": "S3",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.RemoteControllerKey",
+          "method": "KeyConnection（RC 链路）",
+          "callback": "getValue/listen",
+          "since": "5.0.0",
+          "source": "官方版本差异表 + RCKey页",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.AirLinkKey",
+          "method": "图传/链路信号质量（具体 Key 名待确认）",
+          "callback": "getValue/listen",
+          "since": "5.x",
+          "source": "—",
+          "status": "unverified"
+        }
+      ],
+      "notes": "alt_abs_m = KeyTakeoffLocationAltitude + KeyAltitude；gps.fix 由 KeyGPSSignalLevel 枚举映射（MSDK 5.10.0 起该枚举 deprecated，TODO 改用 getPositioningSolution）；sim_time_s 在 real 模式返回 null（唯一字段差异，见 PROTOCOL_COMPLIANCE.md）"
+    },
+    {
+      "name": "preflight_check",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command (tool=preflight_check)",
+        "request_args": "{}"
+      },
+      "local_facade": "bridge/CommandExecutor.preflight() + safety/SafetyGuard.preflight()",
+      "calls": [
+        {
+          "class": "dji.v5.manager.SDKManager",
+          "method": "isRegistered()",
+          "callback": "同步",
+          "since": "5.0.0",
+          "source": "S16",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.v5.manager.KeyManager",
+          "method": "getValue(FlightControllerKey.KeyConnection)",
+          "callback": "同步",
+          "since": "5.0.0",
+          "source": "S4",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.v5.manager.interfaces.IFlyZoneManager",
+          "method": "getFlyZonesInSurroundingArea(LocationCoordinate2D, CompletionCallbackWithParam<List<FlyZoneInformation>>)",
+          "callback": "异步",
+          "since": "5.3.0",
+          "source": "S7",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.v5.manager.areacode.AreaCodeManager",
+          "method": "areaCode（国家/地区，用于当地限高提示）",
+          "callback": "同步",
+          "since": "5.x",
+          "source": "S12（官方 sample 使用）",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyFirmwareVersion / KeySerialNumber",
+          "callback": "getValue",
+          "since": "5.0.0",
+          "source": "S1",
+          "status": "verified-from-docs"
+        }
+      ],
+      "notes": "返回 can_fly + checks[]；固件与 App Key 绑定校验的具体错误码/回调待真机确认"
+    },
+    {
+      "name": "plan_capture_mission",
+      "executor": "orchestrator",
+      "bridge_supported": false,
+      "bridge_behavior": "不转发到桥接层；若 /v1/command 收到该 tool 返回 E_UNKNOWN_TOOL（非 agent 白名单）",
+      "mapping_to_bridge": "无（Orchestrator 侧规划，产出 plan_id 并在 goto_waypoints 中展开为 waypoints）"
+    },
+    {
+      "name": "takeoff",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command",
+        "request_args": "{altitude_m, confirm}"
+      },
+      "local_facade": "flight/FlightController.takeoff(altitudeM)",
+      "calls": [
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyStartTakeoff（DJIActionKeyInfo<EmptyMsg,EmptyMsg>）.create().action(onSuccess, onFailure)",
+          "callback": "CompletionCallbackWithParam<EmptyMsg>",
+          "since": "5.0.0",
+          "source": "S1 + S13",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyStopTakeoff（中止起飞）",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S1",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.v5.manager.aircraft.virtualstick.VirtualStickManager",
+          "method": "enableVirtualStick / setVirtualStickAdvancedModeEnabled(true) / sendVirtualStickAdvancedParam(VirtualStickFlightControlParam) 爬升到 altitude_m / disableVirtualStick",
+          "callback": "CompletionCallback + 状态轮询",
+          "since": "5.0.0/5.1.0",
+          "source": "S9 + S15 + S20",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyIsFlying / KeyAltitude（到位判定）",
+          "callback": "listen",
+          "since": "5.0.0",
+          "source": "S1",
+          "status": "verified-from-docs"
+        }
+      ],
+      "notes": "MSDK 的 KeyStartTakeoff 无高度参数（自动起飞至约 1.2m 悬停），因此到指定相对高度需接管控制权用虚拟摇杆垂直爬升；虚拟摇杆需要遥控器处于 N 档且不在自动任务中。若虚拟摇杆不可用，降级方案=直接执行首个航点的 KMZ 任务（由飞控爬升）。"
+    },
+    {
+      "name": "goto_waypoints",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command",
+        "request_args": "{mission:{...}, speed_mps?, take_photos?, photo_interval_s?, confirm}；桥接层要求 Orchestrator 已把 plan_id 展开为 waypoints"
+      },
+      "local_facade": "mission/MissionExecutor.execute(mission) -> mission/WaypointMissionController + mission/WaypointConverter + camera/CameraController",
+      "calls": [
+        {
+          "class": "com.dji:wpmzsdk:1.0.5.2（WPMZ SDK，可选）/ 自建 WPML",
+          "method": "构建 KMZ（template.kml + waylines.wpml）",
+          "callback": "本地文件",
+          "since": "MSDK 5.6.0 起官方提供 IWPMZManager；KMZ 上传自 5.0.0",
+          "source": "S18 + S19 + S11",
+          "status": "unverified（已按 research/10 重写，仍未真机验证）"
+        },
+        {
+          "class": "dji.v5.manager.aircraft.waypoint3.WaypointMissionManager",
+          "method": "pushKMZFileToAircraft(String missionFilePath, CompletionCallbackWithProgress<Double>)",
+          "callback": "onProgressUpdate/onSuccess/onFailure",
+          "since": "5.0.0",
+          "source": "S5 + S12",
+          "status": "unverified（已按 research/10 重写，仍未真机验证）"
+        },
+        {
+          "class": "dji.v5.manager.aircraft.waypoint3.WaypointMissionManager",
+          "method": "getAvailableWaylineIDs(missionFileName): List<Integer>",
+          "callback": "同步",
+          "since": "5.1.0",
+          "source": "S5",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.v5.manager.aircraft.waypoint3.WaypointMissionManager",
+          "method": "startMission(missionFileName, waylineIDs, CompletionCallback)",
+          "callback": "CompletionCallback",
+          "since": "5.1.0",
+          "source": "S5 + S12",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.v5.manager.aircraft.waypoint3.WaypointMissionManager",
+          "method": "pauseMission / resumeMission / stopMission(missionFileName, callback)",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S5 + S12",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.v5.manager.aircraft.waypoint3.WaypointMissionManager",
+          "method": "addWaylineExecutingInfoListener / addWaypointMissionExecuteStateListener / addWaypointActionListener（进度与动作事件）",
+          "callback": "listener",
+          "since": "5.0.0",
+          "source": "S5 + S12",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.CameraKey",
+          "method": "KeyStartShootPhoto（航点动作由飞控执行时用于补拍/定点拍摄）",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S2 + S14",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.value.camera.PhotoIntervalShootSettings",
+          "method": "KeyPhotoIntervalShootSettings（定时连拍参数，photo_interval_s 映射）",
+          "callback": "setValue",
+          "since": "5.0.0",
+          "source": "S2",
+          "status": "unverified（字段构造待确认）"
+        }
+      ],
+      "notes": "WaypointMissionManager 为 dji.v5.manager.aircraft.waypoint3 包下的单例（官方 sample 实际使用），文档页名为 IWaypointMissionManager（接口）。断点续飞官方仅保证 M30/M3E/3T/3M，Mini 4 Pro 不在列 -> 桥接层不依赖断点续飞。"
+    },
+    {
+      "name": "orbit",
+      "executor": "orchestrator",
+      "bridge_supported": false,
+      "bridge_behavior": "Orchestrator 规划成环绕航点后，以 goto_waypoints 下发；桥接层无 orbit 命令",
+      "mapping_to_bridge": "goto_waypoints（waypoints 数组）",
+      "alternative_on_device": {
+        "class": "dji.v5.manager.aircraft.intelligentflight.IIntelligentFlightManager / IPOIMissionManager",
+        "status": "unverified",
+        "note": "MSDK 5.14.0 起 IIntelligentFlightManager 支持 POI/FlyTo/SpotLight（官方称支持机型含 Mini 4 Pro）；本桥不采用，因为 POI 无法精确指定拍照点数量与 3DGS 所需角度序列"
+      }
+    },
+    {
+      "name": "set_gimbal",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command",
+        "request_args": "{pitch_deg, yaw_deg?}"
+      },
+      "local_facade": "gimbal/GimbalController.setAngle(pitchDeg, yawDeg)",
+      "calls": [
+        {
+          "class": "dji.sdk.keyvalue.key.GimbalKey",
+          "method": "KeyRotateByAngle（DJIActionKeyInfo<GimbalAngleRotation,EmptyMsg>）.create().action(...)",
+          "callback": "CompletionCallbackWithParam<EmptyMsg>",
+          "since": "5.0.0",
+          "source": "S3 + 官方版本差异表",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.value.gimbal.GimbalAngleRotation",
+          "method": "构造（角度模式+俯仰/横滚/偏航）",
+          "callback": "—",
+          "since": "5.0.0",
+          "source": "S3",
+          "status": "unverified（构造参数顺序未从文档确认，代码 TODO(未确认)）"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.GimbalKey",
+          "method": "KeyGimbalAttitude（回读校验）",
+          "callback": "getValue/listen",
+          "since": "5.0.0",
+          "source": "S3",
+          "status": "verified-from-docs"
+        }
+      ],
+      "notes": "Mini 4 Pro 云台俯仰范围 -90~0（水平 0）；yaw 相对机头。真实可达角度与速率待真机确认。"
+    },
+    {
+      "name": "capture_photo",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command",
+        "request_args": "{count?, interval_s?}"
+      },
+      "local_facade": "camera/CameraController.capture(count, intervalS)",
+      "calls": [
+        {
+          "class": "dji.sdk.keyvalue.key.CameraKey",
+          "method": "KeyCameraMode setValue(CameraMode.PHOTO_NORMAL)",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S2 + S14",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.CameraKey",
+          "method": "KeyStartShootPhoto（DJIActionKeyInfo<EmptyMsg,EmptyMsg>）.create().action(...)",
+          "callback": "CompletionCallbackWithParam<EmptyMsg>",
+          "since": "5.0.0",
+          "source": "S2 + S14",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.CameraKey",
+          "method": "KeyIsShootingPhoto / KeyCameraStoringFile（完成判定）",
+          "callback": "getValue/listen",
+          "since": "5.0.0",
+          "source": "S2",
+          "status": "verified-from-docs"
+        }
+      ],
+      "notes": "单拍 count=1；连拍用 KeyPhotoIntervalShootSettings 或逐张触发（间隔由桥接层定时器控制，便于记录每张遥测）"
+    },
+    {
+      "name": "start_video",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command",
+        "request_args": "{}"
+      },
+      "local_facade": "camera/CameraController.startVideo()",
+      "calls": [
+        {
+          "class": "dji.sdk.keyvalue.key.CameraKey",
+          "method": "KeyStartRecord（DJIActionKeyInfo<EmptyMsg,EmptyMsg>）",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S2 + 官方版本差异表",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.CameraKey",
+          "method": "KeyIsRecording（状态回读）",
+          "callback": "getValue/listen",
+          "since": "5.0.0",
+          "source": "S2",
+          "status": "verified-from-docs"
+        }
+      ]
+    },
+    {
+      "name": "stop_video",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command",
+        "request_args": "{}"
+      },
+      "local_facade": "camera/CameraController.stopVideo()",
+      "calls": [
+        {
+          "class": "dji.sdk.keyvalue.key.CameraKey",
+          "method": "KeyStopRecord",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S2 + 官方版本差异表",
+          "status": "verified-from-docs"
+        }
+      ]
+    },
+    {
+      "name": "return_to_home",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command",
+        "request_args": "{}"
+      },
+      "local_facade": "flight/FlightController.returnToHome()",
+      "calls": [
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyStartGoHome（DJIActionKeyInfo<EmptyMsg,EmptyMsg>）.create().action(...)",
+          "callback": "CompletionCallbackWithParam<EmptyMsg>",
+          "since": "5.0.0",
+          "source": "S1",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyStopGoHome（中止返航）",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S1",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyGoHomeStatus（GoHomeState.IDLE/RETURNING_TO_HOME/LANDING/COMPLETED）",
+          "callback": "listen",
+          "since": "5.0.0",
+          "source": "S1 + DJIValue",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyGoHomeHeight setValue(Integer, m)（返航高度，预检可为 120m 内安全值）",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S1",
+          "status": "verified-from-docs"
+        }
+      ],
+      "notes": "返航高度默认 20m 级别时可能低于周边障碍；真机协议要求起飞前用 KeyGoHomeHeight 设为 >= 作业高度（且 <=120m），并在测试协议中记录"
+    },
+    {
+      "name": "land",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command",
+        "request_args": "{}"
+      },
+      "local_facade": "flight/FlightController.land()",
+      "calls": [
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyStartAutoLanding（DJIActionKeyInfo<EmptyMsg,EmptyMsg>）",
+          "callback": "CompletionCallbackWithParam<EmptyMsg>",
+          "since": "5.0.0",
+          "source": "S1 + S13",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyStopAutoLanding（取消自动降落）",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S1",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyConfirmLanding（复杂环境需确认降落时）",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S1",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyIsInLandingMode（降落状态）",
+          "callback": "getValue/listen",
+          "since": "5.0.0",
+          "source": "官方版本差异表",
+          "status": "verified-from-docs"
+        }
+      ]
+    },
+    {
+      "name": "abort",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command",
+        "request_args": "{reason}"
+      },
+      "local_facade": "bridge/CommandExecutor.abort(reason) -> mission/WaypointMissionController.stop() + flight/FlightController.hoverOrStop()",
+      "calls": [
+        {
+          "class": "dji.v5.manager.aircraft.waypoint3.WaypointMissionManager",
+          "method": "stopMission(missionFileName, callback)",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S5 + S12",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.sdk.keyvalue.key.FlightControllerKey",
+          "method": "KeyStopGoHome / KeyStopAutoLanding / KeyStopTakeoff（依当前动作选择）",
+          "callback": "CompletionCallback",
+          "since": "5.0.0",
+          "source": "S1",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.v5.manager.aircraft.virtualstick.VirtualStickManager",
+          "method": "sendVirtualStickAdvancedParam(零速度) / disableVirtualStick（悬停）",
+          "callback": "—",
+          "since": "5.1.0",
+          "source": "S9 + S20",
+          "status": "verified-from-docs"
+        }
+      ],
+      "notes": "中止语义=停止任务并悬停（不自动返航）；返航需调用 return_to_home。悬停不依赖 SDK 主动 API（停止虚拟摇杆后飞机自然悬停）。"
+    },
+    {
+      "name": "get_mission_status",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command 或 GET /v1/missions/{id}、GET /v1/missions?limit=10",
+        "request_args": "{mission_id?}"
+      },
+      "local_facade": "bridge/MissionStore + mission/WaypointMissionController.progress()",
+      "calls": [
+        {
+          "class": "dji.v5.manager.aircraft.waypoint3.WaypointMissionManager",
+          "method": "WaylineExecutingInfoListener（航点索引/进度）、WaypointMissionExecuteStateListener（状态机）",
+          "callback": "listener",
+          "since": "5.0.0",
+          "source": "S5 + S12",
+          "status": "verified-from-docs"
+        },
+        {
+          "class": "dji.v5.manager.datacenter.MediaDataCenter / IMediaManager",
+          "method": "mediaFileListData + pullMediaFileListFromCamera（照片对账）",
+          "callback": "MediaFileListStateListener",
+          "since": "5.0.0",
+          "source": "S6 + S14",
+          "status": "verified-from-docs"
+        }
+      ],
+      "notes": "WaylineExecutingInfo 的具体字段（当前航点索引/wayline id）未在本地证据中逐字段确认，代码 TODO(未确认)；进度以已执行动作数/总拍照点数为准；spec v1.1 §15.2 要求 real 的 photos[].c2w 为估算值时输出 pose_source=estimated 与 pose_accuracy_m（默认 3.0m）"
+    },
+    {
+      "name": "set_mode",
+      "executor": "agent",
+      "bridge_supported": true,
+      "http": {
+        "endpoint": "POST /v1/command",
+        "request_args": "{mode, confirm}"
+      },
+      "local_facade": "bridge/CommandExecutor.setMode(mode)",
+      "calls": [
+        {
+          "class": "bridge 内部模式机",
+          "method": "dry_run（仅校验不执行）/ real（默认）；sim -> E_NOT_SUPPORTED",
+          "callback": "—",
+          "since": "—",
+          "source": "PROTOCOL.md §4",
+          "status": "verified-from-docs"
+        }
+      ],
+      "notes": "Phase2 桥接层默认 mode=real；dry_run 用于真机前的地面验证；sim 模式不实现（DJI SimulatorManager 需飞机上电且不属本阶段验收，返回 E_NOT_SUPPORTED）"
+    }
+  ],
+  "endpoint_mapping": [
+    {
+      "http": "GET /v1/health",
+      "bridge_impl": "DroneBridgeServer.handleHealth()",
+      "notes": "backend=msdk, mode=real, time_scale=1.0"
+    },
+    {
+      "http": "GET /v1/telemetry",
+      "bridge_impl": "TelemetryPublisher.snapshot()",
+      "notes": "sim_time_s=null（real 模式唯一字段差异）"
+    },
+    {
+      "http": "POST /v1/command",
+      "bridge_impl": "CommandExecutor.dispatch()",
+      "notes": "白名单=13 个 agent 工具；idempotency 按 command_id 缓存最近 100 条"
+    },
+    {
+      "http": "GET /v1/missions/{mission_id}",
+      "bridge_impl": "MissionStore.get()",
+      "notes": "持久化于 App external files dir（JSON）"
+    },
+    {
+      "http": "GET /v1/missions?limit=10",
+      "bridge_impl": "MissionStore.list()",
+      "notes": "按创建时间倒序"
+    },
+    {
+      "http": "GET /v1/audit?since_seq=N",
+      "bridge_impl": "AuditLogger.eventsSince()",
+      "notes": "同时落盘 JSONL"
+    },
+    {
+      "http": "POST /v1/reset",
+      "bridge_impl": "返回 E_NOT_SUPPORTED",
+      "notes": "仿真专属端点（PROTOCOL.md §3.2）"
+    },
+    {
+      "http": "POST /v1/sim/config",
+      "bridge_impl": "返回 E_NOT_SUPPORTED",
+      "notes": "仿真专属端点（PROTOCOL.md §3.2）"
+    }
+  ],
+  "msdk_error_mapping": [
+    {
+      "spec_code": "E_RC_LINK",
+      "when": "SDK 未注册 / 产品未连接 / RemoteControllerKey.KeyConnection=false",
+      "msdk_source": "SDKManager.isRegistered / KeyConnection"
+    },
+    {
+      "spec_code": "E_STATE",
+      "when": "状态机不允许（如未起飞 land、飞行中 takeoff、模式未 idle 时 set_mode）",
+      "msdk_source": "桥接层状态机"
+    },
+    {
+      "spec_code": "E_BUSY",
+      "when": "任务执行中收到并发飞行命令",
+      "msdk_source": "桥接层"
+    },
+    {
+      "spec_code": "E_BATTERY_TAKEOFF",
+      "when": "BatteryKey 电量 < 30%",
+      "msdk_source": "BatteryKey.KeyChargeRemainingInPercent"
+    },
+    {
+      "spec_code": "E_BATTERY_RTH",
+      "when": "起飞前能量估算不足（>=20% 返航保留）",
+      "msdk_source": "桥接层估算"
+    },
+    {
+      "spec_code": "E_GPS",
+      "when": "GPSSignalLevel<LEVEL_3 或卫星数<10",
+      "msdk_source": "FlightControllerKey.KeyGPSSignalLevel / KeyGPSSatelliteCount"
+    },
+    {
+      "spec_code": "E_NOFLY",
+      "when": "IFlyZoneManager.getFlyZonesInSurroundingArea 返回 RESTRICTED 区域命中，或本地禁飞多边形命中",
+      "msdk_source": "IFlyZoneManager + 本地 SafetyGuard"
+    },
+    {
+      "spec_code": "E_GEOFENCE",
+      "when": "本地圆形围栏校验失败（300m 默认）",
+      "msdk_source": "本地 SafetyGuard"
+    },
+    {
+      "spec_code": "E_ALT_LIMIT / E_SPEED_LIMIT / E_PARAM_RANGE / E_SCHEMA",
+      "when": "本地参数校验",
+      "msdk_source": "本地 SafetyGuard"
+    },
+    {
+      "spec_code": "E_CONFIRM_REQUIRED",
+      "when": "takeoff/goto_waypoints/set_mode(real) 未带 confirm",
+      "msdk_source": "本地 SafetyGuard"
+    },
+    {
+      "spec_code": "E_NOT_AIRBORNE",
+      "when": "拍照/云台/录像命令在当前非空中状态",
+      "msdk_source": "状态机"
+    },
+    {
+      "spec_code": "E_NOT_SUPPORTED",
+      "when": "sim 模式、/v1/reset、/v1/sim/config 等仿真专属能力",
+      "msdk_source": "桥接层"
+    },
+    {
+      "spec_code": "E_INTERNAL",
+      "when": "MSDK 回调返回的具体 IDJIError 无对应业务码，details 携带 error.code()/description()",
+      "msdk_source": "IDJIError"
+    },
+    {
+      "spec_code": "E_MISSION_NOT_FOUND",
+      "when": "MissionStore 无该 mission_id",
+      "msdk_source": "桥接层"
+    }
+  ],
+  "coverage": {
+    "tools_total": 15,
+    "bridge_executed": 13,
+    "orchestrator_side": [
+      "plan_capture_mission",
+      "orbit"
+    ],
+    "notes": "CONTRACT.md §1 工具表全部覆盖；orbit 在 Orchestrator 展开为 goto_waypoints；plan_capture_mission 不进入桥接层。"
+  },
+  "research_review": {
+    "date": "2026-11-08",
+    "docs": [
+      "docs/research/08_MSDKv5_Android使用方法.md",
+      "docs/research/10_KMZ_WPML航线格式与任务下发.md",
+      "docs/research/assets/make_sample_kmz.py"
+    ],
+    "review_file": "llm_drone/msdk_bridge/REVIEW_vs_research.md",
+    "summary": {
+      "items_checked": 47,
+      "consistent": 24,
+      "needs_fix": 16,
+      "fixed_this_round": 13,
+      "doc_sync": 3,
+      "todo": 7
+    },
+    "key_corrections": [
+      "WaypointConverter.kt 按 10 §2/§3/§4 重写（template/waylines 必填字段齐全、actionGroup 含 gimbalRotateTime/payloadPositionIndex、fileSuffix）",
+      "WaypointMissionController 三个 Listener 改为 object 具名方法（08 §6.2）",
+      "GimbalAngleRotation 改为无参+apply；KeyRotateByAngle.createKey 去 componentIndex（E1 字段表 + 08 §6.4）",
+      "VirtualStickFlightControlParam 改 value 包并显式控制模式（08 §6.7）",
+      "MediaDownloader 增加 IMediaManager.enable()（08 §6.5）",
+      "TelemetryPublisher listen 回调改双参 (old,new)",
+      "spec v1.1 §15：sim_time_s=null、photos[].pose_source/pose_accuracy_m、E_RC_LINK/E_STATE + details.reason"
+    ],
+    "open_todos": [
+      "Mini 4 Pro WPML droneEnumValue/payloadEnumValue 官方取值",
+      "per-waypoint heading 的 WPML 落地方式",
+      "multipleTiming/multipleDistance 在 Mini 的支持性",
+      "executeHeightMode EGM96/必填项的精确验证",
+      "MediaFile 时间戳字段与照片对账",
+      "AirlinkKey 信号质量 Key 名、机型字符串 Key 名",
+      "全部 Kotlin 编译与真机行为"
+    ],
+    "status": "unverified: 未编译、未真机；仅静态一致性修正"
+  }
+}

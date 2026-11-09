@@ -1,0 +1,409 @@
+{
+  "version": "1.0",
+  "updated": "2026-11-08",
+  "note": "LLM function-calling 工具集唯一事实源。Orchestrator 用它生成 OpenAI tools；Drone Agent 用参数表校验。executor=orchestrator 表示由 Orchestrator 侧确定性代码实现（规划/编排），executor=agent 表示转发给 Drone Agent 执行。",
+  "tools": [
+    {
+      "name": "get_telemetry",
+      "title_zh": "读取遥测",
+      "executor": "agent",
+      "risk": "read",
+      "requires_confirm": false,
+      "description_zh": "读取无人机当前遥测快照：经纬度、相对/绝对高度、速度、电量、云台角度、GPS 质量、遥控链路、飞行模式。执行任何飞行操作前可先调用。",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "preflight_check",
+      "title_zh": "起飞前检查",
+      "executor": "agent",
+      "risk": "read",
+      "requires_confirm": false,
+      "description_zh": "起飞前检查：GPS fix/卫星数、电量、遥控链路、禁飞区/围栏状态、固件与模式。返回逐项 pass/fail 与总体是否可飞。",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "plan_capture_mission",
+      "title_zh": "规划航拍任务（只读，不飞行）",
+      "executor": "orchestrator",
+      "risk": "read",
+      "requires_confirm": false,
+      "description_zh": "规划航拍任务并返回 plan_id（不飞行、不拍照）。pattern 可选 grid(网格)/orbit(环绕)/point(定点)。网格用于面状区域按重叠率覆盖；环绕用于围绕目标拍摄；定点用于单点悬停拍摄。规划结果需先给用户/Lead 确认，再用 goto_waypoints 执行。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "enum": [
+              "grid",
+              "orbit",
+              "point"
+            ],
+            "description": "任务类型"
+          },
+          "center_lat": {
+            "type": "number",
+            "description": "区域中心/目标纬度（WGS84）"
+          },
+          "center_lon": {
+            "type": "number",
+            "description": "区域中心/目标经度（WGS84）"
+          },
+          "radius_m": {
+            "type": "number",
+            "description": "区域半径（网格/定点），或环绕半径（orbit），米"
+          },
+          "altitude_m": {
+            "type": "number",
+            "description": "相对起飞点高度，米（0-120）"
+          },
+          "overlap": {
+            "type": "number",
+            "description": "网格重叠率 0-0.95，默认 0.7"
+          },
+          "gimbal_pitch_deg": {
+            "type": "number",
+            "description": "云台俯仰，-90(正下)~0(水平)，默认 -45"
+          },
+          "heading_deg": {
+            "type": "number",
+            "description": "网格主航向（0=正北，90=正东），默认 0"
+          },
+          "shots": {
+            "type": "number",
+            "description": "拍摄张数（orbit/point），默认 12/5"
+          },
+          "speed_mps": {
+            "type": "number",
+            "description": "飞行速度 m/s，默认 5，最大 15"
+          }
+        },
+        "required": [
+          "pattern",
+          "center_lat",
+          "center_lon",
+          "altitude_m"
+        ]
+      }
+    },
+    {
+      "name": "takeoff",
+      "title_zh": "起飞",
+      "executor": "agent",
+      "risk": "flight",
+      "requires_confirm": true,
+      "description_zh": "起飞到指定相对高度。必须带 confirm=true（仅在用户明确同意后）。安全层会校验高度、电量≥30%、GPS fix≥3 且卫星≥10、遥控链路连接。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "altitude_m": {
+            "type": "number",
+            "description": "相对起飞点高度，米，1-120"
+          },
+          "confirm": {
+            "type": "boolean",
+            "description": "必须为 true"
+          }
+        },
+        "required": [
+          "altitude_m",
+          "confirm"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "goto_waypoints",
+      "title_zh": "执行航点任务",
+      "executor": "agent",
+      "risk": "flight",
+      "requires_confirm": true,
+      "description_zh": "执行规划好的航点任务。优先传 plan_capture_mission 返回的 plan_id（由 Orchestrator 展开为航点）；也可显式传 waypoints。带 take_photos=true 时在每个拍照点拍照。必须带 confirm=true。安全层逐航点校验限高/限速/围栏/禁飞区/返航电量。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "plan_id": {
+            "type": "string",
+            "description": "plan_capture_mission 返回的 plan_id（推荐）"
+          },
+          "waypoints": {
+            "type": "array",
+            "description": "显式航点（可选）",
+            "items": {
+              "type": "object",
+              "properties": {
+                "lat": {
+                  "type": "number"
+                },
+                "lon": {
+                  "type": "number"
+                },
+                "alt_rel_m": {
+                  "type": "number"
+                },
+                "heading_deg": {
+                  "type": "number"
+                },
+                "gimbal_pitch_deg": {
+                  "type": "number"
+                },
+                "speed_mps": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "lat",
+                "lon",
+                "alt_rel_m"
+              ]
+            }
+          },
+          "speed_mps": {
+            "type": "number",
+            "description": "默认飞行速度，米/秒，0.5-15"
+          },
+          "take_photos": {
+            "type": "boolean",
+            "description": "是否在拍照点拍照，默认 true"
+          },
+          "photo_interval_s": {
+            "type": "number",
+            "description": "连续拍照间隔秒，默认 1"
+          },
+          "confirm": {
+            "type": "boolean",
+            "description": "必须为 true"
+          }
+        },
+        "required": [
+          "confirm"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "orbit",
+      "title_zh": "环绕拍摄",
+      "executor": "orchestrator",
+      "risk": "flight",
+      "requires_confirm": true,
+      "description_zh": "围绕目标点做环绕拍摄（云台朝向目标）。本工具直接生成环绕航点并执行，必须带 confirm=true。安全层校验目标/航点/高度/半径。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "target_lat": {
+            "type": "number",
+            "description": "环绕目标纬度"
+          },
+          "target_lon": {
+            "type": "number",
+            "description": "环绕目标经度"
+          },
+          "radius_m": {
+            "type": "number",
+            "description": "环绕半径，米，10-200"
+          },
+          "altitude_m": {
+            "type": "number",
+            "description": "相对起飞点高度，米，1-120"
+          },
+          "shots": {
+            "type": "number",
+            "description": "拍照张数，4-36"
+          },
+          "gimbal_pitch_deg": {
+            "type": "number",
+            "description": "云台俯仰，-90~0"
+          },
+          "confirm": {
+            "type": "boolean",
+            "description": "必须为 true"
+          }
+        },
+        "required": [
+          "target_lat",
+          "target_lon",
+          "radius_m",
+          "altitude_m",
+          "confirm"
+        ]
+      }
+    },
+    {
+      "name": "set_gimbal",
+      "title_zh": "设置云台",
+      "executor": "agent",
+      "risk": "low",
+      "requires_confirm": false,
+      "description_zh": "设置云台俯仰/偏航角度。pitch_deg: -90(正下)~0(水平)；yaw_deg 可选（相对机头）。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "pitch_deg": {
+            "type": "number",
+            "description": "-90~0"
+          },
+          "yaw_deg": {
+            "type": "number",
+            "description": "-180~180，可选"
+          }
+        },
+        "required": [
+          "pitch_deg"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "capture_photo",
+      "title_zh": "拍照",
+      "executor": "agent",
+      "risk": "low",
+      "requires_confirm": false,
+      "description_zh": "当前云台角度拍照。count 张（1-20），interval_s 间隔秒（0-10）。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "number",
+            "description": "张数，默认 1"
+          },
+          "interval_s": {
+            "type": "number",
+            "description": "间隔秒，默认 1"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "start_video",
+      "title_zh": "开始录像",
+      "executor": "agent",
+      "risk": "low",
+      "requires_confirm": false,
+      "description_zh": "开始录像。",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "stop_video",
+      "title_zh": "停止录像",
+      "executor": "agent",
+      "risk": "low",
+      "requires_confirm": false,
+      "description_zh": "停止录像。",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "return_to_home",
+      "title_zh": "一键返航",
+      "executor": "agent",
+      "risk": "flight",
+      "requires_confirm": false,
+      "description_zh": "返回起飞点并自动降落。安全动作，无需 confirm，但安全层会校验当前状态。",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "land",
+      "title_zh": "原地降落",
+      "executor": "agent",
+      "risk": "flight",
+      "requires_confirm": false,
+      "description_zh": "在当前水平位置降落。",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "abort",
+      "title_zh": "中止任务",
+      "executor": "agent",
+      "risk": "high",
+      "requires_confirm": false,
+      "description_zh": "中止当前任务：悬停（可选返航）。高优先级，任何时候可调用。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "中止原因"
+          }
+        },
+        "required": [
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_mission_status",
+      "title_zh": "任务状态",
+      "executor": "agent",
+      "risk": "read",
+      "requires_confirm": false,
+      "description_zh": "查询任务进度/照片列表/电量/状态；mission_id 省略时查最近一次任务。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "mission_id": {
+            "type": "string",
+            "description": "任务 ID，可选"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "set_mode",
+      "title_zh": "切换模式",
+      "executor": "agent",
+      "risk": "high",
+      "requires_confirm": true,
+      "description_zh": "切换运行模式：dry_run(仅校验不执行)/sim(仿真)/real(真机，Phase1 未接入会返回 E_REAL_NOT_AVAILABLE)。real 必须带 confirm=true 且需人工二次确认。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "dry_run",
+              "sim",
+              "real"
+            ],
+            "description": "目标模式"
+          },
+          "confirm": {
+            "type": "boolean",
+            "description": "real 必须为 true"
+          }
+        },
+        "required": [
+          "mode",
+          "confirm"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

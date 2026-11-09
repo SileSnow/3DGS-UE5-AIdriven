@@ -1,0 +1,154 @@
+﻿[
+    {
+        "full_name":  "mlslabs/MLSLabsGaussianSplattingRenderer-UE",
+        "stargazers_count":  288,
+        "description":  "A high-performance Unreal Engine 5 (UE5) plugin developed by MaLanShan Audio \u0026 Video Laboratory, designed for real-time visualization, management, and scalable rendering of 3D Gaussian Splatting (3DGS) and dynamic Volumetric Video (4DGS).",
+        "html_url":  "https://github.com/mlslabs/MLSLabsGaussianSplattingRenderer-UE",
+        "license":  {
+                        "key":  "apache-2.0",
+                        "name":  "Apache License 2.0",
+                        "spdx_id":  "Apache-2.0",
+                        "url":  "https://api.github.com/licenses/apache-2.0",
+                        "node_id":  "MDc6TGljZW5zZTI="
+                    },
+        "updated_at":  "2026-11-05T12:22:15Z",
+        "pushed_at":  "2026-10-29T12:06:19Z",
+        "default_branch":  "Pro_2.0_ue5.5"
+    },
+    {
+        "full_name":  "xgrids/LCC-3DGS-Unreal-Plugin",
+        "stargazers_count":  102,
+        "description":  "Unreal Engine 5 plugin for 3D Gaussian Splatting (3DGS) — load(LCC/LCC2/PLY/SOG/SPZ), render, relight, and edit billion-scale Gaussian Splat scenes in UE5. Supports nDisplay, VR, virtual production, digital twins, CARLA, Cesium. Free + Pro.",
+        "html_url":  "https://github.com/xgrids/LCC-3DGS-Unreal-Plugin",
+        "license":  null,
+        "updated_at":  "2026-11-06T07:44:50Z",
+        "pushed_at":  "2026-09-10T07:19:54Z",
+        "default_branch":  "main"
+    },
+    {
+        "full_name":  "DazaiStudio/SplatRenderer-UEPlugin",
+        "stargazers_count":  84,
+        "description":  "3D/4D Gaussian Splatting renderer plugin for Unreal Engine 5.5+",
+        "html_url":  "https://github.com/DazaiStudio/SplatRenderer-UEPlugin",
+        "license":  {
+                        "key":  "apache-2.0",
+                        "name":  "Apache License 2.0",
+                        "spdx_id":  "Apache-2.0",
+                        "url":  "https://api.github.com/licenses/apache-2.0",
+                        "node_id":  "MDc6TGljZW5zZTI="
+                    },
+        "updated_at":  "2026-10-27T12:06:34Z",
+        "pushed_at":  "2026-04-05T05:42:39Z",
+        "default_branch":  "master"
+    },
+    {
+        "full_name":  "YuanBaoSMadLab/OpenSplat4D",
+        "stargazers_count":  15,
+        "description":  "Unreal Engine 5 plugin for real-time 3D and 4D Gaussian Splatting (3DGS / 4DGS). Supports Spacetime Gaussians, keyframe 4DGS and Fudan native 4DGS (dual-quaternion 4D rotation + spherindrical harmonics), with Nanite-style cluster LOD, GPU sort/cull pipeline and a dedicated 4D player editor.",
+        "html_url":  "https://github.com/YuanBaoSMadLab/OpenSplat4D",
+        "license":  {
+                        "key":  "other",
+                        "name":  "Other",
+                        "spdx_id":  "NOASSERTION",
+                        "url":  null,
+                        "node_id":  "MDc6TGljZW5zZTA="
+                    },
+        "updated_at":  "2026-11-05T12:22:16Z",
+        "pushed_at":  "2026-09-22T10:03:58Z",
+        "default_branch":  "main"
+    },
+    {
+        "full_name":  "javierjimenezfernandez/TFG-ROS_NeRF_UE5",
+        "stargazers_count":  12,
+        "description":  "Final degree project about robot remote control through virtual reality (VR) envinorment using NeRF and Gaussian Splatting (3DGS) technology and Unreal Engine 5.2 for rescue tasks.",
+        "html_url":  "https://github.com/javierjimenezfernandez/TFG-ROS_NeRF_UE5",
+        "license":  null,
+        "updated_at":  "2026-06-06T10:23:32Z",
+        "pushed_at":  "2024-11-04T11:28:27Z",
+        "default_branch":  "main"
+    },
+    {
+        "full_name":  "benyoon1/gaussian-splat-hackathon",
+        "stargazers_count":  3,
+        "description":  "Climate change simulator in 3DGS/UE5",
+        "html_url":  "https://github.com/benyoon1/gaussian-splat-hackathon",
+        "license":  {
+                        "key":  "other",
+                        "name":  "Other",
+                        "spdx_id":  "NOASSERTION",
+                        "url":  null,
+                        "node_id":  "MDc6TGljZW5zZTA="
+                    },
+        "updated_at":  "2026-01-18T05:48:23Z",
+        "pushed_at":  "2024-03-31T13:18:01Z",
+        "default_branch":  "main"
+    },
+    {
+        "full_name":  "xgrids/3dgs-unreal-example",
+        "stargazers_count":  3,
+        "description":  "Example project for 3D Gaussian Splatting (3DGS) in Unreal Engine, built on the LCC-3DGS-Unreal-Plugin.",
+        "html_url":  "https://github.com/xgrids/3dgs-unreal-example",
+        "license":  null,
+        "updated_at":  "2026-10-10T13:46:14Z",
+        "pushed_at":  "2026-09-10T02:37:56Z",
+        "default_branch":  "main"
+    },
+    {
+        "full_name":  "notno/ue5-splat-rhi",
+        "stargazers_count":  2,
+        "description":  "An RHI-level 3D Gaussian splat renderer and splat-based particle system for Unreal Engine 5 (UE 5.7).",
+        "html_url":  "https://github.com/notno/ue5-splat-rhi",
+        "license":  {
+                        "key":  "mit",
+                        "name":  "MIT License",
+                        "spdx_id":  "MIT",
+                        "url":  "https://api.github.com/licenses/mit",
+                        "node_id":  "MDc6TGljZW5zZTEz"
+                    },
+        "updated_at":  "2026-07-05T20:29:17Z",
+        "pushed_at":  "2026-06-03T19:55:01Z",
+        "default_branch":  "main"
+    },
+    {
+        "full_name":  "Akiya-Research-Institute/3dGaussiansPlugin-RuntimeLoadDemo",
+        "stargazers_count":  0,
+        "description":  "UE5 demo project for runtime loading of 3D Gaussian Splatting",
+        "html_url":  "https://github.com/Akiya-Research-Institute/3dGaussiansPlugin-RuntimeLoadDemo",
+        "license":  {
+                        "key":  "mit",
+                        "name":  "MIT License",
+                        "spdx_id":  "MIT",
+                        "url":  "https://api.github.com/licenses/mit",
+                        "node_id":  "MDc6TGljZW5zZTEz"
+                    },
+        "updated_at":  "2024-11-23T11:42:18Z",
+        "pushed_at":  "2024-11-23T11:42:15Z",
+        "default_branch":  "main"
+    },
+    {
+        "full_name":  "dewilkinson/UE5SplatPakStreamSample",
+        "stargazers_count":  0,
+        "description":  "SplatPak for Unreal Engine 5: renders compressed 3D Gaussian splat scans (.gstx) inside Unreal\u0027s renderer, alongside Nanite. Port of the SplatPak DX12 renderer; plugin and demo app.",
+        "html_url":  "https://github.com/dewilkinson/UE5SplatPakStreamSample",
+        "license":  {
+                        "key":  "apache-2.0",
+                        "name":  "Apache License 2.0",
+                        "spdx_id":  "Apache-2.0",
+                        "url":  "https://api.github.com/licenses/apache-2.0",
+                        "node_id":  "MDc6TGljZW5zZTI="
+                    },
+        "updated_at":  "2026-11-01T19:05:00Z",
+        "pushed_at":  "2026-10-29T16:26:26Z",
+        "default_branch":  "splatpak"
+    },
+    {
+        "full_name":  "c2jxmrywdn-del/Control-visuals-via-XR",
+        "stargazers_count":  0,
+        "description":  "一个融合接驳式3D高斯泼溅（Articulated 3D Gaussian Splatting）、次表面天鹅绒防晒着色器（UE5 Subsurface Velvet + SH Degree-2 Radiance）、MediaPipe 实时机器学习认知识别以及Firebase云端花谱同步的湿润3D植物形态学实验室。用户可通过摄像头或稀疏/模型，自然平滑地控制8大植物纲目从紧闭花（芽、0%）到完全盛放（Full Bloom, 100%）的连续生物力学绽放过程",
+        "html_url":  "https://github.com/c2jxmrywdn-del/Control-visuals-via-XR",
+        "license":  null,
+        "updated_at":  "2026-10-23T17:03:04Z",
+        "pushed_at":  "2026-10-23T17:03:00Z",
+        "default_branch":  "main"
+    }
+]

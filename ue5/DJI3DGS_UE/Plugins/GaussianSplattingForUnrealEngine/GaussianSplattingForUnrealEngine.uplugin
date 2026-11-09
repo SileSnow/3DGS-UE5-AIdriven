@@ -1,0 +1,40 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0-ue5.8-ported",
+	"FriendlyName": "Gaussian Splatting For Unreal Engine",
+	"Description": "3DGS PLY -> Niagara GPU particle renderer (Italink, MIT), ported to Unreal Engine 5.8.4 by ue5-splat for the DJI x UE5 x 3DGS feasibility study.",
+	"Category": "Other",
+	"CreatedBy": "Italink",
+	"CreatedByURL": "https://github.com/Italink/GaussianSplattingForUnrealEngine",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"SupportedTargetPlatforms": [
+		"Win64",
+		"Linux"
+	],
+	"Modules": [
+		{
+			"Name": "GaussianSplattingRuntime",
+			"Type": "Runtime",
+			"LoadingPhase": "PostConfigInit"
+		},
+		{
+			"Name": "GaussianSplattingEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "Niagara",
+			"Enabled": true
+		}
+	],
+	"EngineVersion": "5.8.0"
+}

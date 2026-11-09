@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "如需在研究中引用本仓库，请使用以下元数据。"
+title: "DJI Mini x UE5 x 3DGS: Feasibility Validation and LLM Tool-Call Drone Orchestration"
+abstract: >-
+  Two-phase technical validation project: (1) DJI Mini aerial capture -> 3D Gaussian Splatting
+  reconstruction -> Unreal Engine 5 rendering feasibility; (2) LLM tool-call orchestration of
+  drone missions with a deterministic safety validator, simulation backend, UE5 virtual-camera
+  mission rendering, and an Android DJI MSDK v5 bridge design.
+authors:
+  - name: "GAIA Project contributors"
+version: "0.1.0"
+date-released: "2026-11-09"
+license: "TBD"
+keywords:
+  - DJI Mini
+  - DJI MSDK v5
+  - Gaussian Splatting
+  - Unreal Engine 5
+  - LLM tool calling
+  - drone autonomy
+  - safety validation

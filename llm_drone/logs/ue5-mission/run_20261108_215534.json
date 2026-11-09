@@ -1,0 +1,23 @@
+﻿{
+    "command_line":  "C:/UEW/dji_ue5_3dgs/capture/UE5Synth/UE5Synth.uproject -ExecutePythonScript=\"C:/UEW/dji_ue5_3dgs/llm_drone/ue5_mission/render_mission.py --mission C:/UEW/dji_ue5_3dgs/llm_drone/demo/mission_grid_campus.json --out C:/UEW/dji_ue5_3dgs/data/synthetic/mission_llm --exposure 0.6 --sun 22\" -windowed -resx=960 -resy=540 -nosplash -unattended -nopause -stdout -FullStdOutLogOutput -log",
+    "width":  1600,
+    "ue_engine_log_copy":  "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\ue5-mission\\ue_engine_20261108_215534.log",
+    "metadata":  "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission_llm\\metadata.json",
+    "exposure":  0.6,
+    "ue_stdout_log":  "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\ue5-mission\\ue_mission_20261108_215534.log",
+    "exit_code":  null,
+    "height":  1200,
+    "mission_id":  "m-001",
+    "out_dir":  "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission_llm",
+    "cpu_temp_c":  59.9,
+    "timed_out":  false,
+    "timestamp":  "2026-11-08T21:56:49.0206017+08:00",
+    "ue_stderr_log":  "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\ue5-mission\\ue_mission_20261108_215534_stderr.log",
+    "frames":  91,
+    "limit":  0,
+    "mission_file":  "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\demo\\mission_grid_campus.json",
+    "elapsed_seconds":  74.5,
+    "sun":  22,
+    "gpu_temp_c":  49.3,
+    "affinity_applied":  true
+}

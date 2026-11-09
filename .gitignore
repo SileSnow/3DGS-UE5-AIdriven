@@ -1,0 +1,92 @@
+# =====================================================================
+# 仓库跟踪策略（详见 data/README.md）
+#   - 只跟踪：源代码、文档、配置、小样例、验收证据摘要
+#   - 不跟踪：海量数据 / 训练产物 / UE 构建产物 / 虚拟环境 / 运行日志 / 原始 DJI 证据
+# =====================================================================
+
+# ---------- OS / IDE ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+~$*
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# ---------- 大数据 / 训练产物（见 data/README.md） ----------
+/data/dji/
+/data/sample/
+/data/synthetic/
+/data/trained/
+
+# ---------- 运行日志 / 临时输出 ----------
+/logs/
+/llm_drone/logs/**/*.jsonl
+/llm_drone/logs/**/*.log
+/llm_drone/logs/**/*.csv
+/llm_drone/logs/**/_*.txt
+/llm_drone/logs/ue5-mission/archive_prototype/
+/llm_drone/sim/output/
+/llm_drone/ue5_mission/results/*.png
+/llm_drone/ue5_mission/missions/poses_*.json
+/llm_drone/ue5_mission/missions/*preview*.json
+/llm_drone/demo/_dev/
+/llm_drone/demo/live_llm/
+/llm_drone/demo/missions/
+/llm_drone/demo/plans/
+/llm_drone/demo/runs_lead_*/
+/llm_drone/demo/transcript_*.md
+/llm_drone/demo/transcripts.json
+/llm_drone/demo/run_summary.json
+/llm_drone/demo/metrics.csv
+/llm_drone/demo/mission_*.json
+
+# ---------- 开发期临时文件（保留在本地，不入库） ----------
+/.archive/
+/.tmp/
+/llm_drone/orchestrator/_probe*.py
+/llm_drone/orchestrator/_patch*
+/pipeline/_*.py
+/pipeline/_*
+/capture/scripts/__pycache__/
+/capture/probe/
+/ue5/test_data/
+/ue5/results/
+
+# ---------- Phase-0 报告大文件（见 report/README.md） ----------
+/report/flight_raw/
+/report/flight_logs/
+/report/audio/
+/report/*.mp4
+/report/*封面*.png
+
+# ---------- UE / Unreal 构建与缓存 ----------
+**/Binaries/
+**/Intermediate/
+**/Saved/
+**/DerivedDataCache/
+**/.vs/
+*.sln
+*.suo
+*.user
+*.VC.db
+*.VC.opendb
+
+# ---------- 内部工作记录（保留本地，不入库） ----------
+/llm_drone/logs/orchestrator/RESUME_NOTES_*.md
+/llm_drone/logs/orchestrator/_probe*.py
+
+# ---------- Phase-0 v3 视频/场景增强（本地进行中迭代，不入库） ----------
+/report/scene_v3/
+/capture/UE5Synth/Content/Synth/

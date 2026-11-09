@@ -1,0 +1,10 @@
+# dji_ue5_3dgs 3DGS pipeline requirements (Windows 11 / Python 3.14.6 / torch 2.13.0+cu130)
+# venv 以 --system-site-packages 创建，因此 torch / torchvision / numpy / opencv /
+# matplotlib / imageio-ffmpeg / exifread 复用全局已装版本（见 pipeline/ENV.md）。
+# 这里只列出需要补装的包；实测可用版本（2026-11-08）：
+pycolmap==4.2.1
+plyfile==1.1.5
+scipy==1.18.1
+tqdm==4.70.1
+# 可选（gsplat 后端，若 JIT 编译成功才使用；失败时走 puretorch_splatting）
+# gsplat==1.5.3

@@ -1,0 +1,106 @@
+{
+  "data": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\sample\\synthetic_campus_v1",
+  "metadata": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\sample\\synthetic_campus_v1\\metadata.json",
+  "n_frames": 24,
+  "sampled_frames": [
+    "images/0001.png",
+    "images/0007.png",
+    "images/0013.png",
+    "images/0018.png",
+    "images/0024.png"
+  ],
+  "width": 960,
+  "height": 720,
+  "checks": {
+    "rigid": {
+      "max_orth_err": 3.3306690738754696e-16,
+      "det_min": 0.9999999999999998,
+      "det_max": 1.0000000000000002,
+      "pass": true
+    },
+    "intrinsics": {
+      "K": [
+        [
+          758.4000000000001,
+          0.0,
+          480.0
+        ],
+        [
+          0.0,
+          758.4000000000001,
+          360.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "pass": true
+    },
+    "image_size": {
+      "pass": true,
+      "bad": []
+    },
+    "gps": {
+      "err": {
+        "mean_m": 0.000495248929762142,
+        "max_m": 0.0007020328957985364
+      },
+      "pass": true
+    },
+    "orientation": {
+      "mean_angle_deg": 26.473002317695176,
+      "max_angle_deg": 32.70570230911805,
+      "pass": true
+    },
+    "epipolar": {
+      "pairs": [
+        {
+          "pair": [
+            "images/0001.png",
+            "images/0007.png"
+          ],
+          "n_matches": 83,
+          "median_px": 82.57399017191807,
+          "p90_px": 186.3620591030329,
+          "frac_lt_2px": 0.012048192771084338
+        },
+        {
+          "pair": [
+            "images/0007.png",
+            "images/0013.png"
+          ],
+          "n_matches": 123,
+          "median_px": 116.49885321191648,
+          "p90_px": 215.35552651478676,
+          "frac_lt_2px": 0.016260162601626018
+        },
+        {
+          "pair": [
+            "images/0013.png",
+            "images/0018.png"
+          ],
+          "n_matches": 70,
+          "median_px": 90.93691755144854,
+          "p90_px": 158.82242891947988,
+          "frac_lt_2px": 0.014285714285714285
+        },
+        {
+          "pair": [
+            "images/0018.png",
+            "images/0024.png"
+          ],
+          "n_matches": 118,
+          "median_px": 46.41076002103034,
+          "p90_px": 184.51071071173556,
+          "frac_lt_2px": 0.03389830508474576
+        }
+      ],
+      "median_px": 86.7554538616833,
+      "frac_lt_2px": 0.0191230936857926,
+      "pass": false
+    }
+  },
+  "all_pass": false
+}

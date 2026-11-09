@@ -1,0 +1,24 @@
+{"ts": "2026-11-08T22:12:50.909+08:00", "seq": 1, "run_id": "20261108_221250_A5", "event": "sim_reset", "state": "idle"}
+{"ts": "2026-11-08T22:12:51.013+08:00", "seq": 2, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "idle", "battery_pct": 99.98, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 0.0}
+{"ts": "2026-11-08T22:12:51.446+08:00", "seq": 3, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "idle", "battery_pct": 99.9, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 0.0}
+{"ts": "2026-11-08T22:12:51.987+08:00", "seq": 4, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "idle", "battery_pct": 99.8, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 0.0}
+{"ts": "2026-11-08T22:12:52.530+08:00", "seq": 5, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "idle", "battery_pct": 99.7, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 0.0}
+{"ts": "2026-11-08T22:12:53.070+08:00", "seq": 6, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "idle", "battery_pct": 99.6, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 0.0}
+{"ts": "2026-11-08T22:12:53.612+08:00", "seq": 7, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "idle", "battery_pct": 99.5, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 0.0}
+{"ts": "2026-11-08T22:12:54.155+08:00", "seq": 8, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "idle", "battery_pct": 99.4, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 0.0}
+{"ts": "2026-11-08T22:12:54.234+08:00", "seq": 9, "run_id": "20261108_221250_A5", "event": "command_received", "tool": "takeoff", "command_id": "c-0001", "args": {"altitude_m": 40}, "confirm": true, "decision": "pending"}
+{"ts": "2026-11-08T22:12:54.234+08:00", "seq": 10, "run_id": "20261108_221250_A5", "event": "safety_check", "tool": "takeoff", "command_id": "c-0001", "decision": "allow", "reasons": [], "error_code": null}
+{"ts": "2026-11-08T22:12:54.234+08:00", "seq": 11, "run_id": "20261108_221250_A5", "event": "takeoff_started", "altitude_m": 40.0, "state": "taking_off"}
+{"ts": "2026-11-08T22:12:54.234+08:00", "seq": 12, "run_id": "20261108_221250_A5", "event": "command_accepted", "tool": "takeoff", "command_id": "c-0001", "state_before": "idle", "state_after": "taking_off", "decision": "allow"}
+{"ts": "2026-11-08T22:12:54.704+08:00", "seq": 13, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "taking_off", "battery_pct": 97.9, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 30.0}
+{"ts": "2026-11-08T22:12:54.920+08:00", "seq": 14, "run_id": "20261108_221250_A5", "event": "takeoff_completed", "altitude_m": 40.0, "lat": 39.9042, "lon": 116.4074}
+{"ts": "2026-11-08T22:12:55.246+08:00", "seq": 15, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "hovering", "battery_pct": 97.06, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 40.0}
+{"ts": "2026-11-08T22:12:55.794+08:00", "seq": 16, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "hovering", "battery_pct": 96.66, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 40.0}
+{"ts": "2026-11-08T22:12:56.337+08:00", "seq": 17, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "hovering", "battery_pct": 96.26, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 40.0}
+{"ts": "2026-11-08T22:12:56.879+08:00", "seq": 18, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "hovering", "battery_pct": 95.86, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 40.0}
+{"ts": "2026-11-08T22:12:57.426+08:00", "seq": 19, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "hovering", "battery_pct": 95.46, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 40.0}
+{"ts": "2026-11-08T22:12:57.969+08:00", "seq": 20, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "hovering", "battery_pct": 95.06, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 40.0}
+{"ts": "2026-11-08T22:12:58.517+08:00", "seq": 21, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "hovering", "battery_pct": 94.66, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 40.0}
+{"ts": "2026-11-08T22:12:59.061+08:00", "seq": 22, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "hovering", "battery_pct": 94.26, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 40.0}
+{"ts": "2026-11-08T22:12:59.611+08:00", "seq": 23, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "hovering", "battery_pct": 93.86, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 40.0}
+{"ts": "2026-11-08T22:13:00.153+08:00", "seq": 24, "run_id": "20261108_221250_A5", "event": "telemetry_keyframe", "state": "hovering", "battery_pct": 93.46, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 40.0}

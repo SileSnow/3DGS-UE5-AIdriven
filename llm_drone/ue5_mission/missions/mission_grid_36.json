@@ -1,0 +1,452 @@
+{
+  "mission_id": "mission_grid_36",
+  "pattern": "grid",
+  "created_at": "2026-11-08T17:17:21",
+  "source": "llm_drone/ue5_mission/mission_to_poses.py --make-grid",
+  "origin_wgs84": {
+    "lat": 39.9042,
+    "lon": 116.4074,
+    "alt": 43.0
+  },
+  "defaults": {
+    "alt_rel_m": 40.0,
+    "gimbal_pitch": -45.0,
+    "yaw": 90.0,
+    "speed_mps": 6.0,
+    "photo_interval_s": 2.0
+  },
+  "waypoints": [
+    {
+      "lat": 39.903840676,
+      "lon": 116.406931592,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.903840676,
+      "lon": 116.407118955,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.903840676,
+      "lon": 116.407306318,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.903840676,
+      "lon": 116.407493682,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.903840676,
+      "lon": 116.407681045,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.903840676,
+      "lon": 116.407868408,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.903984405,
+      "lon": 116.407868408,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.903984405,
+      "lon": 116.407681045,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.903984405,
+      "lon": 116.407493682,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.903984405,
+      "lon": 116.407306318,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.903984405,
+      "lon": 116.407118955,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.903984405,
+      "lon": 116.406931592,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904128135,
+      "lon": 116.406931592,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904128135,
+      "lon": 116.407118955,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904128135,
+      "lon": 116.407306318,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904128135,
+      "lon": 116.407493682,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904128135,
+      "lon": 116.407681045,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904128135,
+      "lon": 116.407868408,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904271865,
+      "lon": 116.407868408,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904271865,
+      "lon": 116.407681045,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904271865,
+      "lon": 116.407493682,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904271865,
+      "lon": 116.407306318,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904271865,
+      "lon": 116.407118955,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904271865,
+      "lon": 116.406931592,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904415595,
+      "lon": 116.406931592,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904415595,
+      "lon": 116.407118955,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904415595,
+      "lon": 116.407306318,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904415595,
+      "lon": 116.407493682,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904415595,
+      "lon": 116.407681045,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904415595,
+      "lon": 116.407868408,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904559324,
+      "lon": 116.407868408,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904559324,
+      "lon": 116.407681045,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904559324,
+      "lon": 116.407493682,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904559324,
+      "lon": 116.407306318,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904559324,
+      "lon": 116.407118955,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    },
+    {
+      "lat": 39.904559324,
+      "lon": 116.406931592,
+      "alt_rel_m": 40.0,
+      "speed_mps": 6.0,
+      "gimbal": {
+        "pitch": -45.0,
+        "yaw": 90.0,
+        "roll": 0.0
+      },
+      "take_photo": true
+    }
+  ]
+}

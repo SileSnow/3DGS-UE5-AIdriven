@@ -1,0 +1,18 @@
+{
+  "dataset": "synthetic_dji_mini4pro_mission_v1",
+  "camera_model": "DJI Mini 4 Pro (simulated)",
+  "width": 1600,
+  "height": 1200,
+  "fx": 1148.343,
+  "fy": 1148.343,
+  "cx": 800.0,
+  "cy": 600.0,
+  "coord_system": "UE_LHS_Zup_cm",
+  "origin_wgs84": {
+    "lat": 39.9042,
+    "lon": 116.4074,
+    "alt": 43.0
+  },
+  "source": "sim_record",
+  "frames": []
+}

@@ -1,0 +1,173 @@
+{
+  "status": "ok",
+  "generated_at": "2026-11-08T21:54:45+08:00",
+  "mission_file": "C:\\UEW\\dji_ue5_3dgs\\llm_drone\\spec\\sample_mission.json",
+  "mission_id": "sample-grid-16",
+  "source_format": "llm_drone.mission/v1",
+  "out_dir": "C:\\UEW\\dji_ue5_3dgs\\data\\synthetic\\mission",
+  "images_dir": "C:\\UEW\\dji_ue5_3dgs\\data\\synthetic\\mission\\images",
+  "metadata": "C:\\UEW\\dji_ue5_3dgs\\data\\synthetic\\mission\\metadata.json",
+  "n_frames": 16,
+  "width": 1600,
+  "height": 1200,
+  "fx": 1148.3429,
+  "fy": 1148.3429,
+  "fov_horizontal_deg": 69.7265,
+  "exposure": 0.6,
+  "sun_intensity_lux": 22.0,
+  "scene_actors": 805,
+  "timing": {
+    "script_seconds": 7.32,
+    "scene_build_seconds": 3.328,
+    "create_rig_seconds": 0.064,
+    "render_seconds": 3.913,
+    "avg_frame_seconds": 0.2446
+  },
+  "per_frame": [
+    {
+      "index": 1,
+      "waypoint_index": 0,
+      "file": "0001.png",
+      "seconds": 0.342,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 2,
+      "waypoint_index": 1,
+      "file": "0002.png",
+      "seconds": 0.235,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 3,
+      "waypoint_index": 2,
+      "file": "0003.png",
+      "seconds": 0.2355,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 4,
+      "waypoint_index": 3,
+      "file": "0004.png",
+      "seconds": 0.2306,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 5,
+      "waypoint_index": 4,
+      "file": "0005.png",
+      "seconds": 0.2319,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 6,
+      "waypoint_index": 5,
+      "file": "0006.png",
+      "seconds": 0.2294,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 7,
+      "waypoint_index": 6,
+      "file": "0007.png",
+      "seconds": 0.2301,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 8,
+      "waypoint_index": 7,
+      "file": "0008.png",
+      "seconds": 0.255,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 9,
+      "waypoint_index": 8,
+      "file": "0009.png",
+      "seconds": 0.233,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 10,
+      "waypoint_index": 9,
+      "file": "0010.png",
+      "seconds": 0.2367,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 11,
+      "waypoint_index": 10,
+      "file": "0011.png",
+      "seconds": 0.2343,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 12,
+      "waypoint_index": 11,
+      "file": "0012.png",
+      "seconds": 0.2335,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 13,
+      "waypoint_index": 12,
+      "file": "0013.png",
+      "seconds": 0.2307,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 14,
+      "waypoint_index": 13,
+      "file": "0014.png",
+      "seconds": 0.2349,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 15,
+      "waypoint_index": 14,
+      "file": "0015.png",
+      "seconds": 0.2396,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 16,
+      "waypoint_index": 15,
+      "file": "0016.png",
+      "seconds": 0.2341,
+      "c2w_max_diff_vs_capture": 0.0
+    }
+  ],
+  "c2w_max_diff_vs_capture": 0.0,
+  "engine_version": "5.8.4-58902052+++UE5+Release-5.8",
+  "ue_python": "3.11.8",
+  "world_consistency": {
+    "intrinsics_match": true,
+    "origin_match": true,
+    "camera": {
+      "width": 1600,
+      "height": 1200,
+      "fx": 1148.3429,
+      "fy": 1148.3429,
+      "cx": 800.0,
+      "cy": 600.0,
+      "fov_horizontal_deg": 69.7265
+    },
+    "origin_wgs84": {
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "alt": 43.0
+    }
+  },
+  "started_at": "2026-11-08T21:54:38+08:00",
+  "argv": [
+    "C:/UEW/dji_ue5_3dgs/llm_drone/ue5_mission/render_mission.py",
+    "--mission",
+    "C:/UEW/dji_ue5_3dgs/llm_drone/spec/sample_mission.json",
+    "--out",
+    "C:/UEW/dji_ue5_3dgs/data/synthetic/mission",
+    "--exposure",
+    "0.6",
+    "--sun",
+    "22"
+  ]
+}

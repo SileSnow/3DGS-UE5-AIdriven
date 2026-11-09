@@ -1,0 +1,31 @@
+name: tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  llm-drone-unit-tests:
+    name: llm_drone unit tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - name: Run unit tests
+        working-directory: llm_drone
+        run: python -m unittest discover -s tests -v
+
+  llm-drone-acceptance:
+    name: llm_drone black-box acceptance
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - name: Run Lead acceptance harness (sim only, no LLM)
+        run: python llm_drone/logs/lead/verify_acceptance.py --port 8766
+        timeout-minutes: 10

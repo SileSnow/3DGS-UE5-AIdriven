@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- USB Accessory 过滤：插入 RC-N2 数据线时把 App 拉起来。
+     TODO(未确认)：官方 sample 的同类文件未在本地证据中取得内容；真机联调时用 adb shell dumpsys usb
+     确认 RC 的 vendor/product id 后，按需补充 <usb-accessory> 过滤项（留空=接受所有 accessory）。 -->
+<resources>
+</resources>

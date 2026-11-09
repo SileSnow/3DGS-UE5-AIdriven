@@ -1,0 +1,4 @@
+{"ts": "2026-11-08T22:01:21.849+08:00", "seq": 1, "run_id": "20261108_220121_A9", "event": "sim_reset", "state": "idle"}
+{"ts": "2026-11-08T22:01:21.864+08:00", "seq": 2, "run_id": "20261108_220121_A9", "event": "command_received", "tool": "takeoff", "command_id": "c-0001", "args": {"altitude_m": -5}, "confirm": true, "decision": "pending"}
+{"ts": "2026-11-08T22:01:21.864+08:00", "seq": 3, "run_id": "20261108_220121_A9", "event": "safety_check", "tool": "takeoff", "command_id": "c-0001", "decision": "reject", "reasons": ["takeoff.altitude_m=-5.00 必须 > 0"], "error_code": "E_PARAM_RANGE"}
+{"ts": "2026-11-08T22:01:21.864+08:00", "seq": 4, "run_id": "20261108_220121_A9", "event": "command_rejected", "tool": "takeoff", "command_id": "c-0001", "error_code": "E_PARAM_RANGE", "reasons": ["takeoff.altitude_m=-5.00 必须 > 0"], "decision": "reject"}

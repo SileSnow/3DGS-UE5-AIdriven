@@ -1,0 +1,3 @@
+{"ts": "2026-11-08T22:12:51.910+08:00", "run_id": "20261108_221250_A5", "seq": 1, "turn": 1, "call_id": "call_qru3qwy5", "name": "get_telemetry", "args": {}, "ok": true, "error_code": null, "latency_ms": 18.9}
+{"ts": "2026-11-08T22:12:55.092+08:00", "run_id": "20261108_221250_A5", "seq": 2, "turn": 2, "call_id": "call_1woy0dwd", "name": "takeoff", "args": {"altitude_m": 40, "confirm": true}, "ok": true, "error_code": null, "latency_ms": 883.4}
+{"ts": "2026-11-08T22:12:57.585+08:00", "run_id": "20261108_221250_A5", "seq": 3, "turn": 3, "call_id": "call_6s7wqkf2", "name": "goto_waypoints", "args": {"confirm": false, "waypoints": [{"alt_rel_m": 40, "lat": 39.9043, "lon": 116.4075}]}, "ok": false, "error_code": "E_CONFIRM_REQUIRED", "latency_ms": 0.0}

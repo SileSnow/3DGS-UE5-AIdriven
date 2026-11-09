@@ -1,0 +1,106 @@
+{
+  "run_id": "20261108_220219_P1",
+  "scenario_id": "P1",
+  "kind": "positive",
+  "model": "qwen3.5:4b",
+  "base_url": "http://127.0.0.1:11434",
+  "mode": "real_llm",
+  "llm_calls": 9,
+  "tool_calls": 5,
+  "rejected": 1,
+  "error_codes": [
+    "E_STATE"
+  ],
+  "wall_s": 13.04,
+  "mission_sim_s": null,
+  "n_photos": 0,
+  "tokens": {
+    "prompt": 35843,
+    "completion": 341
+  },
+  "passed": false,
+  "expected": {
+    "expected_tools": [
+      "plan_capture_mission",
+      "takeoff",
+      "goto_waypoints",
+      "return_to_home"
+    ],
+    "expected_error_code": [],
+    "expect_photos": {
+      "min": 12
+    },
+    "expect_mission_state": "completed",
+    "expect_no_rejection": true,
+    "expect_force_rth": false,
+    "expect_final_state": null
+  },
+  "actual": {
+    "mode": "real_llm",
+    "tools": [
+      "plan_capture_mission",
+      "get_telemetry",
+      "takeoff",
+      "get_telemetry",
+      "takeoff"
+    ],
+    "error_codes": [
+      "E_STATE"
+    ],
+    "rejected": 1,
+    "n_photos": 0,
+    "mission_id": null,
+    "mission_state": null,
+    "final_state": "hovering",
+    "final_answer": "无人机当前处于悬停状态（hovering），无法直接起飞。需要先让无人机返回起飞点并自动降落，使其回到 idle 状态",
+    "checks": [
+      {
+        "check": "tool:plan_capture_mission",
+        "passed": true,
+        "detail": "actual_sequence=['plan_capture_mission', 'get_telemetry', 'takeoff', 'get_telemetry', 'takeoff']"
+      },
+      {
+        "check": "tool:takeoff",
+        "passed": true,
+        "detail": "actual_sequence=['plan_capture_mission', 'get_telemetry', 'takeoff', 'get_telemetry', 'takeoff']"
+      },
+      {
+        "check": "tool:goto_waypoints",
+        "passed": false,
+        "detail": "actual_sequence=['plan_capture_mission', 'get_telemetry', 'takeoff', 'get_telemetry', 'takeoff']"
+      },
+      {
+        "check": "tool:return_to_home",
+        "passed": false,
+        "detail": "actual_sequence=['plan_capture_mission', 'get_telemetry', 'takeoff', 'get_telemetry', 'takeoff']"
+      },
+      {
+        "check": "photos>=12",
+        "passed": false,
+        "detail": "actual=0"
+      },
+      {
+        "check": "mission_state:completed",
+        "passed": false,
+        "detail": "actual=None"
+      },
+      {
+        "check": "no_rejection",
+        "passed": false,
+        "detail": "rejected=1"
+      }
+    ]
+  },
+  "agent_url": "http://127.0.0.1:8765",
+  "started_at": "2026-11-08T22:02:19.513+08:00",
+  "finished_at": "2026-11-08T22:02:32.621+08:00",
+  "inputs": {
+    "sim_setup": {},
+    "scripted": false
+  },
+  "agent_audit": {
+    "source": "file",
+    "path": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\drone-sim\\audit_20261108_220219_P1.jsonl",
+    "bytes": 7003
+  }
+}

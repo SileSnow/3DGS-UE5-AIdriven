@@ -1,0 +1,2 @@
+{"ts": "2026-11-08T22:12:47.622+08:00", "run_id": "20261108_221246_A4", "seq": 1, "turn": 1, "call_id": "call_t9swy2pa", "name": "get_telemetry", "args": {}, "ok": true, "error_code": null, "latency_ms": 1.2}
+{"ts": "2026-11-08T22:12:49.171+08:00", "run_id": "20261108_221246_A4", "seq": 2, "turn": 2, "call_id": "call_4mksyevd", "name": "takeoff", "args": {"altitude_m": 30, "confirm": true}, "ok": false, "error_code": "E_BATTERY_TAKEOFF", "latency_ms": 1.7}

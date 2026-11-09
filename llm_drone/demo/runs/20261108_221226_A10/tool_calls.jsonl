@@ -1,0 +1,1 @@
+{"ts": "2026-11-08T22:12:26.768+08:00", "run_id": "20261108_221226_A10", "seq": 1, "turn": 1, "call_id": "script-1-0", "name": "set_mode", "args": {"mode": "real", "confirm": true}, "ok": false, "error_code": "E_REAL_NOT_AVAILABLE", "latency_ms": 1.5}

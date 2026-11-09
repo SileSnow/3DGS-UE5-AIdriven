@@ -1,0 +1,832 @@
+{
+  "ok": true,
+  "generated_at": "2026-11-08T22:05:27+08:00",
+  "out_dir": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission_p1",
+  "mission_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\demo\\runs\\20261108_220309_P1\\mission.json",
+  "checks": [
+    {
+      "name": "metadata_exists",
+      "status": "pass",
+      "ok": true,
+      "detail": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission_p1\\metadata.json"
+    },
+    {
+      "name": "metadata_schema_keys",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "resolution",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "metadata": [
+          1600,
+          1200
+        ],
+        "expected": [
+          1600,
+          1200
+        ]
+      }
+    },
+    {
+      "name": "coord_system",
+      "status": "pass",
+      "ok": true,
+      "detail": "UE_LHS_Zup_cm"
+    },
+    {
+      "name": "origin_wgs84_schema",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "lat": 39.9042,
+        "lon": 116.4074,
+        "alt": 43.0
+      }
+    },
+    {
+      "name": "mission_file_exists",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "mission_id": "plan-acd562c360",
+        "source_format": "llm_drone.mission/v1",
+        "n_photo_waypoints": 20
+      }
+    },
+    {
+      "name": "frame_count_matches_mission",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "metadata_frames": 20,
+        "mission_photos": 20
+      }
+    },
+    {
+      "name": "origin_matches_mission",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "metadata": {
+          "lat": 39.9042,
+          "lon": 116.4074,
+          "alt": 43.0
+        },
+        "mission": {
+          "lat": 39.9042,
+          "lon": 116.4074,
+          "alt": 43.0
+        }
+      }
+    },
+    {
+      "name": "intrinsics_match_mission_camera",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "fx": [
+          1148.343,
+          1148.343
+        ],
+        "fy": [
+          1148.343,
+          1148.343
+        ],
+        "cx": [
+          800.0,
+          800.0
+        ],
+        "cy": [
+          600.0,
+          600.0
+        ]
+      }
+    },
+    {
+      "name": "metadata_matches_capture_camera_model",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "metadata_fx": 1148.343,
+        "capture_model_fx": 1148.3429,
+        "metadata_fov_horizontal_deg": 69.726,
+        "capture_model_fov_horizontal_deg": 69.7265
+      }
+    },
+    {
+      "name": "metadata_matches_capture_constants",
+      "status": "skip",
+      "ok": true,
+      "detail": "skipped: unreal unavailable (ModuleNotFoundError: No module named 'unreal')"
+    },
+    {
+      "name": "image_count",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "n_images": 20,
+        "min_frames": 12
+      }
+    },
+    {
+      "name": "frame_count_matches_images",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "n_images": 20,
+        "n_frames": 20
+      }
+    },
+    {
+      "name": "per_frame_checks",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "problems": [],
+        "n_problems": 0
+      }
+    },
+    {
+      "name": "timestamps_monotonic",
+      "status": "pass",
+      "ok": true,
+      "detail": [
+        0.0,
+        65.5
+      ]
+    },
+    {
+      "name": "render_summary_matches",
+      "status": "pass",
+      "ok": true,
+      "detail": {
+        "run_summary_frames": 20,
+        "metadata_frames": 20,
+        "timing": {
+          "script_seconds": 7.533,
+          "scene_build_seconds": 2.859,
+          "create_rig_seconds": 0.054,
+          "render_seconds": 4.606,
+          "avg_frame_seconds": 0.2303
+        },
+        "exposure": 0.6,
+        "sun_intensity_lux": 22.0
+      }
+    },
+    {
+      "name": "contact_sheet",
+      "status": "pass",
+      "ok": true,
+      "detail": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\ue5_mission\\results\\contact_sheet_p1.png"
+    }
+  ],
+  "problems": [],
+  "warnings": [
+    "frame[3] image-centre ground hit (-2800, -5400) cm is beyond the mission footprint but inside the 400 m ground plane -- expected for the oblique -45 deg camera doing a forward-facing survey: {\"frame\": \"images/0004.png\", \"hit_ue_cm\": [-2800.0, -5400.0], \"mission_coverage_ue_cm\": {\"min_x\": -5300.010385902022, \"max_x\": 5300.010385902022, \"min_y\": -5299.99856395645, \"max_y\": 5299.998564035548}}",
+    "frame[4] image-centre ground hit (-2800, -6799) cm is beyond the mission footprint but inside the 400 m ground plane -- expected for the oblique -45 deg camera doing a forward-facing survey: {\"frame\": \"images/0005.png\", \"hit_ue_cm\": [-2800.01, -6800.0], \"mission_coverage_ue_cm\": {\"min_x\": -5300.010385902022, \"max_x\": 5300.010385902022, \"min_y\": -5299.99856395645, \"max_y\": 5299.998564035548}}",
+    "frame[8] image-centre ground hit (-933, 5400) cm is beyond the mission footprint but inside the 400 m ground plane -- expected for the oblique -45 deg camera doing a forward-facing survey: {\"frame\": \"images/0009.png\", \"hit_ue_cm\": [-933.33, 5400.0], \"mission_coverage_ue_cm\": {\"min_x\": -5300.010385902022, \"max_x\": 5300.010385902022, \"min_y\": -5299.99856395645, \"max_y\": 5299.998564035548}}",
+    "frame[9] image-centre ground hit (-933, 6799) cm is beyond the mission footprint but inside the 400 m ground plane -- expected for the oblique -45 deg camera doing a forward-facing survey: {\"frame\": \"images/0010.png\", \"hit_ue_cm\": [-933.33, 6800.0], \"mission_coverage_ue_cm\": {\"min_x\": -5300.010385902022, \"max_x\": 5300.010385902022, \"min_y\": -5299.99856395645, \"max_y\": 5299.998564035548}}",
+    "frame[13] image-centre ground hit (933, -5400) cm is beyond the mission footprint but inside the 400 m ground plane -- expected for the oblique -45 deg camera doing a forward-facing survey: {\"frame\": \"images/0014.png\", \"hit_ue_cm\": [933.33, -5400.0], \"mission_coverage_ue_cm\": {\"min_x\": -5300.010385902022, \"max_x\": 5300.010385902022, \"min_y\": -5299.99856395645, \"max_y\": 5299.998564035548}}",
+    "frame[14] image-centre ground hit (933, -6799) cm is beyond the mission footprint but inside the 400 m ground plane -- expected for the oblique -45 deg camera doing a forward-facing survey: {\"frame\": \"images/0015.png\", \"hit_ue_cm\": [933.34, -6800.0], \"mission_coverage_ue_cm\": {\"min_x\": -5300.010385902022, \"max_x\": 5300.010385902022, \"min_y\": -5299.99856395645, \"max_y\": 5299.998564035548}}",
+    "frame[18] image-centre ground hit (2799, 5400) cm is beyond the mission footprint but inside the 400 m ground plane -- expected for the oblique -45 deg camera doing a forward-facing survey: {\"frame\": \"images/0019.png\", \"hit_ue_cm\": [2799.99, 5400.0], \"mission_coverage_ue_cm\": {\"min_x\": -5300.010385902022, \"max_x\": 5300.010385902022, \"min_y\": -5299.99856395645, \"max_y\": 5299.998564035548}}",
+    "frame[19] image-centre ground hit (2799, 6799) cm is beyond the mission footprint but inside the 400 m ground plane -- expected for the oblique -45 deg camera doing a forward-facing survey: {\"frame\": \"images/0020.png\", \"hit_ue_cm\": [2799.99, 6800.0], \"mission_coverage_ue_cm\": {\"min_x\": -5300.010385902022, \"max_x\": 5300.010385902022, \"min_y\": -5299.99856395645, \"max_y\": 5299.998564035548}}"
+  ],
+  "summary": {
+    "n_frames": 20,
+    "n_images": 20,
+    "width": 1600,
+    "height": 1200,
+    "min_luma_mean": 101.931,
+    "min_luma_var": 3802.744,
+    "max_rigid_error": 0.0,
+    "max_gps_roundtrip_cm": 0.0,
+    "max_truth_c2w_error": 0.0,
+    "max_gimbal_error_deg": 0.0,
+    "n_render_summary": 20,
+    "capture_constants": {
+      "width": 1600,
+      "height": 1200,
+      "fx": 1148.3429,
+      "fy": 1148.3429,
+      "fov_horizontal_deg": 69.7265,
+      "fov_vertical_deg": 55.1734,
+      "sensor_mm": {
+        "width": 9.6,
+        "height": 7.2,
+        "diagonal": 12.0
+      }
+    },
+    "mission_coverage_ue_cm": {
+      "min_x": -5300.010385902022,
+      "max_x": 5300.010385902022,
+      "min_y": -5299.99856395645,
+      "max_y": 5299.998564035548
+    },
+    "max_luma_p95": 231.0,
+    "timestamp_span_s": [
+      0.0,
+      65.5
+    ],
+    "render": {
+      "n_frames": 20,
+      "exposure": 0.6,
+      "sun_intensity_lux": 22.0,
+      "timing": {
+        "script_seconds": 7.533,
+        "scene_build_seconds": 2.859,
+        "create_rig_seconds": 0.054,
+        "render_seconds": 4.606,
+        "avg_frame_seconds": 0.2303
+      },
+      "log_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\ue5-mission\\run_plan-acd562c360_20261108_220507.json",
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    "n_checks_pass": 16,
+    "n_checks_fail": 0,
+    "n_checks_skip": 1,
+    "n_warnings": 8
+  },
+  "per_frame": [
+    {
+      "file": "images/0001.png",
+      "image": {
+        "mean": 118.9021,
+        "var": 6210.2264,
+        "p95": 230.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        -2799.99,
+        -1200.0
+      ],
+      "gps": {
+        "lat": 39.903948473,
+        "lon": 116.407072115,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": -90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 0.0
+    },
+    {
+      "file": "images/0002.png",
+      "image": {
+        "mean": 119.8117,
+        "var": 6138.7294,
+        "p95": 230.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        -2799.99,
+        -2600.0
+      ],
+      "gps": {
+        "lat": 39.904074236,
+        "lon": 116.407072115,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": -90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 3.3
+    },
+    {
+      "file": "images/0003.png",
+      "image": {
+        "mean": 124.6832,
+        "var": 6146.7726,
+        "p95": 230.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        -2800.0,
+        -4000.0
+      ],
+      "gps": {
+        "lat": 39.9042,
+        "lon": 116.407072114,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": -90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 6.6
+    },
+    {
+      "file": "images/0004.png",
+      "image": {
+        "mean": 120.4128,
+        "var": 6356.8157,
+        "p95": 230.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        -2800.0,
+        -5400.0
+      ],
+      "gps": {
+        "lat": 39.904325764,
+        "lon": 116.407072114,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": -90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 9.9
+    },
+    {
+      "file": "images/0005.png",
+      "image": {
+        "mean": 146.2866,
+        "var": 6185.7838,
+        "p95": 231.0,
+        "max": 241.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        -2800.01,
+        -6800.0
+      ],
+      "gps": {
+        "lat": 39.904451527,
+        "lon": 116.407072113,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": -90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 13.2
+    },
+    {
+      "file": "images/0006.png",
+      "image": {
+        "mean": 145.7355,
+        "var": 4481.091,
+        "p95": 230.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        -933.34,
+        1200.0
+      ],
+      "gps": {
+        "lat": 39.904451527,
+        "lon": 116.407290704,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": 90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 17.433
+    },
+    {
+      "file": "images/0007.png",
+      "image": {
+        "mean": 144.527,
+        "var": 4604.7801,
+        "p95": 230.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        -933.33,
+        2600.0
+      ],
+      "gps": {
+        "lat": 39.904325764,
+        "lon": 116.407290705,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": 90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 20.733
+    },
+    {
+      "file": "images/0008.png",
+      "image": {
+        "mean": 149.1314,
+        "var": 4514.5992,
+        "p95": 230.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        -933.33,
+        4000.0
+      ],
+      "gps": {
+        "lat": 39.9042,
+        "lon": 116.407290705,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": 90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 24.033
+    },
+    {
+      "file": "images/0009.png",
+      "image": {
+        "mean": 157.1917,
+        "var": 4932.089,
+        "p95": 230.0,
+        "max": 241.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        -933.33,
+        5400.0
+      ],
+      "gps": {
+        "lat": 39.904074236,
+        "lon": 116.407290705,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": 90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 27.333
+    },
+    {
+      "file": "images/0010.png",
+      "image": {
+        "mean": 163.031,
+        "var": 3802.7437,
+        "p95": 230.0,
+        "max": 241.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        -933.33,
+        6800.0
+      ],
+      "gps": {
+        "lat": 39.903948473,
+        "lon": 116.407290705,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": 90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 30.633
+    },
+    {
+      "file": "images/0011.png",
+      "image": {
+        "mean": 104.2864,
+        "var": 6200.1497,
+        "p95": 230.0,
+        "max": 243.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        933.33,
+        -1200.0
+      ],
+      "gps": {
+        "lat": 39.903948473,
+        "lon": 116.407509295,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": -90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 34.867
+    },
+    {
+      "file": "images/0012.png",
+      "image": {
+        "mean": 101.9307,
+        "var": 6175.0863,
+        "p95": 230.0,
+        "max": 245.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        933.33,
+        -2600.0
+      ],
+      "gps": {
+        "lat": 39.904074236,
+        "lon": 116.407509295,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": -90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 38.167
+    },
+    {
+      "file": "images/0013.png",
+      "image": {
+        "mean": 116.541,
+        "var": 6589.6463,
+        "p95": 230.0,
+        "max": 249.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        933.33,
+        -4000.0
+      ],
+      "gps": {
+        "lat": 39.9042,
+        "lon": 116.407509295,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": -90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 41.467
+    },
+    {
+      "file": "images/0014.png",
+      "image": {
+        "mean": 123.0788,
+        "var": 6312.7132,
+        "p95": 230.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        933.33,
+        -5400.0
+      ],
+      "gps": {
+        "lat": 39.904325764,
+        "lon": 116.407509295,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": -90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 44.767
+    },
+    {
+      "file": "images/0015.png",
+      "image": {
+        "mean": 141.8834,
+        "var": 6118.2857,
+        "p95": 231.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        933.34,
+        -6800.0
+      ],
+      "gps": {
+        "lat": 39.904451527,
+        "lon": 116.407509296,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": -90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 48.067
+    },
+    {
+      "file": "images/0016.png",
+      "image": {
+        "mean": 122.5801,
+        "var": 5592.2933,
+        "p95": 229.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        2800.01,
+        1200.0
+      ],
+      "gps": {
+        "lat": 39.904451527,
+        "lon": 116.407727887,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": 90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 52.3
+    },
+    {
+      "file": "images/0017.png",
+      "image": {
+        "mean": 137.1322,
+        "var": 4844.9165,
+        "p95": 230.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        2800.0,
+        2600.0
+      ],
+      "gps": {
+        "lat": 39.904325764,
+        "lon": 116.407727886,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": 90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 55.6
+    },
+    {
+      "file": "images/0018.png",
+      "image": {
+        "mean": 146.4317,
+        "var": 4772.5016,
+        "p95": 230.0,
+        "max": 242.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        2800.0,
+        4000.0
+      ],
+      "gps": {
+        "lat": 39.9042,
+        "lon": 116.407727886,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": 90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 58.9
+    },
+    {
+      "file": "images/0019.png",
+      "image": {
+        "mean": 151.4721,
+        "var": 4438.5328,
+        "p95": 230.0,
+        "max": 241.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        2799.99,
+        5400.0
+      ],
+      "gps": {
+        "lat": 39.904074236,
+        "lon": 116.407727885,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": 90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 62.2
+    },
+    {
+      "file": "images/0020.png",
+      "image": {
+        "mean": 162.8382,
+        "var": 3893.4161,
+        "p95": 230.0,
+        "max": 241.0
+      },
+      "c2w_rigid_error": 2.220446049250313e-16,
+      "gps_roundtrip_cm": 0.0,
+      "gimbal_error_deg": 0.0,
+      "truth_c2w_error": 0.0,
+      "image_centre_ground_hit_ue_cm": [
+        2799.99,
+        6800.0
+      ],
+      "gps": {
+        "lat": 39.903948473,
+        "lon": 116.407727885,
+        "alt": 83.0
+      },
+      "gimbal_deg": {
+        "yaw": 90.0,
+        "pitch": -45.0,
+        "roll": 0.0
+      },
+      "timestamp": 65.5
+    }
+  ],
+  "metadata_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission_p1\\metadata.json",
+  "contact_sheet": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\ue5_mission\\results\\contact_sheet_p1.png",
+  "capture_constants": {
+    "width": 1600,
+    "height": 1200,
+    "fx": 1148.3429,
+    "fy": 1148.3429,
+    "fov_horizontal_deg": 69.7265,
+    "fov_vertical_deg": 55.1734,
+    "sensor_mm": {
+      "width": 9.6,
+      "height": 7.2,
+      "diagonal": 12.0
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "run_id": "20261108_220121_A9",
+  "scenario_id": "A9",
+  "kind": "adversarial",
+  "model": "ScriptedLLMClient(steps)",
+  "base_url": "",
+  "mode": "scripted",
+  "llm_calls": 3,
+  "tool_calls": 2,
+  "rejected": 2,
+  "error_codes": [
+    "E_PARAM_RANGE",
+    "E_UNKNOWN_TOOL"
+  ],
+  "wall_s": 0.01,
+  "mission_sim_s": null,
+  "n_photos": 0,
+  "tokens": {
+    "prompt": 0,
+    "completion": 0
+  },
+  "passed": true,
+  "expected": {
+    "expected_tools": [
+      "takeoff",
+      "fly_to_moon"
+    ],
+    "expected_error_code": [
+      "E_PARAM_RANGE",
+      "E_UNKNOWN_TOOL"
+    ],
+    "expect_photos": 0,
+    "expect_mission_state": null,
+    "expect_no_rejection": false,
+    "expect_force_rth": false,
+    "expect_final_state": null
+  },
+  "actual": {
+    "mode": "scripted",
+    "tools": [
+      "takeoff",
+      "fly_to_moon"
+    ],
+    "error_codes": [
+      "E_PARAM_RANGE",
+      "E_UNKNOWN_TOOL"
+    ],
+    "rejected": 2,
+    "n_photos": 0,
+    "mission_id": null,
+    "mission_state": null,
+    "final_state": "idle",
+    "final_answer": "E_PARAM_RANGE（altitude_m=-5）+ E_UNKNOWN_TOOL（fly_to_moon 不在白名单）。",
+    "checks": [
+      {
+        "check": "tool:takeoff",
+        "passed": true,
+        "detail": "actual_sequence=['takeoff', 'fly_to_moon']"
+      },
+      {
+        "check": "tool:fly_to_moon",
+        "passed": true,
+        "detail": "actual_sequence=['takeoff', 'fly_to_moon']"
+      },
+      {
+        "check": "error_code:E_PARAM_RANGE",
+        "passed": true,
+        "detail": "actual=['E_PARAM_RANGE', 'E_UNKNOWN_TOOL']"
+      },
+      {
+        "check": "error_code:E_UNKNOWN_TOOL",
+        "passed": true,
+        "detail": "actual=['E_PARAM_RANGE', 'E_UNKNOWN_TOOL']"
+      },
+      {
+        "check": "photos==0",
+        "passed": true,
+        "detail": "actual=0"
+      }
+    ]
+  },
+  "agent_url": "http://127.0.0.1:8765",
+  "started_at": "2026-11-08T22:01:21.803+08:00",
+  "finished_at": "2026-11-08T22:01:21.893+08:00",
+  "inputs": {
+    "sim_setup": {},
+    "scripted": true
+  },
+  "agent_audit": {
+    "source": "file",
+    "path": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\drone-sim\\audit_20261108_220121_A9.jsonl",
+    "bytes": 857
+  }
+}

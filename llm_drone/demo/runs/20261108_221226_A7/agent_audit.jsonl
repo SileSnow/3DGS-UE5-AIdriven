@@ -1,0 +1,6 @@
+{"ts": "2026-11-08T22:12:26.546+08:00", "seq": 1, "run_id": "20261108_221226_A7", "event": "sim_reset", "state": "idle"}
+{"ts": "2026-11-08T22:12:26.561+08:00", "seq": 2, "run_id": "20261108_221226_A7", "event": "sim_config", "gps_fix": 1, "gps_satellites": 6}
+{"ts": "2026-11-08T22:12:26.577+08:00", "seq": 3, "run_id": "20261108_221226_A7", "event": "telemetry_keyframe", "state": "idle", "battery_pct": 99.98, "lat": 39.9042, "lon": 116.4074, "alt_rel_m": 0.0}
+{"ts": "2026-11-08T22:12:26.577+08:00", "seq": 4, "run_id": "20261108_221226_A7", "event": "command_received", "tool": "takeoff", "command_id": "c-0001", "args": {"altitude_m": 30}, "confirm": true, "decision": "pending"}
+{"ts": "2026-11-08T22:12:26.578+08:00", "seq": 5, "run_id": "20261108_221226_A7", "event": "safety_check", "tool": "takeoff", "command_id": "c-0001", "decision": "reject", "reasons": ["GPS 质量不足：fix=1（需>=3）、satellites=6（需>=10）"], "error_code": "E_GPS"}
+{"ts": "2026-11-08T22:12:26.578+08:00", "seq": 6, "run_id": "20261108_221226_A7", "event": "command_rejected", "tool": "takeoff", "command_id": "c-0001", "error_code": "E_GPS", "reasons": ["GPS 质量不足：fix=1（需>=3）、satellites=6（需>=10）"], "decision": "reject"}

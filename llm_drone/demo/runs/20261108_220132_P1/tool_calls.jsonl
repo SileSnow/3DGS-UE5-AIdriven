@@ -1,0 +1,1 @@
+{"ts": "2026-11-08T22:01:35.180+08:00", "run_id": "20261108_220132_P1", "seq": 1, "turn": 1, "call_id": "call_cvpusrkr", "name": "plan_capture_mission", "args": {"pattern": "grid", "center_lat": 39.9042, "center_lon": 116.4074, "radius_m": 28, "altitude_m": 40, "overlap": 0.7, "gimbal_pitch_deg": -45}, "ok": true, "error_code": null, "latency_ms": 19.7}

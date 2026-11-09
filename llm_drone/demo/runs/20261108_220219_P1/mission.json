@@ -1,0 +1,296 @@
+{
+  "schema": "llm_drone.mission/v1",
+  "plan_id": "plan-acd562c360",
+  "type": "grid",
+  "created_at": "2026-11-08T22:02:23+08:00",
+  "origin_wgs84": {
+    "lat": 39.9042,
+    "lon": 116.4074,
+    "alt": 43.0
+  },
+  "home": {
+    "lat": 39.9042,
+    "lon": 116.4074,
+    "alt_abs_m": 43.0
+  },
+  "scene": {
+    "ground_alt_m": 43.0,
+    "world": "UE_LHS_Zup_cm",
+    "ue_axis": "UE +X = East, UE +Y = South, UE +Z = Up (cm)"
+  },
+  "camera": {
+    "model": "DJI Mini 4 Pro (simulated)",
+    "width": 1600,
+    "height": 1200,
+    "fx": 1148.343,
+    "fy": 1148.343,
+    "cx": 800.0,
+    "cy": 600.0,
+    "fov_horizontal_deg": 69.726,
+    "fov_vertical_deg": 55.18,
+    "sensor_mm": {
+      "width": 9.6,
+      "height": 7.2,
+      "diagonal": 12
+    }
+  },
+  "flight": {
+    "pattern": "grid",
+    "altitude_m": 40.0,
+    "speed_mps": 5.0,
+    "gimbal_pitch_deg": -45.0,
+    "overlap": 0.7,
+    "heading_deg": 0.0,
+    "turn_mode": "stop_and_turn"
+  },
+  "waypoints": [
+    {
+      "index": 0,
+      "lat": 39.903948473,
+      "lon": 116.407072115,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 1,
+      "lat": 39.904074236,
+      "lon": 116.407072115,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 2,
+      "lat": 39.9042,
+      "lon": 116.407072114,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 3,
+      "lat": 39.904325764,
+      "lon": 116.407072114,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 4,
+      "lat": 39.904451527,
+      "lon": 116.407072113,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 5,
+      "lat": 39.904451527,
+      "lon": 116.407290704,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 180.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 6,
+      "lat": 39.904325764,
+      "lon": 116.407290705,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 180.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 7,
+      "lat": 39.9042,
+      "lon": 116.407290705,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 180.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 8,
+      "lat": 39.904074236,
+      "lon": 116.407290705,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 180.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 9,
+      "lat": 39.903948473,
+      "lon": 116.407290705,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 180.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 10,
+      "lat": 39.903948473,
+      "lon": 116.407509295,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 11,
+      "lat": 39.904074236,
+      "lon": 116.407509295,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 12,
+      "lat": 39.9042,
+      "lon": 116.407509295,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 13,
+      "lat": 39.904325764,
+      "lon": 116.407509295,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 14,
+      "lat": 39.904451527,
+      "lon": 116.407509296,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 15,
+      "lat": 39.904451527,
+      "lon": 116.407727887,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 180.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 16,
+      "lat": 39.904325764,
+      "lon": 116.407727886,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 180.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 17,
+      "lat": 39.9042,
+      "lon": 116.407727886,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 180.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 18,
+      "lat": 39.904074236,
+      "lon": 116.407727885,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 180.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 19,
+      "lat": 39.903948473,
+      "lon": 116.407727885,
+      "alt_rel_m": 40.0,
+      "alt_abs_m": 83.0,
+      "heading_deg": 180.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    }
+  ],
+  "photo_points": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "stats": {
+    "n_waypoints": 20,
+    "n_photos": 20,
+    "est_distance_m": 280.0,
+    "est_duration_s": 106.0
+  }
+}

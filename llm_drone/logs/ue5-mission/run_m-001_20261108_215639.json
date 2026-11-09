@@ -1,0 +1,698 @@
+{
+  "status": "ok",
+  "generated_at": "2026-11-08T21:56:39+08:00",
+  "mission_file": "C:\\UEW\\dji_ue5_3dgs\\llm_drone\\demo\\mission_grid_campus.json",
+  "mission_id": "m-001",
+  "source_format": "orchestrator-demo",
+  "out_dir": "C:\\UEW\\dji_ue5_3dgs\\data\\synthetic\\mission_llm",
+  "images_dir": "C:\\UEW\\dji_ue5_3dgs\\data\\synthetic\\mission_llm\\images",
+  "metadata": "C:\\UEW\\dji_ue5_3dgs\\data\\synthetic\\mission_llm\\metadata.json",
+  "n_frames": 91,
+  "width": 1600,
+  "height": 1200,
+  "fx": 1148.3429,
+  "fy": 1148.3429,
+  "fov_horizontal_deg": 69.7265,
+  "exposure": 0.6,
+  "sun_intensity_lux": 22.0,
+  "scene_actors": 805,
+  "timing": {
+    "script_seconds": 31.645,
+    "scene_build_seconds": 4.062,
+    "create_rig_seconds": 0.089,
+    "render_seconds": 27.36,
+    "avg_frame_seconds": 0.3007
+  },
+  "per_frame": [
+    {
+      "index": 1,
+      "waypoint_index": 0,
+      "file": "0001.png",
+      "seconds": 0.3248,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 2,
+      "waypoint_index": 1,
+      "file": "0002.png",
+      "seconds": 0.3034,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 3,
+      "waypoint_index": 2,
+      "file": "0003.png",
+      "seconds": 0.2764,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 4,
+      "waypoint_index": 3,
+      "file": "0004.png",
+      "seconds": 0.2706,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 5,
+      "waypoint_index": 4,
+      "file": "0005.png",
+      "seconds": 0.2906,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 6,
+      "waypoint_index": 5,
+      "file": "0006.png",
+      "seconds": 0.2824,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 7,
+      "waypoint_index": 6,
+      "file": "0007.png",
+      "seconds": 0.2928,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 8,
+      "waypoint_index": 7,
+      "file": "0008.png",
+      "seconds": 0.2684,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 9,
+      "waypoint_index": 8,
+      "file": "0009.png",
+      "seconds": 0.2625,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 10,
+      "waypoint_index": 9,
+      "file": "0010.png",
+      "seconds": 0.293,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 11,
+      "waypoint_index": 10,
+      "file": "0011.png",
+      "seconds": 0.2905,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 12,
+      "waypoint_index": 11,
+      "file": "0012.png",
+      "seconds": 0.2629,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 13,
+      "waypoint_index": 12,
+      "file": "0013.png",
+      "seconds": 0.2937,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 14,
+      "waypoint_index": 13,
+      "file": "0014.png",
+      "seconds": 0.2639,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 15,
+      "waypoint_index": 14,
+      "file": "0015.png",
+      "seconds": 0.2364,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 16,
+      "waypoint_index": 15,
+      "file": "0016.png",
+      "seconds": 0.3023,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 17,
+      "waypoint_index": 16,
+      "file": "0017.png",
+      "seconds": 0.2843,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 18,
+      "waypoint_index": 17,
+      "file": "0018.png",
+      "seconds": 0.3379,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 19,
+      "waypoint_index": 18,
+      "file": "0019.png",
+      "seconds": 0.3044,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 20,
+      "waypoint_index": 19,
+      "file": "0020.png",
+      "seconds": 0.2727,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 21,
+      "waypoint_index": 20,
+      "file": "0021.png",
+      "seconds": 0.2789,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 22,
+      "waypoint_index": 21,
+      "file": "0022.png",
+      "seconds": 0.2826,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 23,
+      "waypoint_index": 22,
+      "file": "0023.png",
+      "seconds": 0.3099,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 24,
+      "waypoint_index": 23,
+      "file": "0024.png",
+      "seconds": 0.2958,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 25,
+      "waypoint_index": 24,
+      "file": "0025.png",
+      "seconds": 0.3199,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 26,
+      "waypoint_index": 25,
+      "file": "0026.png",
+      "seconds": 0.3261,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 27,
+      "waypoint_index": 26,
+      "file": "0027.png",
+      "seconds": 0.2999,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 28,
+      "waypoint_index": 27,
+      "file": "0028.png",
+      "seconds": 0.3267,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 29,
+      "waypoint_index": 28,
+      "file": "0029.png",
+      "seconds": 0.3064,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 30,
+      "waypoint_index": 29,
+      "file": "0030.png",
+      "seconds": 0.2871,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 31,
+      "waypoint_index": 30,
+      "file": "0031.png",
+      "seconds": 0.2632,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 32,
+      "waypoint_index": 31,
+      "file": "0032.png",
+      "seconds": 0.3058,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 33,
+      "waypoint_index": 32,
+      "file": "0033.png",
+      "seconds": 0.3168,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 34,
+      "waypoint_index": 33,
+      "file": "0034.png",
+      "seconds": 0.2549,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 35,
+      "waypoint_index": 34,
+      "file": "0035.png",
+      "seconds": 0.2902,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 36,
+      "waypoint_index": 35,
+      "file": "0036.png",
+      "seconds": 0.3146,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 37,
+      "waypoint_index": 36,
+      "file": "0037.png",
+      "seconds": 0.2878,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 38,
+      "waypoint_index": 37,
+      "file": "0038.png",
+      "seconds": 0.3055,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 39,
+      "waypoint_index": 38,
+      "file": "0039.png",
+      "seconds": 0.2852,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 40,
+      "waypoint_index": 39,
+      "file": "0040.png",
+      "seconds": 0.2945,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 41,
+      "waypoint_index": 40,
+      "file": "0041.png",
+      "seconds": 0.2767,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 42,
+      "waypoint_index": 41,
+      "file": "0042.png",
+      "seconds": 0.2852,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 43,
+      "waypoint_index": 42,
+      "file": "0043.png",
+      "seconds": 0.3116,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 44,
+      "waypoint_index": 43,
+      "file": "0044.png",
+      "seconds": 0.3179,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 45,
+      "waypoint_index": 44,
+      "file": "0045.png",
+      "seconds": 0.2566,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 46,
+      "waypoint_index": 45,
+      "file": "0046.png",
+      "seconds": 0.2785,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 47,
+      "waypoint_index": 46,
+      "file": "0047.png",
+      "seconds": 0.3044,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 48,
+      "waypoint_index": 47,
+      "file": "0048.png",
+      "seconds": 0.2766,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 49,
+      "waypoint_index": 48,
+      "file": "0049.png",
+      "seconds": 0.3339,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 50,
+      "waypoint_index": 49,
+      "file": "0050.png",
+      "seconds": 0.2911,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 51,
+      "waypoint_index": 50,
+      "file": "0051.png",
+      "seconds": 0.3123,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 52,
+      "waypoint_index": 51,
+      "file": "0052.png",
+      "seconds": 0.2823,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 53,
+      "waypoint_index": 52,
+      "file": "0053.png",
+      "seconds": 0.3081,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 54,
+      "waypoint_index": 53,
+      "file": "0054.png",
+      "seconds": 0.2895,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 55,
+      "waypoint_index": 54,
+      "file": "0055.png",
+      "seconds": 0.3134,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 56,
+      "waypoint_index": 55,
+      "file": "0056.png",
+      "seconds": 0.2643,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 57,
+      "waypoint_index": 56,
+      "file": "0057.png",
+      "seconds": 0.3014,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 58,
+      "waypoint_index": 57,
+      "file": "0058.png",
+      "seconds": 0.3421,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 59,
+      "waypoint_index": 58,
+      "file": "0059.png",
+      "seconds": 0.2974,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 60,
+      "waypoint_index": 59,
+      "file": "0060.png",
+      "seconds": 0.2929,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 61,
+      "waypoint_index": 60,
+      "file": "0061.png",
+      "seconds": 0.3244,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 62,
+      "waypoint_index": 61,
+      "file": "0062.png",
+      "seconds": 0.2711,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 63,
+      "waypoint_index": 62,
+      "file": "0063.png",
+      "seconds": 0.2831,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 64,
+      "waypoint_index": 63,
+      "file": "0064.png",
+      "seconds": 0.283,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 65,
+      "waypoint_index": 64,
+      "file": "0065.png",
+      "seconds": 0.2921,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 66,
+      "waypoint_index": 65,
+      "file": "0066.png",
+      "seconds": 0.3311,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 67,
+      "waypoint_index": 66,
+      "file": "0067.png",
+      "seconds": 0.429,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 68,
+      "waypoint_index": 67,
+      "file": "0068.png",
+      "seconds": 0.3664,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 69,
+      "waypoint_index": 68,
+      "file": "0069.png",
+      "seconds": 0.2665,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 70,
+      "waypoint_index": 69,
+      "file": "0070.png",
+      "seconds": 0.2763,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 71,
+      "waypoint_index": 70,
+      "file": "0071.png",
+      "seconds": 0.3075,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 72,
+      "waypoint_index": 71,
+      "file": "0072.png",
+      "seconds": 0.2876,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 73,
+      "waypoint_index": 72,
+      "file": "0073.png",
+      "seconds": 0.2875,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 74,
+      "waypoint_index": 73,
+      "file": "0074.png",
+      "seconds": 0.2861,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 75,
+      "waypoint_index": 74,
+      "file": "0075.png",
+      "seconds": 0.2714,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 76,
+      "waypoint_index": 75,
+      "file": "0076.png",
+      "seconds": 0.3256,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 77,
+      "waypoint_index": 76,
+      "file": "0077.png",
+      "seconds": 0.3334,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 78,
+      "waypoint_index": 77,
+      "file": "0078.png",
+      "seconds": 0.3463,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 79,
+      "waypoint_index": 78,
+      "file": "0079.png",
+      "seconds": 0.3448,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 80,
+      "waypoint_index": 79,
+      "file": "0080.png",
+      "seconds": 0.3111,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 81,
+      "waypoint_index": 80,
+      "file": "0081.png",
+      "seconds": 0.3331,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 82,
+      "waypoint_index": 81,
+      "file": "0082.png",
+      "seconds": 0.3056,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 83,
+      "waypoint_index": 82,
+      "file": "0083.png",
+      "seconds": 0.3439,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 84,
+      "waypoint_index": 83,
+      "file": "0084.png",
+      "seconds": 0.3144,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 85,
+      "waypoint_index": 84,
+      "file": "0085.png",
+      "seconds": 0.323,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 86,
+      "waypoint_index": 85,
+      "file": "0086.png",
+      "seconds": 0.304,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 87,
+      "waypoint_index": 86,
+      "file": "0087.png",
+      "seconds": 0.3016,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 88,
+      "waypoint_index": 87,
+      "file": "0088.png",
+      "seconds": 0.2919,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 89,
+      "waypoint_index": 88,
+      "file": "0089.png",
+      "seconds": 0.273,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 90,
+      "waypoint_index": 89,
+      "file": "0090.png",
+      "seconds": 0.3174,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 91,
+      "waypoint_index": 90,
+      "file": "0091.png",
+      "seconds": 0.2991,
+      "c2w_max_diff_vs_capture": 0.0
+    }
+  ],
+  "c2w_max_diff_vs_capture": 0.0,
+  "engine_version": "5.8.4-58902052+++UE5+Release-5.8",
+  "ue_python": "3.11.8",
+  "world_consistency": {
+    "intrinsics_match": true,
+    "origin_match": true,
+    "camera": {
+      "width": 1600,
+      "height": 1200,
+      "fx": 1148.3429,
+      "fy": 1148.3429,
+      "cx": 800.0,
+      "cy": 600.0,
+      "fov_horizontal_deg": 69.7265
+    },
+    "origin_wgs84": {
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "alt": 43.0
+    }
+  },
+  "started_at": "2026-11-08T21:56:07+08:00",
+  "argv": [
+    "C:/UEW/dji_ue5_3dgs/llm_drone/ue5_mission/render_mission.py",
+    "--mission",
+    "C:/UEW/dji_ue5_3dgs/llm_drone/demo/mission_grid_campus.json",
+    "--out",
+    "C:/UEW/dji_ue5_3dgs/data/synthetic/mission_llm",
+    "--exposure",
+    "0.6",
+    "--sun",
+    "22"
+  ]
+}

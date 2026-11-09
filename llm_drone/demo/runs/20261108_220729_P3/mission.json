@@ -1,0 +1,116 @@
+{
+  "schema": "llm_drone.mission/v1",
+  "plan_id": "plan-422c1b696a",
+  "type": "point",
+  "created_at": "2026-11-08T22:07:35+08:00",
+  "origin_wgs84": {
+    "lat": 39.9042,
+    "lon": 116.4074,
+    "alt": 43.0
+  },
+  "home": {
+    "lat": 39.9042,
+    "lon": 116.4074,
+    "alt_abs_m": 43.0
+  },
+  "scene": {
+    "ground_alt_m": 43.0,
+    "world": "UE_LHS_Zup_cm",
+    "ue_axis": "UE +X = East, UE +Y = South, UE +Z = Up (cm)"
+  },
+  "camera": {
+    "model": "DJI Mini 4 Pro (simulated)",
+    "width": 1600,
+    "height": 1200,
+    "fx": 1148.343,
+    "fy": 1148.343,
+    "cx": 800.0,
+    "cy": 600.0,
+    "fov_horizontal_deg": 69.726,
+    "fov_vertical_deg": 55.18,
+    "sensor_mm": {
+      "width": 9.6,
+      "height": 7.2,
+      "diagonal": 12
+    }
+  },
+  "flight": {
+    "pattern": "point",
+    "altitude_m": 30.0,
+    "speed_mps": 5.0,
+    "gimbal_pitch_deg": -45.0,
+    "overlap": 0.7,
+    "heading_deg": 0.0,
+    "turn_mode": "stop_and_turn"
+  },
+  "waypoints": [
+    {
+      "index": 0,
+      "lat": 39.9045,
+      "lon": 116.407,
+      "alt_rel_m": 30.0,
+      "alt_abs_m": 73.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 1,
+      "lat": 39.9045,
+      "lon": 116.407,
+      "alt_rel_m": 30.0,
+      "alt_abs_m": 73.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 2,
+      "lat": 39.9045,
+      "lon": 116.407,
+      "alt_rel_m": 30.0,
+      "alt_abs_m": 73.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 3,
+      "lat": 39.9045,
+      "lon": 116.407,
+      "alt_rel_m": 30.0,
+      "alt_abs_m": 73.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    },
+    {
+      "index": 4,
+      "lat": 39.9045,
+      "lon": 116.407,
+      "alt_rel_m": 30.0,
+      "alt_abs_m": 73.0,
+      "heading_deg": 0.0,
+      "gimbal_pitch_deg": -45.0,
+      "speed_mps": 5.0,
+      "action": "photo"
+    }
+  ],
+  "photo_points": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "stats": {
+    "n_waypoints": 5,
+    "n_photos": 5,
+    "est_distance_m": 0.0,
+    "est_duration_s": 27.5
+  }
+}

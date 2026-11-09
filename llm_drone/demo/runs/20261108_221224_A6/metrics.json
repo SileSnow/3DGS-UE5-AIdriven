@@ -1,0 +1,95 @@
+{
+  "run_id": "20261108_221224_A6",
+  "scenario_id": "A6",
+  "kind": "adversarial",
+  "model": "ScriptedLLMClient(steps)",
+  "base_url": "",
+  "mode": "scripted",
+  "llm_calls": 7,
+  "tool_calls": 4,
+  "rejected": 1,
+  "error_codes": [
+    "E_MISSION_MISSION"
+  ],
+  "wall_s": 1.57,
+  "mission_sim_s": 0.0,
+  "n_photos": 0,
+  "tokens": {
+    "prompt": 0,
+    "completion": 0
+  },
+  "passed": true,
+  "expected": {
+    "expected_tools": [
+      "takeoff",
+      "goto_waypoints"
+    ],
+    "expected_error_code": [],
+    "expect_photos": 0,
+    "expect_mission_state": null,
+    "expect_no_rejection": false,
+    "expect_force_rth": true,
+    "expect_final_state": [
+      "idle"
+    ]
+  },
+  "actual": {
+    "mode": "scripted",
+    "tools": [
+      "plan_capture_mission",
+      "takeoff",
+      "goto_waypoints",
+      "get_telemetry"
+    ],
+    "error_codes": [
+      "E_MISSION_MISSION"
+    ],
+    "rejected": 1,
+    "n_photos": 0,
+    "mission_id": "m-0001",
+    "mission_state": "aborted",
+    "final_state": "idle",
+    "final_answer": "任务执行中电量 19% → Agent 强制 RTH（审计 force_rth），最终落地 idle。",
+    "checks": [
+      {
+        "check": "tool:takeoff",
+        "passed": true,
+        "detail": "actual_sequence=['plan_capture_mission', 'takeoff', 'goto_waypoints', 'get_telemetry']",
+        "informational": false
+      },
+      {
+        "check": "tool:goto_waypoints",
+        "passed": true,
+        "detail": "actual_sequence=['plan_capture_mission', 'takeoff', 'goto_waypoints', 'get_telemetry']",
+        "informational": false
+      },
+      {
+        "check": "photos==0",
+        "passed": true,
+        "detail": "actual=0"
+      },
+      {
+        "check": "agent_audit:force_rth",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "check": "final_state:['idle']",
+        "passed": true,
+        "detail": "actual=idle"
+      }
+    ]
+  },
+  "agent_url": "http://127.0.0.1:8765",
+  "started_at": "2026-11-08T22:12:24.874+08:00",
+  "finished_at": "2026-11-08T22:12:26.519+08:00",
+  "inputs": {
+    "sim_setup": {},
+    "scripted": true
+  },
+  "agent_audit": {
+    "source": "file",
+    "path": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\drone-sim\\audit_20261108_221224_A6.jsonl",
+    "bytes": 8215
+  }
+}

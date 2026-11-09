@@ -1,0 +1,419 @@
+{
+  "train": {
+    "name": "train",
+    "ok": true,
+    "problems": [],
+    "frames": 175,
+    "width": 1600,
+    "height": 1200,
+    "fx": 1148.3429,
+    "fy": 1148.3429,
+    "png_count": 175,
+    "missing_images": 0,
+    "max_rigid_error": 0.0,
+    "max_gps_roundtrip_cm": 0.0057,
+    "reprojection": [
+      {
+        "file": "images/0016.png",
+        "target": [
+          700.0,
+          700.0,
+          60.0
+        ],
+        "predicted": [
+          924.38,
+          441.69
+        ],
+        "detected": [
+          924.19,
+          439.2
+        ],
+        "error_px": 2.498,
+        "pixels": 551
+      },
+      {
+        "file": "images/0016.png",
+        "target": [
+          0.0,
+          0.0,
+          76.5
+        ],
+        "predicted": [
+          800.0,
+          521.41
+        ],
+        "detected": [
+          799.18,
+          521.15
+        ],
+        "error_px": 0.865,
+        "pixels": 713
+      },
+      {
+        "file": "images/0031.png",
+        "target": [
+          -2800.0,
+          2800.0,
+          76.5
+        ],
+        "predicted": [
+          309.06,
+          1054.05
+        ],
+        "detected": [
+          302.46,
+          1045.19
+        ],
+        "error_px": 11.051,
+        "pixels": 1693
+      },
+      {
+        "file": "images/0046.png",
+        "target": [
+          700.0,
+          700.0,
+          60.0
+        ],
+        "predicted": [
+          989.07,
+          330.56
+        ],
+        "detected": [
+          989.08,
+          327.38
+        ],
+        "error_px": 3.188,
+        "pixels": 572
+      },
+      {
+        "file": "images/0046.png",
+        "target": [
+          0.0,
+          0.0,
+          76.5
+        ],
+        "predicted": [
+          1098.11,
+          430.55
+        ],
+        "detected": [
+          1097.16,
+          430.9
+        ],
+        "error_px": 1.006,
+        "pixels": 833
+      },
+      {
+        "file": "images/0061.png",
+        "target": [
+          2000.0,
+          1200.0,
+          60.0
+        ],
+        "predicted": [
+          53.19,
+          245.82
+        ],
+        "detected": [
+          51.19,
+          242.62
+        ],
+        "error_px": 3.777,
+        "pixels": 636
+      },
+      {
+        "file": "images/0061.png",
+        "target": [
+          700.0,
+          700.0,
+          60.0
+        ],
+        "predicted": [
+          179.2,
+          330.56
+        ],
+        "detected": [
+          177.26,
+          327.43
+        ],
+        "error_px": 3.686,
+        "pixels": 733
+      },
+      {
+        "file": "images/0061.png",
+        "target": [
+          0.0,
+          0.0,
+          76.5
+        ],
+        "predicted": [
+          203.79,
+          430.55
+        ],
+        "detected": [
+          203.05,
+          429.96
+        ],
+        "error_px": 0.948,
+        "pixels": 1503
+      },
+      {
+        "file": "images/0061.png",
+        "target": [
+          -2800.0,
+          2800.0,
+          76.5
+        ],
+        "predicted": [
+          886.89,
+          239.99
+        ],
+        "detected": [
+          889.72,
+          226.72
+        ],
+        "error_px": 13.571,
+        "pixels": 149
+      },
+      {
+        "file": "images/0076.png",
+        "target": [
+          2000.0,
+          1200.0,
+          60.0
+        ],
+        "predicted": [
+          978.96,
+          581.78
+        ],
+        "detected": [
+          981.53,
+          575.88
+        ],
+        "error_px": 6.44,
+        "pixels": 627
+      },
+      {
+        "file": "images/0076.png",
+        "target": [
+          700.0,
+          700.0,
+          60.0
+        ],
+        "predicted": [
+          1189.35,
+          471.5
+        ],
+        "detected": [
+          1189.71,
+          468.46
+        ],
+        "error_px": 3.056,
+        "pixels": 725
+      },
+      {
+        "file": "images/0076.png",
+        "target": [
+          0.0,
+          0.0,
+          76.5
+        ],
+        "predicted": [
+          1369.3,
+          448.82
+        ],
+        "detected": [
+          1368.76,
+          448.18
+        ],
+        "error_px": 0.838,
+        "pixels": 1116
+      },
+      {
+        "file": "images/0091.png",
+        "target": [
+          2000.0,
+          1200.0,
+          60.0
+        ],
+        "predicted": [
+          35.52,
+          581.78
+        ],
+        "detected": [
+          29.98,
+          580.08
+        ],
+        "error_px": 5.787,
+        "pixels": 695
+      },
+      {
+        "file": "images/0121.png",
+        "target": [
+          0.0,
+          0.0,
+          76.5
+        ],
+        "predicted": [
+          800.0,
+          314.98
+        ],
+        "detected": [
+          806.48,
+          315.36
+        ],
+        "error_px": 6.487,
+        "pixels": 225
+      },
+      {
+        "file": "images/0121.png",
+        "target": [
+          -2800.0,
+          2800.0,
+          76.5
+        ],
+        "predicted": [
+          42.42,
+          238.77
+        ],
+        "detected": [
+          34.62,
+          228.37
+        ],
+        "error_px": 13.001,
+        "pixels": 514
+      },
+      {
+        "file": "images/0151.png",
+        "target": [
+          -2800.0,
+          2800.0,
+          76.5
+        ],
+        "predicted": [
+          716.6,
+          1071.72
+        ],
+        "detected": [
+          714.93,
+          1066.9
+        ],
+        "error_px": 5.103,
+        "pixels": 1684
+      },
+      {
+        "file": "images/0166.png",
+        "target": [
+          2000.0,
+          1200.0,
+          60.0
+        ],
+        "predicted": [
+          656.94,
+          448.83
+        ],
+        "detected": [
+          662.37,
+          438.12
+        ],
+        "error_px": 12.007,
+        "pixels": 153
+      },
+      {
+        "file": "images/0166.png",
+        "target": [
+          700.0,
+          700.0,
+          60.0
+        ],
+        "predicted": [
+          386.26,
+          438.11
+        ],
+        "detected": [
+          383.72,
+          430.6
+        ],
+        "error_px": 7.93,
+        "pixels": 475
+      },
+      {
+        "file": "images/0166.png",
+        "target": [
+          0.0,
+          0.0,
+          76.5
+        ],
+        "predicted": [
+          237.33,
+          373.75
+        ],
+        "detected": [
+          235.98,
+          365.92
+        ],
+        "error_px": 7.945,
+        "pixels": 661
+      },
+      {
+        "file": "images/0166.png",
+        "target": [
+          2800.0,
+          -2800.0,
+          76.5
+        ],
+        "predicted": [
+          630.52,
+          22.55
+        ],
+        "detected": [
+          630.89,
+          21.68
+        ],
+        "error_px": 0.939,
+        "pixels": 593
+      }
+    ],
+    "reprojection_hits": 20,
+    "reprojection_mean_px": 5.506,
+    "reprojection_max_px": 13.571
+  },
+  "val": {
+    "name": "val",
+    "ok": true,
+    "problems": [],
+    "frames": 15,
+    "width": 1600,
+    "height": 1200,
+    "fx": 1148.3429,
+    "fy": 1148.3429,
+    "png_count": 15,
+    "missing_images": 0,
+    "max_rigid_error": 0.0,
+    "max_gps_roundtrip_cm": 0.0073,
+    "reprojection": [
+      {
+        "file": "images/val_0001.png",
+        "target": [
+          2800.0,
+          -2800.0,
+          76.5
+        ],
+        "predicted": [
+          610.94,
+          1015.46
+        ],
+        "detected": [
+          608.11,
+          1010.02
+        ],
+        "error_px": 6.133,
+        "pixels": 1321
+      }
+    ],
+    "reprojection_hits": 1,
+    "reprojection_mean_px": 6.133,
+    "reprojection_max_px": 6.133
+  },
+  "ok": true
+}

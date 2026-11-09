@@ -1,0 +1,39 @@
+# 统一换行与二进制识别
+* text=auto
+
+*.py   text eol=lf
+*.md   text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
+*.toml text eol=lf
+*.cff  text eol=lf
+*.ps1  text eol=crlf
+*.cmd  text eol=crlf
+
+# 二进制资源（不做文本 diff）
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.gif   binary
+*.bmp   binary
+*.ply   binary
+*.pdf   binary
+*.pptx  binary
+*.docx  binary
+*.xlsx  binary
+*.mp4   binary
+*.mov   binary
+*.wav   binary
+*.mp3   binary
+*.kmz   binary
+*.zip   binary
+*.7z    binary
+*.uasset binary
+*.umap   binary
+*.uplugin binary
+*.pdb   binary
+*.dll   binary
+*.exe   binary
+*.so    binary

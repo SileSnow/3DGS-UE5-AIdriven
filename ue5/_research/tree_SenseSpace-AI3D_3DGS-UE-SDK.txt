@@ -1,0 +1,9 @@
+﻿LICENSE
+README.md
+doc/create_actor.jpg
+doc/enable_plugin.jpg
+doc/import.jpg
+doc/model_path.jpg
+doc/palette.jpg
+doc/palette2.jpg
+doc/sensespace.jpg

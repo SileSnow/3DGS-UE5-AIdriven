@@ -1,0 +1,107 @@
+{
+  "run_id": "20261108_220829_P2",
+  "scenario_id": "P2",
+  "kind": "positive",
+  "model": "qwen3.5:4b",
+  "base_url": "http://127.0.0.1:11434",
+  "mode": "real_llm",
+  "llm_calls": 5,
+  "tool_calls": 4,
+  "rejected": 0,
+  "error_codes": [],
+  "wall_s": 36.95,
+  "mission_sim_s": 126.0,
+  "n_photos": 12,
+  "tokens": {
+    "prompt": 23882,
+    "completion": 398
+  },
+  "passed": true,
+  "expected": {
+    "expected_tools": [
+      "plan_capture_mission",
+      "takeoff",
+      "goto_waypoints",
+      "return_to_home"
+    ],
+    "expected_error_code": [],
+    "expect_photos": {
+      "exact": 12
+    },
+    "expect_mission_state": "completed",
+    "expect_no_rejection": false,
+    "expect_force_rth": false,
+    "expect_final_state": [
+      "idle"
+    ]
+  },
+  "actual": {
+    "mode": "real_llm",
+    "tools": [
+      "plan_capture_mission",
+      "takeoff",
+      "goto_waypoints",
+      "return_to_home"
+    ],
+    "error_codes": [],
+    "rejected": 0,
+    "n_photos": 12,
+    "mission_id": "m-0001",
+    "mission_state": "completed",
+    "final_state": "idle",
+    "final_answer": "任务已完成：环绕拍摄（m-0001）成功执行，共拍摄 12 张照片；无人机已自动返航并降落。当前电量 81.9%，状态 idle。",
+    "checks": [
+      {
+        "check": "tool:plan_capture_mission",
+        "passed": true,
+        "detail": "actual_sequence=['plan_capture_mission', 'takeoff', 'goto_waypoints', 'return_to_home']",
+        "informational": true
+      },
+      {
+        "check": "tool:takeoff",
+        "passed": true,
+        "detail": "actual_sequence=['plan_capture_mission', 'takeoff', 'goto_waypoints', 'return_to_home']",
+        "informational": true
+      },
+      {
+        "check": "tool:goto_waypoints",
+        "passed": true,
+        "detail": "actual_sequence=['plan_capture_mission', 'takeoff', 'goto_waypoints', 'return_to_home']",
+        "informational": true
+      },
+      {
+        "check": "tool:return_to_home",
+        "passed": true,
+        "detail": "actual_sequence=['plan_capture_mission', 'takeoff', 'goto_waypoints', 'return_to_home']",
+        "informational": true
+      },
+      {
+        "check": "photos==12",
+        "passed": true,
+        "detail": "actual=12"
+      },
+      {
+        "check": "mission_state:completed",
+        "passed": true,
+        "detail": "actual=completed"
+      },
+      {
+        "check": "final_state:['idle']",
+        "passed": true,
+        "detail": "actual=idle"
+      }
+    ]
+  },
+  "agent_url": "http://127.0.0.1:8765",
+  "started_at": "2026-11-08T22:08:29.995+08:00",
+  "finished_at": "2026-11-08T22:09:07.039+08:00",
+  "inputs": {
+    "sim_setup": {},
+    "scripted": false
+  },
+  "agent_audit": {
+    "source": "file",
+    "path": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\drone-sim\\audit_20261108_220829_P2.jsonl",
+    "bytes": 23606
+  }
+}

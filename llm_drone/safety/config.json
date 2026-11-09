@@ -1,0 +1,69 @@
+{
+  "version": "1.0",
+  "description": "SafetyValidator 默认配置。阈值/围栏/禁飞区严格按 llm_drone/spec/PROTOCOL.md 第 8/8.1 节；对抗测试使用这些默认值。",
+  "max_alt_m": 120,
+  "max_speed_mps": 15,
+  "min_takeoff_battery_pct": 30,
+  "rth_reserve_pct": 20,
+  "force_rth_pct": 20,
+  "gps_min_fix": 3,
+  "gps_min_satellites": 10,
+  "require_rc": true,
+  "require_confirm_tools": [
+    "takeoff",
+    "goto_waypoints",
+    "orbit"
+  ],
+  "allow_real_mode": false,
+  "origin": {
+    "lat": 39.9042,
+    "lon": 116.4074,
+    "alt": 43
+  },
+  "geofence": {
+    "type": "circle",
+    "center": {
+      "lat": 39.9042,
+      "lon": 116.4074
+    },
+    "radius_m": 300
+  },
+  "no_fly_zones": [
+    {
+      "name": "default_no_fly",
+      "alt_range_m": [
+        0,
+        120
+      ],
+      "polygon": [
+        {
+          "lat": 39.9046,
+          "lon": 116.4078
+        },
+        {
+          "lat": 39.905,
+          "lon": 116.4078
+        },
+        {
+          "lat": 39.905,
+          "lon": 116.4082
+        },
+        {
+          "lat": 39.9046,
+          "lon": 116.4082
+        }
+      ]
+    }
+  ],
+  "energy": {
+    "idle_pct_per_s": 0.01,
+    "climb_pct_per_s": 0.15,
+    "descend_pct_per_s": 0.15,
+    "cruise_pct_per_s": 0.05,
+    "hover_pct_per_s": 0.04,
+    "climb_speed_mps": 3,
+    "descend_speed_mps": 3,
+    "rth_speed_mps": 10,
+    "hover_before_action_s": 0.5
+  }
+}
