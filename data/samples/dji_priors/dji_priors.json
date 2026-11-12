@@ -15,7 +15,7 @@
   },
   "world_frame": "ENU_RH_m (x=east,y=north,z=up)",
   "camera_convention": "OpenCV/COLMAP (x right, y down, z forward)",
-  "sparse_dir": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\sample\\dji_prior_demo\\sparse\\0",
+  "sparse_dir": "<repo>\\data\\sample\\dji_prior_demo\\sparse\\0",
   "orthonormal_err_max": 4.440892098500626e-16,
   "gps_noise_note": "GPS 水平 1-3 m（DJI Mini 系列典型值），云台角 ~0.1-0.5 deg；该位姿仅作 COLMAP 粗先验，需 SfM/BA 精化",
   "gt_check": {

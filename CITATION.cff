@@ -8,9 +8,9 @@ abstract: >-
   mission rendering, and an Android DJI MSDK v5 bridge design.
 authors:
   - name: "GAIA Project contributors"
-version: "0.1.0"
-date-released: "2026-11-09"
-license: "TBD"
+version: "1.0.0"
+date-released: "2026-11-12"
+license: "MIT"
 keywords:
   - DJI Mini
   - DJI MSDK v5

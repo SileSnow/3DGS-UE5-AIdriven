@@ -1,6 +1,6 @@
 # verify_all.ps1 -- Lead 最终验收脚本（只读检查 + 轻量冒烟）
 $ErrorActionPreference = 'Continue'
-$base = 'C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs'
+$base = Split-Path $PSScriptRoot -Parent
 $pass = 0; $fail = 0; $warn = 0
 function Check($name, $cond, $detail) { if ($cond) { Write-Host ('[PASS] ' + $name + '  ' + $detail) -ForegroundColor Green; $script:pass++ } else { Write-Host ('[FAIL] ' + $name + '  ' + $detail) -ForegroundColor Red; $script:fail++ } }
 function CheckWarn($name, $cond, $detail) { if ($cond) { Write-Host ('[PASS] ' + $name + '  ' + $detail) -ForegroundColor Green; $script:pass++ } else { Write-Host ('[WARN] ' + $name + '  ' + $detail) -ForegroundColor Yellow; $script:warn++ } }

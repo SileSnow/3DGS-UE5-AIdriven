@@ -3,7 +3,7 @@
 import glob, os, wave
 import numpy as np
 
-AUD = r"C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs\report\audio"
+AUD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "audio")
 OUT = os.path.join(AUD, "narration_mix.wav")
 SR = 22050
 DUR = 41.5

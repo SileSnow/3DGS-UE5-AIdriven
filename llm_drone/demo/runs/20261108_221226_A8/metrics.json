@@ -83,7 +83,7 @@
   },
   "agent_audit": {
     "source": "file",
-    "path": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\drone-sim\\audit_20261108_221226_A8.jsonl",
+    "path": "<repo>\\llm_drone\\logs\\drone-sim\\audit_20261108_221226_A8.jsonl",
     "bytes": 997
   }
 }

@@ -1,8 +1,8 @@
 {
   "mode": "known",
   "dataset": "synthetic_dji_mini4pro_campus_v1",
-  "metadata": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\sample\\synthetic_campus_v1\\metadata.json",
-  "image_root": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\sample\\synthetic_campus_v1",
+  "metadata": "<repo>\\data\\sample\\synthetic_campus_v1\\metadata.json",
+  "image_root": "<repo>\\data\\sample\\synthetic_campus_v1",
   "num_images": 24,
   "width": 960,
   "height": 720,
@@ -20,6 +20,6 @@
     "n_checked": 1152,
     "ok": true
   },
-  "sparse_dir": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\sample\\synthetic_campus_v1\\colmap\\sparse\\0",
+  "sparse_dir": "<repo>\\data\\sample\\synthetic_campus_v1\\colmap\\sparse\\0",
   "seconds": 0.3
 }

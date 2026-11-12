@@ -1,14 +1,14 @@
 {
   "ok": true,
   "generated_at": "2026-11-08T22:05:27+08:00",
-  "out_dir": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission_p1",
-  "mission_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\demo\\runs\\20261108_220309_P1\\mission.json",
+  "out_dir": "<repo>\\data\\synthetic\\mission_p1",
+  "mission_file": "<repo>\\llm_drone\\demo\\runs\\20261108_220309_P1\\mission.json",
   "checks": [
     {
       "name": "metadata_exists",
       "status": "pass",
       "ok": true,
-      "detail": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission_p1\\metadata.json"
+      "detail": "<repo>\\data\\synthetic\\mission_p1\\metadata.json"
     },
     {
       "name": "metadata_schema_keys",
@@ -183,7 +183,7 @@
       "name": "contact_sheet",
       "status": "pass",
       "ok": true,
-      "detail": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\ue5_mission\\results\\contact_sheet_p1.png"
+      "detail": "<repo>\\llm_drone\\ue5_mission\\results\\contact_sheet_p1.png"
     }
   ],
   "problems": [],
@@ -244,7 +244,7 @@
         "render_seconds": 4.606,
         "avg_frame_seconds": 0.2303
       },
-      "log_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\ue5-mission\\run_plan-acd562c360_20261108_220507.json",
+      "log_file": "<repo>\\llm_drone\\logs\\ue5-mission\\run_plan-acd562c360_20261108_220507.json",
       "c2w_max_diff_vs_capture": 0.0
     },
     "n_checks_pass": 16,
@@ -814,8 +814,8 @@
       "timestamp": 65.5
     }
   ],
-  "metadata_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission_p1\\metadata.json",
-  "contact_sheet": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\ue5_mission\\results\\contact_sheet_p1.png",
+  "metadata_file": "<repo>\\data\\synthetic\\mission_p1\\metadata.json",
+  "contact_sheet": "<repo>\\llm_drone\\ue5_mission\\results\\contact_sheet_p1.png",
   "capture_constants": {
     "width": 1600,
     "height": 1200,

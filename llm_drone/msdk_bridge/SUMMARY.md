@@ -44,7 +44,7 @@
 - 工具覆盖：spec 15 → mapping 15，缺失 0；13 个 agent 工具全部有具体 API 调用链；端点映射 8 个。
 - 骨架：23 个 .kt；6 个必需类声明命中各 1；10 个文件含 DJI SDK import；`TODO(未确认)` 共 21 处（均为未验证 API 细节，已显式标注）。
 - 依赖：`app/app/build.gradle.kts` 含 `com.dji:dji-sdk-v5-aircraft:5.20.1`（+provided/networkImp、wpmzsdk 1.0.5.2）。
-- 文档：PROTOCOL_COMPLIANCE 覆盖全部关键端点；README 含 19 种 spec 错误码。
+- 文档：PROTOCOL_COMPLIANCE 覆盖全部关键端点；README 含 20 种 spec 错误码。
 - 结论：静态完整性**通过**；编译/安装/HTTP 端到端/真机飞行**未执行**。
 
 ## 4. 关键设计决策

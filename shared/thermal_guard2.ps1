@@ -1,6 +1,6 @@
 # thermal_guard2.ps1 -- 严格限核守护：常驻限核 + 超温降载/熔断
 $ErrorActionPreference = 'Continue'
-$base = 'C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs'
+$base = Split-Path $PSScriptRoot -Parent
 $log = Join-Path $base 'logs\thermal_monitor.log'
 New-Item -ItemType Directory -Force -Path (Join-Path $base 'logs') | Out-Null
 function GetCpuTempC { try { $c = Get-Counter '\Thermal Zone Information(*)\Temperature' -ErrorAction Stop; $m = ($c.CounterSamples | Measure-Object -Property CookedValue -Maximum).Maximum; if ($null -ne $m) { [math]::Round($m - 273.15, 1) } else { $null } } catch { $null } }

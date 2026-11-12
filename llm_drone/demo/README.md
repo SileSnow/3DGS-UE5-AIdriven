@@ -20,7 +20,7 @@ python -m sim.server --port 8765 --time-scale 20
 
 ```powershell
 cd dji_ue5_3dgs/llm_drone
-# 全部 P1-P3 + A1-A10（真实 LLM；A6/A9/A10 默认 scripted，可用 --scripted-for 追加）
+# 全部 P1-P3 + A1-A10（真实 LLM；A6-A10 默认 scripted，其中 A7/A8 也是 scripted；可用 --scripted-for 追加）
 python -m orchestrator.run_demo --agent-url http://127.0.0.1:8765 --scenario all --out demo/runs
 
 # 单场景

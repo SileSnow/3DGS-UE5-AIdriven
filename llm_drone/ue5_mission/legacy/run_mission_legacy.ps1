@@ -11,7 +11,7 @@
 
     Safety / machine constraints implemented here:
       * ASCII launch path: the project is addressed through the C:\UEW junction
-        (UE has known problems with non-ASCII paths). C:\UEW -> C:\Users\Lenovo\Desktop\GAIA项目
+        (UE has known problems with non-ASCII paths). C:\UEW -> <repo-parent>
       * one UE at a time: aborts if another UnrealEditor.exe is already running
       * CPU <= 4 cores + BelowNormal: affinity = 0x000F, priority = BelowNormal, applied
         right after launch (the background thermal guard re-applies it every few seconds)
@@ -66,7 +66,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 # ---------------------------------------------------------------- paths (ASCII junction)
-$RepoRoot   = "C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs"
+$RepoRoot   = Split-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) -Parent
 $UewRoot    = "C:\UEW\dji_ue5_3dgs"
 $UERoot     = "C:\Program Files\Epic Games\UE_5.8"
 $Editor     = Join-Path $UERoot "Engine\Binaries\Win64\UnrealEditor.exe"
@@ -76,7 +76,7 @@ $PyLocal    = "llm_drone/ue5_mission/render_mission.py"
 $LogDir     = Join-Path $RepoRoot "llm_drone\logs"
 
 if (-not (Test-Path -LiteralPath "C:\UEW")) {
-    throw "ASCII junction C:\UEW is missing (expected -> C:\Users\Lenovo\Desktop\GAIA项目)"
+    throw "ASCII junction C:\UEW is missing (expected -> <repo-parent>)"
 }
 if (-not (Test-Path -LiteralPath $Editor))   { throw "UnrealEditor.exe not found: $Editor" }
 if (-not (Test-Path -LiteralPath $Project))  { throw "UE project not found: $Project" }

@@ -163,7 +163,7 @@
 - 不采购 DJI Terra Flagship / 商业 UE 插件；官方链只做能力与接口层面的核实，不作为本次实测路径。
 - 不做飞行合规审批实操，只做风险提示与流程建议。
 
-> 证据索引：本章引用见第 4 章来源列表与 `docs/research/references.md`；本机 UE 5.8 无内置插件的搜索证据见 `logs/ue5/` 与 `shared/LEAD_KNOWLEDGE.md` 第 C 节。
+> 证据索引：本章引用见第 4 章来源列表与 `docs/research/references.md`；本机 UE 5.8 无内置插件的搜索证据见 `logs/ue5/`。
 
 ## 3. 验证方法与判据
 
@@ -461,11 +461,13 @@
 
 **gsplat 失败记录**（可复现）：`logs/pipeline/gsplat_attempt.log`（首次：nvcc/CUDA_HOME 装配后 cpp_extension smoke 失败）、`gsplat_attempt2.log`（cmd 嵌套引号/编码问题）、`gsplat_attempt3.log`（vcvars64 rc=1）；结论：**在 Python 3.14 + torch 2.13+cu130 + VS2026 组合下，gsplat 官方 JIT 路径不可用**；生产建议使用 gsplat 官方推荐的 Linux/容器环境或固定 CUDA 12.x + VS2022 工具链。纯 PyTorch 方案在本机 8GB 显存内可训练（速度约为 CUDA 实现的 1/5–1/10，但足以完成 PoC）。
 
+> **2026-11-12 更新**：上述“gsplat 官方 JIT 路径不可用”的结论已被推翻。在同机（Python 3.14 + torch 2.13/cu130 + VS2026 MSVC）上通过：ASCII 路径 + `_CL_=/Zc:preprocessor` + `NVCC_PREPEND_FLAGS` + 禁用本项目不用的 from-world/2DGS-bwd 两个 API，成功编译并运行 gsplat 1.5.3；960×720、199k splat 下前向+反向约 4.5 ms/iter（纯 PyTorch 约 189 ms/iter）。复现配方见 `docs/KNOWN_ISSUES.md` §C。
+
 ## 6. UE5 集成与渲染验证
 
 ### 6.1 UE5 3DGS 生态盘点（截至 2026-11，本机 UE 5.8.4）
 
-**官方现状：UE5 无内置 3DGS 支持。** 依据：① Epic 官方论坛 2025-10-23 回复 “We don't currently have plans to provide built-in gaussian splatting support.”（https://forums.unrealengine.com/t/gaussian-splatting-support-out-of-the-box/2677693 ）；② 本机 UE 5.8.4 的 `Engine/Plugins` 全量 `.uplugin` 搜索无 Gaussian/Splat 匹配（证据见 `logs/ue5/` 与 `shared/LEAD_KNOWLEDGE.md`）。
+**官方现状：UE5 无内置 3DGS 支持。** 依据：① Epic 官方论坛 2025-10-23 回复 “We don't currently have plans to provide built-in gaussian splatting support.”（https://forums.unrealengine.com/t/gaussian-splatting-support-out-of-the-box/2677693 ）；② 本机 UE 5.8.4 的 `Engine/Plugins` 全量 `.uplugin` 搜索无 Gaussian/Splat 匹配（证据见 `logs/ue5/`）。
 
 | 方案 | 类型/许可 | UE 版本 | 关键能力 | 可得性 | 评价 |
 |---|---|---|---|---|---|

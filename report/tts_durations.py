@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import wave, os, glob, json
-d = r"C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs\report\audio"
+d = os.path.join(os.path.dirname(os.path.abspath(__file__)), "audio")
 rows = []
 total = 0.0
 for p in sorted(glob.glob(os.path.join(d, "line_*.wav"))):

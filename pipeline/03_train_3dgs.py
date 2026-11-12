@@ -334,7 +334,11 @@ def main():
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--anomaly", action="store_true", help="torch.autograd.set_detect_anomaly（调试 NaN 用）")
     ap.add_argument("--check-finite-every", type=int, default=0, help=">0 时每 N 步检查参数/梯度有限性")
+    ap.add_argument("--gpu-duty", type=float, default=1.0,
+                    help="GPU 占空比节流：1.0 不节流；0.25 = 每 iter 后休眠 3x 该 iter 耗时（约束 GPU 平均占用）")
     args = ap.parse_args()
+    if not (0.0 < args.gpu_duty <= 1.0):
+        ap.error("--gpu-duty 必须在 (0, 1]")
     if args.anomaly:
         torch.autograd.set_detect_anomaly(True)
 
@@ -438,6 +442,7 @@ def main():
     if resume_iter > 0:
         log_line(log_path, "== resume from iter %d ==" % resume_iter)
     for it in range(resume_iter + 1, args.iters + 1):
+        t_iter = time.time()
         if not order:
             order = list(range(len(train_views)))
             np.random.shuffle(order)
@@ -508,6 +513,11 @@ def main():
             torch.save({"state": model.state_dict(), "iter": it, "args": vars(args),
                         "scene_extent": scene_extent, "world": data["world"]},
                        os.path.join(args.out, "checkpoint.pt"))
+
+        if args.gpu_duty < 1.0:
+            _dt = time.time() - t_iter
+            if _dt > 0:
+                time.sleep(_dt * (1.0 / args.gpu_duty - 1.0))
 
     # 最终：导出 PLY + 评测 + renders
     ply_path = os.path.join(args.out, "gaussians.ply")

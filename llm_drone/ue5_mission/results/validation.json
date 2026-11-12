@@ -1,14 +1,14 @@
 {
   "ok": true,
   "generated_at": "2026-11-08T22:04:20+08:00",
-  "out_dir": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission",
-  "mission_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\spec\\sample_mission.json",
+  "out_dir": "<repo>\\data\\synthetic\\mission",
+  "mission_file": "<repo>\\llm_drone\\spec\\sample_mission.json",
   "checks": [
     {
       "name": "metadata_exists",
       "status": "pass",
       "ok": true,
-      "detail": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission\\metadata.json"
+      "detail": "<repo>\\data\\synthetic\\mission\\metadata.json"
     },
     {
       "name": "metadata_schema_keys",
@@ -183,7 +183,7 @@
       "name": "contact_sheet",
       "status": "pass",
       "ok": true,
-      "detail": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\ue5_mission\\results\\contact_sheet.png"
+      "detail": "<repo>\\llm_drone\\ue5_mission\\results\\contact_sheet.png"
     }
   ],
   "problems": [],
@@ -240,7 +240,7 @@
         "render_seconds": 3.913,
         "avg_frame_seconds": 0.2446
       },
-      "log_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\ue5-mission\\run_sample-grid-16_20261108_215445.json",
+      "log_file": "<repo>\\llm_drone\\logs\\ue5-mission\\run_sample-grid-16_20261108_215445.json",
       "c2w_max_diff_vs_capture": 0.0
     },
     "n_checks_pass": 16,
@@ -698,8 +698,8 @@
       "timestamp": 63.5
     }
   ],
-  "metadata_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission\\metadata.json",
-  "contact_sheet": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\ue5_mission\\results\\contact_sheet.png",
+  "metadata_file": "<repo>\\data\\synthetic\\mission\\metadata.json",
+  "contact_sheet": "<repo>\\llm_drone\\ue5_mission\\results\\contact_sheet.png",
   "capture_constants": {
     "width": 1600,
     "height": 1200,

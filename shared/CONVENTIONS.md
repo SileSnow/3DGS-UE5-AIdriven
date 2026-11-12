@@ -18,7 +18,7 @@ metadata.json（UTF-8，单位：像素 / 厘米 / 度）：
   "dataset": "synthetic_dji_mini4pro_campus_v1",
   "camera_model": "DJI Mini 4 Pro (simulated)",
   "width": 1600, "height": 1200,
-  "fx": 1234.5, "fy": 1234.5, "cx": 800.0, "cy": 600.0,
+  "fx": 1148.3429, "fy": 1148.3429, "cx": 800.0, "cy": 600.0,
   "coord_system": "UE_LHS_Zup_cm",
   "origin_wgs84": {"lat": 39.9042, "lon": 116.4074, "alt": 43.0},
   "frames": [
@@ -41,7 +41,7 @@ metadata.json（UTF-8，单位：像素 / 厘米 / 度）：
 - x y z（世界坐标，与训练数据集同一坐标系/尺度，合成数据为 UE cm）
 - nx ny nz（可全 0）
 - f_dc_0 f_dc_1 f_dc_2（SH DC 项）
-- f_rest_0..44（SH 1-3 阶 45 个，若不用可省略但需在 README 注明）
+- f_rest_0..44（SH 1-3 阶 45 个；本项目导出固定写满 45 项，不可省略，下游按字段名解析）
 - opacity（sigmoid 前的 logit）
 - scale_0 scale_1 scale_2（log 尺度）
 - rot_0 rot_1 rot_2 rot_3（四元数 w,x,y,z 顺序，未归一化）

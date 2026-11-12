@@ -7,7 +7,13 @@
 | 文档 | 内容 |
 |---|---|
 | [../README.md](../README.md) | 项目总览、架构、快速开始、验证结果摘要、数据策略 |
+| [QUICKSTART.md](QUICKSTART.md) | **从 0 跑通**：基线 / 演示 / 3DGS / UE5 / 常见坑 |
+| [RESULTS.md](RESULTS.md) | 全部量化结论与证据索引（可复核） |
+| [KNOWN_ISSUES.md](KNOWN_ISSUES.md) | **动手前必读**：规格/代码差异、文档漂移、环境限制 |
+| [GITHUB_ABOUT.md](GITHUB_ABOUT.md) | 仓库描述 / topics / 首次发布说明（上传用） |
 | [SETUP.md](SETUP.md) | 环境搭建（Python / Ollama / UE5 / 真机前置） |
+| [../AGENTS.md](../AGENTS.md) | **AI Agent 权威指南**（仓库地图/基线命令/硬约束/playbook/已知边界） |
+| [AGENT_PROMPT.md](AGENT_PROMPT.md) | **复制给其他 Agent 的交接提示词**（中/英） |
 | [../llm_drone/README.md](../llm_drone/README.md) | Phase-1 工程使用说明 |
 | [../pipeline/README.md](../pipeline/README.md) | Phase-0 3DGS 流水线说明 |
 | [../capture/README.md](../capture/README.md) | Phase-0 UE5 合成航拍数据生成说明 |
@@ -47,6 +53,7 @@
 | [research/04_真实DJI样本元数据验证.md](research/04_真实DJI样本元数据验证.md) | 真实样片元数据实测 |
 | [research/05_DJI_Terra与生态3DGS能力.md](research/05_DJI_Terra与生态3DGS能力.md) | DJI Terra / 生态 3DGS |
 | [research/06_Mini4Pro_3DGS采集SOP.md](research/06_Mini4Pro_3DGS采集SOP.md) | Mini 4 Pro 采集 SOP |
+| [research/07_复核_报告第4章差异清单.md](research/07_复核_报告第4章差异清单.md) | 对报告第 4 章的复核与修正清单 |
 | [research/08_MSDKv5_Android使用方法.md](research/08_MSDKv5_Android使用方法.md) | **MSDK v5 代码级使用指南** |
 | [research/09_MSDKv4_使用方法与Mini2链路.md](research/09_MSDKv4_使用方法与Mini2链路.md) | MSDK v4 / Mini 2 链路 |
 | [research/10_KMZ_WPML航线格式与任务下发.md](research/10_KMZ_WPML航线格式与任务下发.md) | KMZ/WPML 航线格式与下发 |

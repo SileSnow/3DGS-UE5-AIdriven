@@ -1,5 +1,7 @@
 # 贡献指南（Contributing）
 
+> **AI Agent 请先读 [AGENTS.md](AGENTS.md)**（权威 Agent 指南）；本文是面向人类贡献者的流程说明，Agent 同样适用。
+
 感谢参与本项目！本仓库包含两个阶段：**Phase-0（DJI Mini × UE5 × 3DGS 可行性验证）** 与 **Phase-1（LLM Tool-Call 调度无人机）**。提交前请阅读对应子项目的 README 与规格。
 
 ## 1. 开发环境

@@ -5,7 +5,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 import matplotlib.font_manager as fm
-OUT = r"C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs\report\figures"
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "figures")
 fp = r"C:\Windows\Fonts\msyh.ttc"
 if os.path.exists(fp):
     fm.fontManager.addfont(fp); plt.rcParams["font.family"] = fm.FontProperties(fname=fp).get_name()

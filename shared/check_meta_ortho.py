@@ -1,5 +1,5 @@
 import json, numpy as np, os
-base = r'C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs\\data\\synthetic\\capture'
+base = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "synthetic", "capture")
 meta = json.load(open(os.path.join(base, 'metadata.json'), encoding='utf-8'))
 print('frames', len(meta['frames']))
 bad = 0; maxerr = 0.0

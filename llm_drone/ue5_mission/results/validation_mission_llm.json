@@ -1,14 +1,14 @@
 {
   "ok": true,
   "generated_at": "2026-11-08T21:57:53+08:00",
-  "out_dir": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission_llm",
-  "mission_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\demo\\mission_grid_campus.json",
+  "out_dir": "<repo>\\data\\synthetic\\mission_llm",
+  "mission_file": "<repo>\\llm_drone\\demo\\mission_grid_campus.json",
   "checks": [
     {
       "name": "metadata_exists",
       "status": "pass",
       "ok": true,
-      "detail": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission_llm\\metadata.json"
+      "detail": "<repo>\\data\\synthetic\\mission_llm\\metadata.json"
     },
     {
       "name": "metadata_schema_keys",
@@ -183,7 +183,7 @@
       "name": "contact_sheet",
       "status": "pass",
       "ok": true,
-      "detail": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\ue5_mission\\results\\contact_sheet_mission_llm.png"
+      "detail": "<repo>\\llm_drone\\ue5_mission\\results\\contact_sheet_mission_llm.png"
     }
   ],
   "problems": [],
@@ -235,7 +235,7 @@
         "render_seconds": 27.36,
         "avg_frame_seconds": 0.3007
       },
-      "log_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\logs\\ue5-mission\\run_m-001_20261108_215639.json",
+      "log_file": "<repo>\\llm_drone\\logs\\ue5-mission\\run_m-001_20261108_215639.json",
       "c2w_max_diff_vs_capture": 0.0
     },
     "n_checks_pass": 16,
@@ -2793,8 +2793,8 @@
       "timestamp": 382.948
     }
   ],
-  "metadata_file": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\synthetic\\mission_llm\\metadata.json",
-  "contact_sheet": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\llm_drone\\ue5_mission\\results\\contact_sheet_mission_llm.png",
+  "metadata_file": "<repo>\\data\\synthetic\\mission_llm\\metadata.json",
+  "contact_sheet": "<repo>\\llm_drone\\ue5_mission\\results\\contact_sheet_mission_llm.png",
   "capture_constants": {
     "width": 1600,
     "height": 1200,

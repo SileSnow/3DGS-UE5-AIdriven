@@ -3,7 +3,7 @@
 import json, math, os, subprocess, sys
 from PIL import Image, ImageDraw, ImageFont
 
-ROOT = r"C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = os.path.join(ROOT, "report", "flight_raw")
 PLAN = os.path.join(ROOT, "report", "flight_plan.json")
 AUDIO = os.path.join(ROOT, "report", "audio", "narration_mix.wav")

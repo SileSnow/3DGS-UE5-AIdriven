@@ -60,7 +60,14 @@ def parse_args():
     parser.add_argument("--sun", type=float, default=22.0, help="sun light intensity in lux")
     parser.add_argument("--limit", type=int, default=0, help="render only the first N photo points")
     parser.add_argument("--no-clean", action="store_true", help="keep existing PNGs in <out>/images")
-    return parser.parse_args(argv)
+    parser.add_argument("--scene-detail", default="base", choices=["base", "v3"],
+                        help="base = capture campus scene; v3 = campus + report/scene_v3 detail enhancement")
+    parser.add_argument("--gpu-duty", type=float, default=1.0,
+                        help="GPU duty cycle pacing (1.0 = no sleep; 0.25 = sleep 3x render time per frame)")
+    parsed = parser.parse_args(argv)
+    if not (0.0 < parsed.gpu_duty <= 1.0):
+        parser.error("--gpu-duty must be in (0, 1]")
+    return parsed
 
 
 def resolve_path(path, want_file=False):
@@ -138,6 +145,31 @@ def render_one(world, actor, component, render_target, pose, images_dir):
     return C.render_pose(world, actor, component, render_target, render_pose, images_dir)
 
 
+def apply_v3_post_process(component):
+    """Match the report/scene_v3 flight look (bloom / vignette / grain / motion blur)."""
+    try:
+        pp = component.get_editor_property("post_process_settings")
+    except Exception as exc:
+        C.log_warn("v3 post process settings unavailable: %s" % exc)
+        return
+    settings = (
+        ("override_bloom_intensity", True), ("bloom_intensity", 0.12),
+        ("override_vignette_intensity", True), ("vignette_intensity", 0.22),
+        ("override_film_grain_intensity", True), ("film_grain_intensity", 0.012),
+        ("override_scene_fringe_intensity", True), ("scene_fringe_intensity", 0.0),
+        ("override_motion_blur_amount", True), ("motion_blur_amount", 0.12),
+    )
+    for name, value in settings:
+        try:
+            pp.set_editor_property(name, value)
+        except Exception:
+            pass
+    try:
+        component.set_editor_property("post_process_settings", pp)
+    except Exception as exc:
+        C.log_warn("could not apply v3 post process settings: %s" % exc)
+
+
 def main():
     args = parse_args()
     started = time.time()
@@ -172,9 +204,23 @@ def main():
     actors = C.count_generated()
     C.log("scene ready: %d actors in %.2fs (sun=%.1f lux)" % (actors, scene_seconds, args.sun))
 
+    detail_seconds = 0.0
+    if args.scene_detail == "v3":
+        v3_dir = os.path.join(REPO_ROOT, "report", "scene_v3")
+        if v3_dir not in sys.path:
+            sys.path.insert(0, v3_dir)
+        import scene_detail_v3 as D  # noqa: E402
+        t_detail = time.perf_counter()
+        D.enhance_scene(world)
+        detail_seconds = time.perf_counter() - t_detail
+        actors = C.count_generated()
+        C.log("v3 scene detail applied: %.2fs, actors=%d" % (detail_seconds, actors))
+
     t0 = time.perf_counter()
     actor, component, render_target = C.create_capture_rig(world, exposure=float(args.exposure))
     rig_seconds = time.perf_counter() - t0
+    if args.scene_detail == "v3":
+        apply_v3_post_process(component)
 
     per_frame = []
     c2w_diffs = []
@@ -184,6 +230,9 @@ def main():
         for i, pose in enumerate(poses):
             ok, elapsed, file_name, full_path = render_one(
                 world, actor, component, render_target, pose, images_dir)
+            if args.gpu_duty < 1.0 and elapsed > 0:
+                # keep the *time-averaged* GPU utilisation at/below args.gpu_duty
+                time.sleep(elapsed * (1.0 / args.gpu_duty - 1.0))
             c2w_capture = C.c2w_from_pose(pose["loc_cm"], pose["yaw"], pose["pitch"], pose["roll"])
             c2w_diff = max(abs(float(a) - float(b))
                            for a, b in zip(pose["c2w"], c2w_capture))
@@ -217,8 +266,11 @@ def main():
         "scene_seed": C.SCENE_SEED,
         "exposure": float(args.exposure),
         "sun_intensity_lux": float(args.sun),
+        "scene_detail": args.scene_detail,
+        "gpu_duty": float(args.gpu_duty),
         "render": {
             "scene_build_seconds": round(scene_seconds, 3),
+            "scene_detail_seconds": round(detail_seconds, 3),
             "create_rig_seconds": round(rig_seconds, 3),
             "render_seconds": round(render_seconds, 3),
             "avg_frame_seconds": round(avg_frame, 4),
@@ -252,6 +304,8 @@ def main():
         "fov_horizontal_deg": round(C.FOV_H_DEG, 4),
         "exposure": float(args.exposure),
         "sun_intensity_lux": float(args.sun),
+        "scene_detail": args.scene_detail,
+        "gpu_duty": float(args.gpu_duty),
         "scene_actors": actors,
         "timing": {
             "script_seconds": round(time.time() - started, 3),

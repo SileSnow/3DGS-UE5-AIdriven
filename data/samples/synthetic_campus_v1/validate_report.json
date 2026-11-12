@@ -1,6 +1,6 @@
 {
-  "data": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\sample\\synthetic_campus_v1",
-  "metadata": "C:\\Users\\Lenovo\\Desktop\\GAIA项目\\dji_ue5_3dgs\\data\\sample\\synthetic_campus_v1\\metadata.json",
+  "data": "<repo>\\data\\sample\\synthetic_campus_v1",
+  "metadata": "<repo>\\data\\sample\\synthetic_campus_v1\\metadata.json",
   "n_frames": 24,
   "sampled_frames": [
     "images/0001.png",

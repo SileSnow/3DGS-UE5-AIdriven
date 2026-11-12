@@ -381,7 +381,9 @@ void ASplatTestActor::DrawDebugSplatPoints()
 	for (int32 i = 0; i < MaxPoints; ++i)
 	{
 		const FGaussianSplattingPoint& P = Points[i];
-		const float Size = FMath::Clamp(FMath::Max3(P.Scale.X, P.Scale.Y, P.Scale.Z) * 0.6f, 1.5f, 25.f);
+		// Interactive preview: small screen-space points so the campus outline stays readable
+		// (the debug-draw point size is in screen pixels here; 25 px merged into a blob).
+		const float Size = FMath::Clamp(FMath::Max3(P.Scale.X, P.Scale.Y, P.Scale.Z) * 0.25f, 1.2f, 3.0f);
 		DrawDebugPoint(World, FVector(P.Position), Size, P.Color.ToFColor(true), true, -1.f, 0);
 	}
 	LogLine(FString::Printf(TEXT("debug splat points drawn: %d"), MaxPoints));

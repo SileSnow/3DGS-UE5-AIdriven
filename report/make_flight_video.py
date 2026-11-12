@@ -15,7 +15,7 @@ import sys
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
-ROOT = r"C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = os.path.join(ROOT, "report", "flight_raw")
 PLAN = os.path.join(ROOT, "report", "flight_plan.json")
 OUT = os.path.join(ROOT, "report", "DJI_Mini_UE5_3DGS_飞行演示.mp4")

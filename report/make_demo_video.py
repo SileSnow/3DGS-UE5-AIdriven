@@ -4,7 +4,7 @@ import os, sys, subprocess, json, math
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import numpy as np
 
-ROOT = r"C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_MP4 = os.path.join(ROOT, "report", "DJI_Mini_UE5_3DGS_演示视频.mp4")
 OUT_POSTER = os.path.join(ROOT, "report", "DJI_Mini_UE5_3DGS_演示视频_封面.png")
 W, H = 1920, 1080

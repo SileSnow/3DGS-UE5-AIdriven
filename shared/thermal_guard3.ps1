@@ -1,5 +1,5 @@
 $ErrorActionPreference = 'SilentlyContinue'
-$log = 'C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs\logs\thermal_monitor.log'
+$log = Join-Path (Split-Path $PSScriptRoot -Parent) 'logs\thermal_monitor.log'
 function T { $c = Get-Counter '\Thermal Zone Information(*)\Temperature' -ErrorAction SilentlyContinue; $m = ($c.CounterSamples | Measure-Object -Property CookedValue -Maximum).Maximum; if ($m) { return [math]::Round($m - 273.15, 1) } return $null }
 function G { $v = nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader 2>$null; if ($v) { return [math]::Round([double]($v | Select-Object -First 1), 1) } return $null }
 function P { return @(Get-Process python,UnrealEditor -ErrorAction SilentlyContinue | Where-Object { $_.WorkingSet64 -gt 100MB }) }

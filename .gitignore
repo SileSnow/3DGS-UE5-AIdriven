@@ -90,3 +90,10 @@ env/
 # ---------- Phase-0 v3 视频/场景增强（本地进行中迭代，不入库） ----------
 /report/scene_v3/
 /capture/UE5Synth/Content/Synth/
+
+# ---------- Phase-0 v3 视频原始帧 / 场景增强（本地保留，不入库） ----------
+/report/flight_v3_raw/
+/capture/UE5Synth/Content/SynthV3/
+
+# ---------- 演示任务源文件（22 KB，保留以便复现 91 帧任务渲染） ----------
+!/llm_drone/demo/mission_grid_campus.json

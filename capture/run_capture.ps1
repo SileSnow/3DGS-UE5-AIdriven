@@ -8,7 +8,7 @@
     QUIT_EDITOR).  All UE output is tee'd to logs/capture/ue_<mode>_<timestamp>.log.
 
     The project is addressed through the ASCII junction C:\UEW (UE has known issues with
-    non-ASCII paths).  C:\UEW -> C:\Users\Lenovo\Desktop\GAIA项目
+    non-ASCII paths).  C:\UEW -> <repo-parent>
 
 .PARAMETER Mode
     build | probe | sample | full

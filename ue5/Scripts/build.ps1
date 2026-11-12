@@ -4,10 +4,10 @@
 
 .DESCRIPTION
     IMPORTANT - non-ASCII path constraint:
-    The workspace lives under "C:\Users\Lenovo\Desktop\GAIA项目" which contains CJK characters.
+    The workspace lives under "<repo-parent>" which contains CJK characters.
     MSVC 14.5 / Unreal Build Accelerator split such paths and fail with C1083, so all builds and
     editor runs MUST go through the ASCII junction:
-        C:\UEW  ->  C:\Users\Lenovo\Desktop\GAIA项目
+        C:\UEW  ->  <repo-parent>
     The junction is created once by the team lead (mklink /J). This script refuses to run without it.
 
 .PARAMETER Clean
@@ -35,7 +35,7 @@ $LOG_DIR = 'C:/UEW/dji_ue5_3dgs/logs/ue5'
 $PROJECT_DIR = Split-Path $PROJECT -Parent
 
 if (-not (Test-Path 'C:/UEW')) {
-    throw "ASCII junction C:\UEW is missing. Create it with: cmd /c mklink /J C:\UEW C:\Users\Lenovo\Desktop\GAIA项目"
+    throw "ASCII junction C:\UEW is missing. Create it with: cmd /c mklink /J C:\UEW <repo-parent>"
 }
 if (-not (Test-Path $BUILD_BAT)) { throw "Build.bat not found: $BUILD_BAT" }
 if (-not (Test-Path $PROJECT)) { throw "uproject not found: $PROJECT" }

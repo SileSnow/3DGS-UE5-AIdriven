@@ -10,7 +10,7 @@
     quits by itself (PythonScriptPlugin defers QUIT_EDITOR, same as capture/run_capture.ps1).
 
     Paths: the project is addressed through the ASCII junction C:\UEW
-    (C:\UEW -> C:\Users\Lenovo\Desktop\GAIA项目) because UE has known problems with
+    (C:\UEW -> <repo-parent>) because UE has known problems with
     non-ASCII launch paths.  The -Mission / -Out values are mapped through the same junction
     automatically; everything passed to UE uses forward slashes.
 
@@ -55,6 +55,7 @@ param(
     [double]$Sun = 22.0,
     [int]$Limit = 0,
     [int]$TimeoutSec = 900,
+    [string]$ExtraArgs = "",
     [switch]$Force,
     [switch]$DryRun
 )
@@ -157,6 +158,7 @@ $pyArgs = @(
     "--sun", $Sun.ToString($inv)
 )
 if ($Limit -gt 0) { $pyArgs += @("--limit", "$Limit") }
+if (-not [string]::IsNullOrWhiteSpace($ExtraArgs)) { $pyArgs += $ExtraArgs.Trim() }
 $pyArgLine = ($pyArgs -join " ")
 
 $argLine = ($projectUe + " " +
@@ -259,6 +261,7 @@ $verdict = @{
     exposure = $Exposure
     sun = $Sun
     limit = $Limit
+    extra_args = $ExtraArgs
     elapsed_seconds = $elapsed
     timed_out = $timedOut
     exit_code = $exitCode

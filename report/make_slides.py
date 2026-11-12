@@ -8,7 +8,7 @@ from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from PIL import Image
 
-BASE = r"C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs"
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FIG = os.path.join(BASE, "report", "figures")
 OUT = os.path.join(BASE, "report", "DJI_Mini_UE5_3DGS_可行性验证_简报.pptx")
 

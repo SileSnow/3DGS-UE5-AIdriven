@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 import matplotlib.font_manager as fm
 
-OUT = r"C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs\report\figures"
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "figures")
 os.makedirs(OUT, exist_ok=True)
 fp = r"C:\Windows\Fonts\msyh.ttc"
 if os.path.exists(fp):

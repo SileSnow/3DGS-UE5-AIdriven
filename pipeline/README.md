@@ -77,7 +77,7 @@ powershell -ExecutionPolicy Bypass -File pipeline\run_pipeline.ps1 -Data data/sy
 * 分辨率：`--res-scale» 相对原图缩放（960x720 -> 480x360 = 0.5；1600x1200 -> 640x480 = 0.4）
 * splat 上限：`--max-splats 200000»；tile 候选数 `--max-per-tile 64»；tile 16x16
 * 初始点数 `--init-points 30000»；SH 阶数 `--sh-degree 0»（可 0-3）
-* densify：iter 500 起、每 100 次、到总迭代数 55% 结束；梯度阈值 2e-4（像素单位）；剪枝 opacity<0.005
+* densify：iter 500 起、每 100 次、到总迭代数 55% 结束；梯度阈值默认 **1e-8**（像素单位，可用 --grad-thresh 覆盖）；剪枝 opacity<0.005
 
 ## 已知限制
 

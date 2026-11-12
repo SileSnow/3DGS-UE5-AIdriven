@@ -1,6 +1,6 @@
 import re
 from pypdf import PdfReader
-p = r'C:\Users\Lenovo\Desktop\GAIA项目\dji_ue5_3dgs\\shared\\terra_release_notes_5.0.2.pdf'
+p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "terra_release_notes_5.0.2.pdf")
 r = PdfReader(p)
 txt = '\n'.join((pg.extract_text() or '') for pg in r.pages)
 print('PAGES', len(r.pages), 'CHARS', len(txt))

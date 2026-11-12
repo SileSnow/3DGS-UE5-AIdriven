@@ -1,0 +1,90 @@
+{
+  "status": "ok",
+  "generated_at": "2026-11-12T10:03:29+08:00",
+  "mission_file": "C:\\UEW\\dji_ue5_3dgs\\llm_drone\\demo\\mission_grid_campus.json",
+  "mission_id": "m-001",
+  "source_format": "orchestrator-demo",
+  "out_dir": "C:\\UEW\\dji_ue5_3dgs\\data\\synthetic\\_smoke_mission_v3",
+  "images_dir": "C:\\UEW\\dji_ue5_3dgs\\data\\synthetic\\_smoke_mission_v3\\images",
+  "metadata": "C:\\UEW\\dji_ue5_3dgs\\data\\synthetic\\_smoke_mission_v3\\metadata.json",
+  "n_frames": 3,
+  "width": 1600,
+  "height": 1200,
+  "fx": 1148.3429,
+  "fy": 1148.3429,
+  "fov_horizontal_deg": 69.7265,
+  "exposure": 0.55,
+  "sun_intensity_lux": 18.0,
+  "scene_detail": "v3",
+  "gpu_duty": 0.25,
+  "scene_actors": 2102,
+  "timing": {
+    "script_seconds": 14.109,
+    "scene_build_seconds": 2.554,
+    "create_rig_seconds": 0.027,
+    "render_seconds": 4.127,
+    "avg_frame_seconds": 1.3757
+  },
+  "per_frame": [
+    {
+      "index": 1,
+      "waypoint_index": 0,
+      "file": "0001.png",
+      "seconds": 0.5322,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 2,
+      "waypoint_index": 1,
+      "file": "0002.png",
+      "seconds": 0.2483,
+      "c2w_max_diff_vs_capture": 0.0
+    },
+    {
+      "index": 3,
+      "waypoint_index": 2,
+      "file": "0003.png",
+      "seconds": 0.2482,
+      "c2w_max_diff_vs_capture": 0.0
+    }
+  ],
+  "c2w_max_diff_vs_capture": 0.0,
+  "engine_version": "5.8.4-58902052+++UE5+Release-5.8",
+  "ue_python": "3.11.8",
+  "world_consistency": {
+    "intrinsics_match": true,
+    "origin_match": true,
+    "camera": {
+      "width": 1600,
+      "height": 1200,
+      "fx": 1148.3429,
+      "fy": 1148.3429,
+      "cx": 800.0,
+      "cy": 600.0,
+      "fov_horizontal_deg": 69.7265
+    },
+    "origin_wgs84": {
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "alt": 43.0
+    }
+  },
+  "started_at": "2026-11-12T10:03:15+08:00",
+  "argv": [
+    "C:/UEW/dji_ue5_3dgs/llm_drone/ue5_mission/render_mission.py",
+    "--mission",
+    "C:/UEW/dji_ue5_3dgs/llm_drone/demo/mission_grid_campus.json",
+    "--out",
+    "C:/UEW/dji_ue5_3dgs/data/synthetic/_smoke_mission_v3",
+    "--exposure",
+    "0.55",
+    "--sun",
+    "18",
+    "--limit",
+    "3",
+    "--scene-detail",
+    "v3",
+    "--gpu-duty",
+    "0.25"
+  ]
+}
