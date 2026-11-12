@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import time
 import unittest
 
 from sim._support import SimFixture
@@ -68,9 +69,22 @@ class AuditTest(unittest.TestCase):
     # -------------------------------------------------------------- audit endpoint
     def test_audit_endpoint_matches_file(self):
         self.fx.ok_command("get_telemetry")
-        events = self.fx.audit_events(self.run_id)
-        body = self.fx.get("/v1/audit?since_seq=0")
+        # 服务端 tick 线程可能在本测试读取文件与查询端点之间追加事件（如 telemetry_keyframe），
+        # 直接比较会产生偶发 5!=4 的竞态。这里轮询到“文件 == 端点”稳定为止，再断言。
+        deadline = time.time() + 3.0
+        events = body = None
+        while time.time() < deadline:
+            events = self.fx.audit_events(self.run_id)
+            body = self.fx.get("/v1/audit?since_seq=0")
+            if (body.get("ok") and events
+                    and body.get("last_seq") == events[-1]["seq"]
+                    and [e["seq"] for e in body["events"]] == [e["seq"] for e in events]):
+                break
+            time.sleep(0.02)
+        self.assertIsNotNone(events)
+        self.assertIsNotNone(body)
         self.assertTrue(body["ok"])
+        self.assertTrue(events)
         self.assertEqual(body["last_seq"], events[-1]["seq"])
         self.assertEqual([e["seq"] for e in body["events"]], [e["seq"] for e in events])
         cut = events[2]["seq"]

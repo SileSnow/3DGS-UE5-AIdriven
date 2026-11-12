@@ -5,6 +5,11 @@ on:
     branches: [main, master]
   pull_request:
 
+env:
+  # GitHub Actions 的 Windows runner 默认 stdout 是 cp1252 管道，本项目输出含中文；
+  # 不开 UTF-8 会触发 UnicodeEncodeError（验收脚本/服务端日志）。
+  PYTHONUTF8: "1"
+
 jobs:
   llm-drone-unit-tests:
     name: llm_drone unit tests

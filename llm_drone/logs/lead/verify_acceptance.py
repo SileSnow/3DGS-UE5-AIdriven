@@ -24,6 +24,14 @@ SPEC = os.path.join(LLM_DRONE, "spec")
 PROJECT = os.path.abspath(os.path.join(LLM_DRONE, ".."))
 AUDIT_DIR = os.path.join(LLM_DRONE, "logs", "drone-sim")
 
+# 输出含中文：GitHub Actions / 英文 Windows 的 stdout 可能是 cp1252 管道，
+# print 会 UnicodeEncodeError。这里强制 UTF-8（落盘文件本来就是 UTF-8）。
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except (AttributeError, ValueError):  # pragma: no cover
+    pass
+
 RESULTS = []
 DETAILS = {}
 
