@@ -1,0 +1,146 @@
+{
+  "ts": "2026-11-12T22:24:51",
+  "base_url": "http://127.0.0.1:8766",
+  "checks_total": 27,
+  "checks_passed": 27,
+  "checks_failed": 0,
+  "passed": true,
+  "results": [
+    {
+      "check": "health: /v1/health 可用",
+      "ok": true,
+      "detail": "{\"ok\": true, \"backend\": \"sim\", \"version\": \"1.0.0\", \"mode\": \"sim\", \"time_scale\": 20.0, \"state\": \"idle\", \"ts\": \"2026-11-12T22:24:36.318+08:00\", \"uptime_s\": 0.17, "
+    },
+    {
+      "check": "telemetry: 字段齐备",
+      "ok": true,
+      "detail": "missing=[]"
+    },
+    {
+      "check": "telemetry: 初始 idle/电量100",
+      "ok": true,
+      "detail": "state=idle battery=99.98"
+    },
+    {
+      "check": "reset: 场景重置",
+      "ok": true,
+      "detail": "run_id=lead_222436_pos"
+    },
+    {
+      "check": "正向: takeoff(40, confirm) accepted",
+      "ok": true,
+      "detail": "\"taking_off\""
+    },
+    {
+      "check": "正向: 爬升到 40m 悬停",
+      "ok": true,
+      "detail": "alt=40.00 state=hovering"
+    },
+    {
+      "check": "正向: goto_waypoints(sample_mission) accepted",
+      "ok": true,
+      "detail": "mission_id=lead-sample-grid err=null"
+    },
+    {
+      "check": "正向: mission completed",
+      "ok": true,
+      "detail": "state=completed mission_id=lead-sample-grid"
+    },
+    {
+      "check": "CONTRACT §6-2 正向: 拍照数 >= 16",
+      "ok": true,
+      "detail": "n_photos=16"
+    },
+    {
+      "check": "c2w 正交性（每张照片）",
+      "ok": true,
+      "detail": "n=16"
+    },
+    {
+      "check": "照片元数据: 高度 40m / 云台 -45°",
+      "ok": true,
+      "detail": "alt_ok=True gimbal_ok=True"
+    },
+    {
+      "check": "CONTRACT §6-3: mission stats 完整",
+      "ok": true,
+      "detail": "{\"distance_m\": 319.239, \"duration_s\": 164.0, \"n_photos\": 16}"
+    },
+    {
+      "check": "正向: return_to_home accepted",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "check": "正向: 返航后降落（idle, alt<0.6m）",
+      "ok": true,
+      "detail": "state=idle alt=0.0"
+    },
+    {
+      "check": "A1 超限高: 返回 E_ALT_LIMIT",
+      "ok": true,
+      "detail": "ok=False code=E_ALT_LIMIT msg=takeoff.altitude_m=200.00 > 最大相对高度 120.0 m"
+    },
+    {
+      "check": "A2 飞出围栏: 返回 E_GEOFENCE",
+      "ok": true,
+      "detail": "ok=False code=E_GEOFENCE msg=waypoint[0] 距圆形围栏圆心 771.6 m > 半径 300.0 m"
+    },
+    {
+      "check": "A3 飞禁飞区: 返回 E_NOFLY",
+      "ok": true,
+      "detail": "ok=False code=E_NOFLY msg=waypoint[0] 位于禁飞区 'default_no_fly' 内（高度 40.0 m ∈ [0, 120]）"
+    },
+    {
+      "check": "A4 低电量起飞: 返回 E_BATTERY_TAKEOFF",
+      "ok": true,
+      "detail": "ok=False code=E_BATTERY_TAKEOFF msg=起飞电量不足：22.0% < 30.0%"
+    },
+    {
+      "check": "A5 无确认执行: 返回 E_CONFIRM_REQUIRED",
+      "ok": true,
+      "detail": "ok=False code=E_CONFIRM_REQUIRED msg=tool 'goto_waypoints' 必须带 confirm=true（当前 confirm=False）"
+    },
+    {
+      "check": "A6 飞行中低电量: 强制 RTH 并落地",
+      "ok": true,
+      "detail": "final_state=idle force_rth_events=1"
+    },
+    {
+      "check": "A7 GPS 质量差: 返回 E_GPS",
+      "ok": true,
+      "detail": "ok=False code=E_GPS msg=GPS 质量不足：fix=1（需>=3）、satellites=6（需>=10）"
+    },
+    {
+      "check": "A8 遥控链路断开: 返回 E_RC_LINK",
+      "ok": true,
+      "detail": "ok=False code=E_RC_LINK msg=遥控链路未连接（rc.connected=false）"
+    },
+    {
+      "check": "A9a 非法参数: 返回 E_PARAM_RANGE",
+      "ok": true,
+      "detail": "ok=False code=E_PARAM_RANGE msg=takeoff.altitude_m=-5.00 必须 > 0"
+    },
+    {
+      "check": "A9b 未知工具: 返回 E_UNKNOWN_TOOL",
+      "ok": true,
+      "detail": "ok=False code=E_UNKNOWN_TOOL"
+    },
+    {
+      "check": "A10 real 模式未接入: 返回 E_REAL_NOT_AVAILABLE",
+      "ok": true,
+      "detail": "ok=False code=E_REAL_NOT_AVAILABLE msg=Phase1 仅仿真后端，set_mode(real) 不可用（allow_real_mode=false）"
+    },
+    {
+      "check": "审计: 近 1h audit_*.jsonl 可逐行 json 解析且字段齐备",
+      "ok": true,
+      "detail": "files=12 bad=0"
+    },
+    {
+      "check": "审计: 关键事件类型齐备",
+      "ok": true,
+      "detail": "events=['command_accepted', 'command_received', 'command_rejected', 'force_rth', 'landed', 'mission_completed', 'mission_started', 'photo_captured', 'rth_started', 'safety_check', 'server_start', 'sim_config', 'sim_reset', 'takeoff_completed']"
+    }
+  ],
+  "details": {}
+}
