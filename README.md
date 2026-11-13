@@ -84,6 +84,10 @@ python -m orchestrator.run_demo --agent-url http://127.0.0.1:8765 --scenario P1 
 
 完整上手（含真实 LLM、3DGS 训练、UE5 渲染、常见坑）：见 **[docs/QUICKSTART.md](docs/QUICKSTART.md)**。
 
+### 5.1 不想装 UE？直接用打包演示包
+
+[**Windows 免安装演示包**](docs/DEMO_WIN64.md)（GitHub Release v1.0 资产，约 1 GB）：解压 → 双击 `run_demo.bat`，即可在 UE5.8 packaged build 里实时查看 v6 3DGS 模型；无需安装 Unreal Engine / CUDA / Python。
+
 ## 6. 验证结果摘要
 
 ### Phase-1（LLM 安全调度）

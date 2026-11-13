@@ -59,6 +59,10 @@ Phase-1（LLM Tool-Call 安全调度）
 - v6：gsplat CUDA 后端（960×720、199,298 splat、40k iter、val PSNR 16.62 dB），
   每 iter 4.5 ms（puretorch 的 40×）、显存 260 MB；UE5 加载 PLY + 演示视频流程复现
 （视频/PLY 体积大，不入库；复现命令见 docs/QUICKSTART.md）
+
+Release 资产
+- DJI3DGS_UE_Win64_Demo_v1.0.zip：UE5.8 packaged build（cooked，免安装），
+  解压双击 run_demo.bat 即可实时预览 v6 3DGS 模型（约 1 GB；Path B 点云预览）
 ```
 
 ## 5. 上传前检查清单

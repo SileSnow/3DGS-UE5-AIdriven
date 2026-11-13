@@ -11,6 +11,7 @@
 | [RESULTS.md](RESULTS.md) | 全部量化结论与证据索引（可复核） |
 | [KNOWN_ISSUES.md](KNOWN_ISSUES.md) | **动手前必读**：规格/代码差异、文档漂移、环境限制 |
 | [GITHUB_ABOUT.md](GITHUB_ABOUT.md) | 仓库描述 / topics / 首次发布说明（上传用） |
+| [DEMO_WIN64.md](DEMO_WIN64.md) | Windows 免安装 UE5.8 演示包（下载 / 运行 / 重新打包） |
 | [SETUP.md](SETUP.md) | 环境搭建（Python / Ollama / UE5 / 真机前置） |
 | [../AGENTS.md](../AGENTS.md) | **AI Agent 权威指南**（仓库地图/基线命令/硬约束/playbook/已知边界） |
 | [AGENT_PROMPT.md](AGENT_PROMPT.md) | **复制给其他 Agent 的交接提示词**（中/英） |
