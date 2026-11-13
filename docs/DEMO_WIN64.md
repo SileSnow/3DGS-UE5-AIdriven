@@ -43,4 +43,9 @@ $proj = 'C:/UEW/dji_ue5_3dgs/ue5/DJI3DGS_UE/DJI3DGS_UE.uproject'
 ## 5. 校验信息
 
 - 资产文件名：`DJI3DGS_UE_Win64_Demo_v1.0.zip`
-- 大小 / SHA256：见 GitHub Release 页面（下载后可用 `Get-FileHash` 核对）。
+- 大小：**436.7 MB**（1000.9 MB 解压后）
+- SHA256：`B69C442B208785DD12845D7ECEB91886DB879B2796C5E21C0B8776F8948FCF8A`
+- 下载后核对：`Get-FileHash .\DJI3DGS_UE_Win64_Demo_v1.0.zip -Algorithm SHA256`
+
+实测（本机 RTX 5060 Laptop 8GB）：从解压后的 `Windows/DJI3DGS_UE.exe` 运行 4 视角渲染，
+加载 199,298 splats 约 51–182 ms，1280×720 Path B 调试点预览约 11 fps。
