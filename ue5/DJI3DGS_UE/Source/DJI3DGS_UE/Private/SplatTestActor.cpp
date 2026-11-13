@@ -403,9 +403,14 @@ void ASplatTestActor::SetupNiagaraRenderer()
 	}
 	bNiagaraAssetLoaded = true;
 	NiagaraSystemRef = NiagaraSystem;
+#if WITH_EDITOR
 	LogLine(FString::Printf(TEXT("niagara system: ready=%d emitters=%d needsCompile=%d"),
 		NiagaraSystem->IsReadyToRun() ? 1 : 0, NiagaraSystem->GetNumEmitters(),
 		NiagaraSystem->NeedsRequestCompile() ? 1 : 0));
+#else
+	// NeedsRequestCompile/GetNumEmitters are editor-only in UE 5.8; packaged builds skip them.
+	LogLine(TEXT("niagara system loaded (packaged build)"));
+#endif
 
 	SplatNiagara = NewObject<UNiagaraComponent>(this, TEXT("SplatNiagara"));
 	SplatNiagara->SetupAttachment(SceneRoot);
@@ -418,6 +423,9 @@ void ASplatTestActor::SetupNiagaraRenderer()
 		UNiagaraFunctionLibrary::GetDataInterface<UNiagaraDataInterfaceGaussianSplattingPointCloud>(SplatNiagara, "PointCloud"))
 	{
 		ArrayDI->SetPointCloud(PointCloud);
+#if WITH_EDITOR
+		// SetParameterOverride is editor-only in UE 5.8; packaged builds use the
+		// directly assigned data interface above (runtime path).
 		UNiagaraDataInterfaceGaussianSplattingPointCloud* VariantDI =
 			CastChecked<UNiagaraDataInterfaceGaussianSplattingPointCloud>(DuplicateObject(ArrayDI, SplatNiagara));
 		VariantDI->SetPointCloud(PointCloud);
@@ -425,6 +433,9 @@ void ASplatTestActor::SetupNiagaraRenderer()
 			FNiagaraVariableBase(FNiagaraTypeDefinition(UNiagaraDataInterfaceGaussianSplattingPointCloud::StaticClass()), "PointCloud"),
 			FNiagaraVariant(VariantDI));
 		LogLine(TEXT("PointCloud data interface overridden"));
+#else
+		LogLine(TEXT("PointCloud data interface assigned (packaged build)"));
+#endif
 	}
 	else
 	{
@@ -434,12 +445,16 @@ void ASplatTestActor::SetupNiagaraRenderer()
 	if (UNiagaraDataInterfaceCurve* CurveDI = UNiagaraFunctionLibrary::GetDataInterface<UNiagaraDataInterfaceCurve>(SplatNiagara, "FeatureCurve"))
 	{
 		CurveDI->Curve = PointCloud->CalcFeatureCurve();
+#if WITH_EDITOR
 		CurveDI->UpdateLUT();
 		UNiagaraDataInterfaceCurve* VariantDI = CastChecked<UNiagaraDataInterfaceCurve>(DuplicateObject(CurveDI, SplatNiagara));
 		VariantDI->Curve = CurveDI->Curve;
 		SplatNiagara->SetParameterOverride(
 			FNiagaraVariableBase(FNiagaraTypeDefinition(UNiagaraDataInterfaceCurve::StaticClass()), "FeatureCurve"),
 			FNiagaraVariant(VariantDI));
+#else
+		LogLine(TEXT("FeatureCurve assigned (packaged build)"));
+#endif
 	}
 
 	// The offscreen capture target is created in SetupCapture() so it also works with -SplatNoNiagara=1.

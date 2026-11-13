@@ -76,6 +76,7 @@ env/
 **/Intermediate/
 **/Saved/
 **/DerivedDataCache/
+/ue5/DJI3DGS_UE/Build/
 **/.vs/
 *.sln
 *.suo
