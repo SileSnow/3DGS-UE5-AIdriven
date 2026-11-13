@@ -56,6 +56,8 @@ pipeline\.venv\Scripts\python.exe pipeline\03_train_3dgs.py ^
   ```
   标准路径 `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.5` 是 ASCII 路径，可直接作为 `CUDA_HOME`；
 - 实测：安装 4.71 GB，`nvcc 13.5.37`；`torch 2.13.0+cu130` 的 `load_inline` CUDA 扩展编译 79 s 并在 GPU 上跑通；
+- 同机已用该标准 toolkit 重新编译 **gsplat 1.5.3**（29 个源文件 / 307 s / 17.7 MB pyd），运行时验证通过；
+  pip 的 `nvidia-cuda-nvcc` 工具链方案仅作备选；
 - 只跑 puretorch 后端则**不需要** CUDA；gsplat 编译还要处理中文路径（源码放 ASCII 目录）和 1.5.3 的两个未用 API，
   详见 [KNOWN_ISSUES.md](KNOWN_ISSUES.md) §C。
 
