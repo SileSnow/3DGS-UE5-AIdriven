@@ -9,7 +9,7 @@
 |---|---|---|
 | OS | Windows 11（Phase-0 UE5/capture 需要） | Phase-1 Python 跨平台 |
 | Python | 3.12+（本项目 3.14.6 验证） | `llm_drone/` **仅标准库**，无需 pip install |
-| GPU | NVIDIA（3DGS 训练 + UE5 渲染） | 本项目 RTX 5060 Laptop 8GB / sm_120 / torch 2.13+cu130 |
+| GPU | NVIDIA（3DGS 训练 + UE5 渲染） | 本项目 RTX 5060 Laptop 8GB / sm_120 / torch 2.13+cu130；CUDA Toolkit 13.5 可选（见 §3.1） |
 | 内存 | 16 GB+ | 3DGS 训练与 UE5 同时跑较紧张，建议串行 |
 | Unreal Engine | **5.8.4** | Phase-0/UE5 任务渲染；需 Visual Studio 2026 (MSVC 14.51) 编译 C++ |
 | DJI 手机 App 开发 | Android Studio + JDK 17 + Android SDK 35 | 仅 Phase-2 真机桥需要 |
@@ -47,6 +47,17 @@ pipeline\.venv\Scripts\python.exe pipeline\03_train_3dgs.py ^
   --data data/synthetic/capture --out data/trained/capture/run1 ^
   --iters 3000 --res-scale 0.5 --backend puretorch
 ```
+
+### 3.1 可选：CUDA 后端（gsplat，约 40× 加速）
+
+- 推荐安装 **CUDA Toolkit 13.5**（本机 2026-11-13 实测）：
+  ```powershell
+  winget install --id Nvidia.CUDA --exact --silent --accept-package-agreements --accept-source-agreements
+  ```
+  标准路径 `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.5` 是 ASCII 路径，可直接作为 `CUDA_HOME`；
+- 实测：安装 4.71 GB，`nvcc 13.5.37`；`torch 2.13.0+cu130` 的 `load_inline` CUDA 扩展编译 79 s 并在 GPU 上跑通；
+- 只跑 puretorch 后端则**不需要** CUDA；gsplat 编译还要处理中文路径（源码放 ASCII 目录）和 1.5.3 的两个未用 API，
+  详见 [KNOWN_ISSUES.md](KNOWN_ISSUES.md) §C。
 
 ## 4. Unreal Engine 5.8.4（Phase-0 + UE5 任务渲染）
 

@@ -42,6 +42,10 @@
    - gsplat 的 `from-world 3DGS` 与 `2DGS backward` 两个 API 在本工具链有 nvcc↔MSVC 模板符号不匹配（LNK2019）；本项目不用它们，需在 ASCII 源码副本中 `#if 0` 掉实现并注释 `ext.cpp` 绑定；
    - 编译产物 + `gsplat/csrc.py` shim 放在 ASCII 目录（如 `C:\cuda_work`），**不入库**；
    - 本项目 `pipeline/puretorch_splatting/renderer.py` 的 gsplat 分支已适配：线性尺度、`packed=False` 保留 `means2d` 稠密梯度。
+   - **2026-11-13 更新（更简单的路径）**：本机已安装标准 **CUDA Toolkit 13.5**（winget `Nvidia.CUDA`，4.71 GB，`nvcc 13.5.37`，
+     `CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.5`）。该路径本身是 ASCII，可直接作为 `CUDA_HOME`，
+     不必再用 pip 的 `nvidia-cuda-nvcc` 包或 `C:\UEW\...\nvidia\cu13` 间接路径；`torch 2.13.0+cu130` 的 `load_inline`
+     CUDA 扩展已实测（编译 79 s、GPU 运行结果正确）。gsplat 源码仍需放 ASCII 副本目录（MSVC 中文路径限制不变）。
 3. **UE 渲染独占 GPU**：同一时间只能跑一个 UnrealEditor；脚本有 one-UE + 温度守门（≥80 °C 拒绝启动）。
 4. **puretorch 光栅化是 CPU 单线程瓶颈**：960×720/199k splat 约 189 ms/iter；同配置 gsplat 约 4.5 ms/iter（40×）。
 5. 本机 RTX 5060 Laptop 8 GB 可跑本项目全部流程；更大场景/更高分辨率建议 16 GB+。
