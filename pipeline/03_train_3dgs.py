@@ -165,6 +165,26 @@ def _cat_params(a, b):
     return torch.cat([a.detach(), b.detach()], dim=0).contiguous().requires_grad_(True)
 
 
+def sky_mask_for_view(view, device, margin_deg=2.0):
+    """Return (H,W) bool mask: True where the camera ray is above the horizon (sky).
+
+    Used to drop sky/background pixels from the L1 term on datasets that still
+    contain sky (old mission/oblique frames, and diagonal corners of shallow frames).
+    """
+    H, W = int(view["height"]), int(view["width"])
+    K = np.asarray(view["K"], np.float64)
+    fx, fy, cx, cy = float(K[0, 0]), float(K[1, 1]), float(K[0, 2]), float(K[1, 2])
+    ys = torch.arange(H, device=device, dtype=torch.float32).view(-1, 1) + 0.5
+    xs = torch.arange(W, device=device, dtype=torch.float32).view(1, -1) + 0.5
+    dx = (xs - cx) / fx
+    dy = (ys - cy) / fy
+    norm = torch.sqrt(dx * dx + dy * dy + 1.0)
+    dirs = torch.stack([dx / norm, dy / norm, torch.ones_like(dx) / norm], dim=-1)  # (H,W,3) cam
+    R = torch.as_tensor(np.asarray(view["R_cw"]), dtype=torch.float32, device=device)  # world->cam
+    world = dirs @ R  # cam -> world (row-vector form)
+    return world[..., 2] > math.sin(math.radians(margin_deg))
+
+
 def densify_and_prune(model, mean2d_grad_norm, scene_extent, opts, log_path):
     """简化版 3DGS densify/prune：clone 小尺度高梯度、split 大尺度高梯度、剪低不透明度/超尺度。"""
     if mean2d_grad_norm is None:
@@ -250,6 +270,9 @@ def densify_and_prune(model, mean2d_grad_norm, scene_extent, opts, log_path):
         ws = torch.exp(scales).max(dim=1).values
         bad = (op < opts["prune_opacity"]) | (ws > opts["prune_scale_frac"] * scene_extent) \
               | (~torch.isfinite(means)).any(dim=1) | (~torch.isfinite(scales)).any(dim=1)
+        # optional hard ground clamp during densify (z < -X cm) to kill far-field ground curtains
+        if opts.get("prune_below_z_cm") is not None:
+            bad = bad | (means[:, 2] < -float(opts["prune_below_z_cm"]))
         if bad.any():
             keep = ~bad
             means, quats = means[keep], quats[keep]
@@ -314,6 +337,12 @@ def main():
     ap.add_argument("--lr-scale", type=float, default=1.0)
     ap.add_argument("--eval-every", type=int, default=1000)
     ap.add_argument("--save-every", type=int, default=2000)
+    ap.add_argument("--sky-mask", action="store_true",
+                    help="mask pixels whose camera ray is above the horizon (sky) out of the L1 loss")
+    ap.add_argument("--ground-penalty", type=float, default=0.0,
+                    help="L2 penalty on splats below the ground plane (z<0, metres), 0=disabled")
+    ap.add_argument("--prune-below-cm", type=float, default=-1.0,
+                    help=">0: during densify, prune splats below z < -X cm (kills far-field ground curtains)")
     ap.add_argument("--densify-start", type=int, default=500)
     ap.add_argument("--densify-end-frac", type=float, default=0.55)
     ap.add_argument("--densify-interval", type=int, default=100)
@@ -425,7 +454,8 @@ def main():
     opts = {"grad_thresh": args.grad_thresh, "split_scale_frac": args.split_scale_frac,
             "max_splats": args.max_splats, "prune_opacity": args.prune_opacity,
             "prune_scale_frac": args.prune_scale_frac, "image_width": train_views[0]["width"],
-            "clone_quantile": args.clone_quantile, "clone_frac": args.clone_frac}
+            "clone_quantile": args.clone_quantile, "clone_frac": args.clone_frac,
+            "prune_below_z_cm": (args.prune_below_cm if args.prune_below_cm > 0 else None)}
     densify_end = int(args.iters * args.densify_end_frac)
 
     best = {"psnr": -1.0, "iter": 0}
@@ -460,9 +490,18 @@ def main():
                 print("[finite] iter %d img_finite=%s alpha_sum=%.3f bad=%s" % (
                     it, bool(torch.isfinite(img).all()), float(out["alpha"].sum()), bad), flush=True)
         gt = gt_cache[v["name"]].to(device, non_blocking=True)
-        l1 = F.l1_loss(img, gt)
+        if args.sky_mask:
+            valid = (~sky_mask_for_view(v, device)).to(img.dtype)
+            denom = valid.sum().clamp(min=1.0) * img.shape[-1]
+            l1 = ((img - gt).abs() * valid.unsqueeze(-1)).sum() / denom
+        else:
+            l1 = F.l1_loss(img, gt)
         sv = ssim(img, gt, device=str(device))
         loss = l1 + args.ssim_weight * (1.0 - sv)
+        if args.ground_penalty > 0:
+            # z is up (cm); punish splats below the ground plane (soft, in metres^2)
+            below_m = torch.clamp(-model.means[:, 2], min=0.0) / 1000.0
+            loss = loss + args.ground_penalty * below_m.square().mean()
         optimizer.zero_grad(set_to_none=True)
         if not loss.requires_grad:
             with torch.no_grad():

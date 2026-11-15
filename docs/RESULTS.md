@@ -25,7 +25,7 @@
 | UE5 插件 | 编译 Succeeded（3 个 DLL）；Path B 109k splat 30.8 fps @1280×720；Path A 未闭环 | `ue5/RESULTS.md`、`ue5/results/final_v2/`（本地） |
 | 交付报告 | 68 KB 报告 / 13 页 PPTX / 5 图 / 4 条视频（视频本地） | `report/` |
 
-## 3. 3DGS 演示片 v4 → v8（同一 v3 场景、同一任务 91 拍点）
+## 3. 3DGS 演示片 v4 → v9（同一 v3 场景、同一任务 91 拍点）
 
 | 指标 | v4 | v5 | **v6** |
 |---|---|---|---|
@@ -78,6 +78,31 @@
 ![v8 UE5 Path B 四视角对比（上：v7；下：v8）](assets/v8_ue_pathb_compare.jpg)
 
 > v8 证据（本地）：`data/trained/mission_v8_gsplat/run1/metrics.json`、`ue5/results/interactive_v8_{on_v7val,on_oldval}/`、`ue5/results/v8_pathb/`、`report/scene_v3/RERUN_V8_QUALITY_20261115.md`；轨迹 plan：`report/scene_v3/v8_plan.json`（203 位姿）。
+
+### 3.3 v9（2026-11-15）：天空 mask + 地面约束 + 0.8 分辨率 —— 当前最干净版本
+
+在 v8 的 572 帧数据上继续训练，新增三个训练侧约束：
+1. `--sky-mask`：按相机位姿把视线在地平线以上的像素从 L1 损失中剔除（旧帧天空 / 浅斜视帧对角天空）；
+2. `--ground-penalty 1.0`：对 z<0 的 splat 加 L2 惩罚（单位 m²）；
+3. `--prune-below-cm 500`：densify 阶段直接裁掉 z 小于 −5 m 的 splat。
+
+训练：从 v8 checkpoint 继续（SH1），**7,000 iter、1280×960、densify 上限 550k**。
+
+| 指标 | v6 | v7 | v8 | **v9** |
+|---|---|---|---|---|
+| 训练视角 | 251 | 369 | 572 | **572** |
+| 迭代 / splat | 40k / 199,298 | 30k / 349,615 | 16k / 499,595 | **7k / 549,617** |
+| val PSNR / SSIM（训练分辨率） | 16.62 / 0.61（旧 val） | 16.30 / 0.59（新 val） | 18.70 / 0.69（新 val） | **18.74 / 0.70（新 val）** |
+| 全分辨率 PSNR / SSIM，新多角度 val | 12.58 / 0.50 | 16.06 / 0.61 | 18.37 / 0.69 | **18.45 / 0.69** |
+| 全分辨率 PSNR / SSIM，旧 val | 16.34 / 0.65 | 17.19 / 0.67 | 17.17 / 0.65 | **17.10 / 0.64** |
+| 地下 z<−5 m（最小值） | 4.83%（−52.5 m） | 1.16%（−18.2 m） | 1.62%（−22.1 m） | **0.00%（−2.76 m）** |
+| 地下 z<0 占比 | 8.08% | 15.19% | 19.46% | **7.89%** |
+| 训练用时 / 峰值显存 | — | 1,999 s / 346 MB | 1,435 s / 571 MB | **1,553 s / 703 MB** |
+
+![v9 UE5 Path B 四视角对比（上：v8；下：v9）](assets/v9_ue_pathb_compare.jpg)
+
+> v9 证据（本地）：`data/trained/mission_v9_gsplat/run1/metrics.json`、`ue5/results/interactive_v9_{on_v7val,on_oldval}/`、`ue5/results/v9_pathb/`、`report/scene_v3/RERUN_V9_QUALITY_20261115.md`。
+> 结论：地面约束没有牺牲光度指标（新视角反而 +0.08 dB），但把地下浮空物彻底清零；说明当前 PSNR 已接近数据集/场景纹理决定的上限，继续提分需要改数据（更多视角）或改损失（纹理、法线/深度先验）。
 
 > *v4 的 val 是“仅任务帧”验证集，与 v5/v6 的 20 帧混合验证集口径不同，不可直接横比。
 > 复现命令与数据构造见 [QUICKSTART.md](QUICKSTART.md) §6；v6 全过程记录见本地 `report/scene_v3/RERUN_GSPlat_V6_20261112.md`。

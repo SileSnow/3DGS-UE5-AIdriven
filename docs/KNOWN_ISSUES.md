@@ -72,7 +72,7 @@
 - DJI EXIF→COLMAP 转换脚本已有但未做端到端真实样片验证；
 - A6–A10 为 scripted 直调；真实 LLM 只在 P1-P3、A1-A5 覆盖；
 - 3DGS 重建细节仍偏软（训练视角/迭代受限），非生产级画质；
-- 地下“岛裙”浮空物是远场/掠射伪影：v6 深层占比 4.83%（最深 −52.5 m），v7 降到 1.16%（−18.2 m），v8 为 1.62%（−22.1 m，轨迹加密后地面细节更多、但浅层浮点略增）；**训练中仍未加地面约束**；
+- 地下“岛裙”浮空物是远场/掠射伪影：v6 深层占比 4.83%（最深 −52.5 m），v7 降到 1.16%（−18.2 m），v8 为 1.62%（−22.1 m），v9 通过训练侧约束 **`--sky-mask` + `--ground-penalty` + `--prune-below-cm 500`** 清零（z<−5 m 0.00%，最深 −2.76 m，z<0 占比 7.89%），且新视角 PSNR 仍 +0.08 dB；
   已有快速缓解手段：对 PLY 做 `z < −0.5 m` 裁剪（4.83% splat，见 `data/trained/mission_v3_gsplat/run1/gaussians_v6_culled.ply`）；
 - 场景“白模 + 棋盘/格纹贴图”（`capture/scripts/synth_common.py`、`report/scene_v3/scene_detail_v3.py`）在掠射角下会产生摩尔纹和歧义匹配，是浮空物的**放大因素**，不是主因。
 
