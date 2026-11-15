@@ -25,7 +25,7 @@
 | UE5 插件 | 编译 Succeeded（3 个 DLL）；Path B 109k splat 30.8 fps @1280×720；Path A 未闭环 | `ue5/RESULTS.md`、`ue5/results/final_v2/`（本地） |
 | 交付报告 | 68 KB 报告 / 13 页 PPTX / 5 图 / 4 条视频（视频本地） | `report/` |
 
-## 3. 3DGS 演示片 v4 → v6（同一 v3 场景、同一任务 91 拍点）
+## 3. 3DGS 演示片 v4 → v8（同一 v3 场景、同一任务 91 拍点）
 
 | 指标 | v4 | v5 | **v6** |
 |---|---|---|---|
@@ -60,6 +60,24 @@
 
 > 证据（本地，不入库）：`data/trained/mission_v7_gsplat/run1/metrics.json`、`ue5/results/interactive_v7_{newval,oldval}/`、`ue5/results/v7_pathb/`、`report/scene_v3/RERUN_V7_QUALITY_20261115.md`。
 > v7 轨迹为 138 个确定性位姿（分组：25 正下视 70 m + 25 正下视 40 m + 4 组环绕斜视 16×4 + 12 低空 + 12 高空 + 16 立面网格），渲染命令见 `report/scene_v3/run_oblique_v3.ps1`（plan 参数）。
+
+### 3.2 v8（2026-11-15）：加密轨迹 + SH1 —— 当前最优
+
+在 v7 基础上再加 203 帧（3 组正下视 70/55/45 m + 7 组环绕斜视环 25–65 m、俯仰 -35°~-60°、正下/斜视网格 + 低空近景环 + 高空环，**0% 天空入镜**），累计 **572 训练 / 20 验证**；训练从 v7 checkpoint 继续（SH0→SH1 系数补零扩展），**16,000 iter、1040×780、densify 上限 500k**。
+
+| 指标 | v6 | v7 | **v8** |
+|---|---|---|---|
+| 训练视角 | 251 | 369 | **572** |
+| 迭代 / splat | 40,000 / 199,298 | 30,000 / 349,615 | **16,000 / 499,595** |
+| val PSNR / SSIM（训练分辨率） | 16.62 / 0.61（旧 val） | 16.30 / 0.59（新 val） | **18.70 / 0.69（新 val）** |
+| 全分辨率 PSNR / SSIM，旧 val | 16.34 / 0.65 | 17.19 / 0.67 | **17.17 / 0.65** |
+| 全分辨率 PSNR / SSIM，新多角度 val | 12.58 / 0.50 | 16.06 / 0.61 | **18.37 / 0.69** |
+| 地下 splat（z < −5 m，最小值） | 4.83%（−52.5 m） | 1.16%（−18.2 m） | **1.62%（−22.1 m）** |
+| 训练用时 / 峰值显存 | — | 1,999 s / 346 MB | **1,435 s / 571 MB** |
+
+![v8 UE5 Path B 四视角对比（上：v7；下：v8）](assets/v8_ue_pathb_compare.jpg)
+
+> v8 证据（本地）：`data/trained/mission_v8_gsplat/run1/metrics.json`、`ue5/results/interactive_v8_{on_v7val,on_oldval}/`、`ue5/results/v8_pathb/`、`report/scene_v3/RERUN_V8_QUALITY_20261115.md`；轨迹 plan：`report/scene_v3/v8_plan.json`（203 位姿）。
 
 > *v4 的 val 是“仅任务帧”验证集，与 v5/v6 的 20 帧混合验证集口径不同，不可直接横比。
 > 复现命令与数据构造见 [QUICKSTART.md](QUICKSTART.md) §6；v6 全过程记录见本地 `report/scene_v3/RERUN_GSPlat_V6_20261112.md`。
