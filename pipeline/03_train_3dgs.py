@@ -475,10 +475,16 @@ def main():
                          float(model.quats.norm(dim=1).min())), flush=True)
             continue
         loss.backward()
-        # densify 需要 2D 位置梯度
+        # densify 需要每高斯 2D 位置梯度：
+        #  - gsplat 后端：backward 后 meta["means2d"].absgrad 才有值（per-Gaussian |grad|）
+        #  - puretorch 后端：mean2d.grad 是 (N,2)
         m2d = out.get("mean2d")
-        if m2d is not None and m2d.grad is not None:
-            last_grad_norm = m2d.grad.detach().norm(dim=1)
+        if m2d is not None:
+            ag = getattr(m2d, "absgrad", None)
+            if ag is not None:
+                last_grad_norm = ag.detach().reshape(-1, 2).norm(dim=1)
+            elif m2d.grad is not None:
+                last_grad_norm = m2d.grad.detach().reshape(-1, 2).norm(dim=1)
         params = [model.means, model.quats, model.scales, model.opacity, model.sh]
         for p in params:
             if p.grad is not None:

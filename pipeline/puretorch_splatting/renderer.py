@@ -138,21 +138,22 @@ def render_from_view(model, view, backend="puretorch", tile_size=16, max_per_til
         Ks = K.unsqueeze(0)
         colors = model.sh                          # (N, num_coeffs, 3) 原始 SH
         # gsplat expects linear (activated) scales/opacities; our model stores log scales.
-        # packed=False keeps means2d dense (B,C,N,2) so retain_grad() gives per-gaussian
-        # 2D gradients for our densify step (packed mode only exposes the sparse subsets).
+        # packed=False keeps means2d dense (B,C,N,2); absgrad=True makes gsplat compute
+        # per-Gaussian |dL/dmean2d| in backward (meta["means2d"].absgrad) which our densify
+        # step uses. (retain_grad() alone does not work: gsplat's rasterizer uses its own
+        # saved tensors, so .grad stays None.)
         img, alpha, meta = gs_raster(
             means, model.quats, torch.exp(model.scales), torch.sigmoid(model.opacity), colors,
-            viewmats, Ks, W, H, sh_degree=model.sh_degree, packed=False)
+            viewmats, Ks, W, H, sh_degree=model.sh_degree, packed=False,
+            absgrad=bool(retain_mean2d_grad))
         img = img[0]
         alpha = alpha[0]
         if background is not None:
             bg = torch.as_tensor(background, dtype=img.dtype, device=img.device)
             img = img + (1.0 - alpha) * bg
         m2d = meta.get("means2d", None)
-        if m2d is not None:
-            m2d = m2d.reshape(-1, 2)                 # (B*C*N, 2) -> (N, 2)
-            if retain_mean2d_grad and m2d.requires_grad:
-                m2d.retain_grad()
+        if m2d is not None and retain_mean2d_grad and m2d.requires_grad:
+            m2d.retain_grad()
         return {"image": img, "alpha": alpha, "mean2d": m2d}
 
     mean2d, conic, depth = project_gaussians(means, model.quats, model.scales, viewmat, K)

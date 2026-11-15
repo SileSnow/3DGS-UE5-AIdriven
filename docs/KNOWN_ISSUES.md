@@ -41,7 +41,9 @@
    - `_CL_=/Zc:preprocessor`、`NVCC_PREPEND_FLAGS="-allow-unsupported-compiler -Xcompiler=/Zc:preprocessor"`；
    - gsplat 的 `from-world 3DGS` 与 `2DGS backward` 两个 API 在本工具链有 nvcc↔MSVC 模板符号不匹配（LNK2019）；本项目不用它们，需在 ASCII 源码副本中 `#if 0` 掉实现并注释 `ext.cpp` 绑定；
    - 编译产物 + `gsplat/csrc.py` shim 放在 ASCII 目录（如 `C:\cuda_work`），**不入库**；
-   - 本项目 `pipeline/puretorch_splatting/renderer.py` 的 gsplat 分支已适配：线性尺度、`packed=False` 保留 `means2d` 稠密梯度。
+   - 本项目 `pipeline/puretorch_splatting/renderer.py` 的 gsplat 分支已适配：线性尺度、`packed=False` 保留 `means2d` 稠密梯度；
+     densify 用 `rasterization(..., absgrad=True)` 产生的 **逐高斯** `meta["means2d"].absgrad`（`03_train_3dgs.py` 已读取；
+     `.grad` 在 gsplat 下为 None，不要再用 retain_grad 方案）。
    - **2026-11-13 更新（更简单的路径）**：本机已安装标准 **CUDA Toolkit 13.5**（winget `Nvidia.CUDA`，4.71 GB，`nvcc 13.5.37`，
      `CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.5`）。该路径本身是 ASCII，可直接作为 `CUDA_HOME`，
      不必再用 pip 的 `nvidia-cuda-nvcc` 包或 `C:\UEW\...\nvidia\cu13` 间接路径；`torch 2.13.0+cu130` 的 `load_inline`
@@ -69,7 +71,10 @@
 - COLMAP 精化位姿未在本仓库实测（仅有真值位姿直通路径）；
 - DJI EXIF→COLMAP 转换脚本已有但未做端到端真实样片验证；
 - A6–A10 为 scripted 直调；真实 LLM 只在 P1-P3、A1-A5 覆盖；
-- 3DGS 重建细节仍偏软（训练视角/迭代受限），非生产级画质。
+- 3DGS 重建细节仍偏软（训练视角/迭代受限），非生产级画质；
+- 地下“岛裙”浮空物是远场/掠射伪影：v6 深层占比 4.83%（最深 −52.5 m），v7 通过多角度轨迹 + densify 降到 1.16%（最深 −18.2 m），但**未在训练中加地面约束**；
+  已有快速缓解手段：对 PLY 做 `z < −0.5 m` 裁剪（4.83% splat，见 `data/trained/mission_v3_gsplat/run1/gaussians_v6_culled.ply`）；
+- 场景“白模 + 棋盘/格纹贴图”（`capture/scripts/synth_common.py`、`report/scene_v3/scene_detail_v3.py`）在掠射角下会产生摩尔纹和歧义匹配，是浮空物的**放大因素**，不是主因。
 
 ---
 

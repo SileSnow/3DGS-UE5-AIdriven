@@ -40,6 +40,27 @@
 | 每 iter（960×720/199k splat） | — | 189 ms（640×480/199k） | **4.5 ms** |
 | 演示视频 | `report/..._v4.mp4`（本地） | `..._v5.mp4`（本地） | `..._v6.mp4`（本地） |
 
+### 3.1 v7（2026-11-15）：多角度轨迹 + gsplat densify —— 同一场景的最优版本
+
+针对 v6 的两个已定位问题做了针对性改进：
+1. 旧轨迹只有「50 m 正下视」+「30–40 m 浅斜视（俯仰 10–40°，42% 帧含天空）」两档 → 补 138 帧多角度轨迹（3 个高度层 14/22/40/45/60/70 m，俯仰 35–90°，**0% 天空入镜**，并加环绕视角）；
+2. v6 为 warm-start、densify 关闭 → v7 用 `absgrad` 的逐高斯 2D 梯度重新开启 densify（`pipeline/puretorch_splatting/renderer.py` + `03_train_3dgs.py`）。
+
+| 指标 | v6 | **v7** |
+|---|---|---|
+| 训练视角 | 251（旧） | **369（旧 251 + 新 118）** |
+| 迭代 / splat | 40,000 / 199,298 | **30,000 / 349,615** |
+| val PSNR / SSIM @960×720 | 16.62 / 0.61（旧 val） | **16.30 / 0.59（新视角 val）** |
+| 全分辨率 PSNR / SSIM @1600×1200，旧 val（v6 基准集） | 16.34 / 0.65 | **17.19 / 0.67** |
+| 全分辨率 PSNR / SSIM @1600×1200，新多角度 val | 12.58 / 0.50 | **16.06 / 0.61** |
+| 地下 splat（z<0 且深度 >5 m） | 4.83%（min −52.5 m） | **1.16%（min −18.2 m）** |
+| 训练用时 / 峰值显存 | — | **1,999 s / 346 MB**（GPU duty 0.25、CPU 4 核） |
+
+![v7 UE5 Path B 四视角对比（上：v6；中：v6 地面裁剪；下：v7）](assets/v7_ue_pathb_compare.jpg)
+
+> 证据（本地，不入库）：`data/trained/mission_v7_gsplat/run1/metrics.json`、`ue5/results/interactive_v7_{newval,oldval}/`、`ue5/results/v7_pathb/`、`report/scene_v3/RERUN_V7_QUALITY_20261115.md`。
+> v7 轨迹为 138 个确定性位姿（分组：25 正下视 70 m + 25 正下视 40 m + 4 组环绕斜视 16×4 + 12 低空 + 12 高空 + 16 立面网格），渲染命令见 `report/scene_v3/run_oblique_v3.ps1`（plan 参数）。
+
 > *v4 的 val 是“仅任务帧”验证集，与 v5/v6 的 20 帧混合验证集口径不同，不可直接横比。
 > 复现命令与数据构造见 [QUICKSTART.md](QUICKSTART.md) §6；v6 全过程记录见本地 `report/scene_v3/RERUN_GSPlat_V6_20261112.md`。
 
