@@ -78,3 +78,10 @@
 | [assets/phase0_ue_vs_reference.jpg](assets/phase0_ue_vs_reference.jpg) | Phase-0 UE5 渲染 vs 参考图 |
 | [assets/capture_contact_sheet.jpg](assets/capture_contact_sheet.jpg) | Phase-0 合成航拍五向倾斜摄影拼图 |
 | [assets/sdk_tiers.jpg](assets/sdk_tiers.jpg) | DJI Mini 机型/SDK 分档图 |
+
+## 7. 项目管理与对外协作
+
+| 文档 | 内容 |
+|---|---|
+| [DECISIONS-2026-11-16.md](DECISIONS-2026-11-16.md) | **学长回复的决策台账**：预算 / 算力 / 数据源 / 技术路线 / 交付形态五项确认、`[待确认]` 结算、卡点与本周行动清单 |
+| [replies/2026-11-16-回信草稿.md](replies/2026-11-16-回信草稿.md) | 回信与 #1 / #2 / #236 三处评论的发送草稿 |
