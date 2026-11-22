@@ -12,6 +12,10 @@
   离线校验 `llm_drone/ue5_mission/results/validation.json` **ok=true**（16 PASS / 0 FAIL / 1 SKIP / 4 WARN）。
 - 实测耗时：UE 进程 **80.5 s**（编辑器启动+退出 ≈73 s，冷启动）、脚本内 7.32 s
   （场景 3.33 s + 16 帧渲染 3.91 s ≈ 0.245 s/帧）。详细数字见 [RESULTS.md](RESULTS.md)。
+- **2026-11-22 复跑（学长要求：方案 A，不改渲染器、不换场景）**：CPU 77.9 °C 时用园区原点
+  `39.9042/116.4074/43` 跑 `sample_mission.json` 4×4 航线 → 16 帧 1600×1200、UE 进程 80.5 s；
+  `results/validation_4x4_20261122.json` **ok=true（16 PASS / 0 FAIL / 1 SKIP / 4 WARN）**；
+  4 条 WARN 均为 -45° 斜视相机前视落点超出任务足迹、仍在 400 m 地面内（与旧证据同型）。
 - **P1 集成证据已实测（2026-11-08 21:55–21:56，现行工具链）**：orchestrator 产出的真实 LLM 任务
   `llm_drone/demo/mission_grid_campus.json`（m-001，91 个拍照航点，grid）→
   `data/synthetic/mission_llm/`（**91 训练帧 + val 8 帧**，1600×1200，255.68 MB）；
