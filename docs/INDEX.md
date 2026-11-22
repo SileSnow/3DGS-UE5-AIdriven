@@ -96,3 +96,4 @@
 | [notes/evidence/l5_demo_run_2026-11-22.txt](notes/evidence/l5_demo_run_2026-11-22.txt) | 180k 高斯小样命令与 PLY 契约校验输出 |
 | [notes/evidence/ue5_tokyo_attempt_2026-11-22.md](notes/evidence/ue5_tokyo_attempt_2026-11-22.md) | 东京坐标 UE5 复跑失败记录：温度守门 + 渲染器 origin 硬绑定（0 帧） |
 | [../tools/zeus_l5/README.md](../tools/zeus_l5/README.md) | L4→L5 180k 高斯最小链路：自检、坐标往返、`--demo` 复现（含轴序修复说明） |
+| [../scene_agent/README.md](../scene_agent/README.md) | **Scene Agent PoC**：独立 HTTP 服务 + 整数版本链 + SHA256 回读 + undo/rollback（#165 D6） |

@@ -98,3 +98,6 @@ env/
 
 # ---------- 演示任务源文件（22 KB，保留以便复现 91 帧任务渲染） ----------
 !/llm_drone/demo/mission_grid_campus.json
+
+# Scene Agent runtime data
+scene_agent_data/
