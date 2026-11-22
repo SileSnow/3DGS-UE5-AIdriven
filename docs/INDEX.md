@@ -85,3 +85,14 @@
 |---|---|
 | [DECISIONS-2026-11-16.md](DECISIONS-2026-11-16.md) | **学长回复的决策台账**：预算 / 算力 / 数据源 / 技术路线 / 交付形态五项确认、`[待确认]` 结算、卡点与本周行动清单 |
 | [replies/2026-11-16-回信草稿.md](replies/2026-11-16-回信草稿.md) | 回信与 #1 / #2 / #236 三处评论的发送草稿 |
+
+## 8. ZEUS 平台对接与学习笔记
+
+| 文档 | 内容 |
+|---|---|
+| [notes/2026-11-22-zeus-3dgs.md](notes/2026-11-22-zeus-3dgs.md) | **ZEUS 高尺度数据 → 小尺度 3DGS 学习笔记与对接方案**：五类数据用途表、L4/L5 接口草案、180k 小样实测、踩坑与待确认 |
+| [notes/evidence/inspect_zeus_76cebe8.txt](notes/evidence/inspect_zeus_76cebe8.txt) | ZEUS 仓库只读自检输出（分支/HEAD/关键文件缺失），2026-11-22 |
+| [notes/evidence/git_write_check_2026-11-20.txt](notes/evidence/git_write_check_2026-11-20.txt) | ZEUS 写权限与 Gaia 访问核对（首次成功 / 19:47 网络失败） |
+| [notes/evidence/l5_demo_run_2026-11-22.txt](notes/evidence/l5_demo_run_2026-11-22.txt) | 180k 高斯小样命令与 PLY 契约校验输出 |
+| [notes/evidence/ue5_tokyo_attempt_2026-11-22.md](notes/evidence/ue5_tokyo_attempt_2026-11-22.md) | 东京坐标 UE5 复跑失败记录：温度守门 + 渲染器 origin 硬绑定（0 帧） |
+| [../tools/zeus_l5/README.md](../tools/zeus_l5/README.md) | L4→L5 180k 高斯最小链路：自检、坐标往返、`--demo` 复现（含轴序修复说明） |

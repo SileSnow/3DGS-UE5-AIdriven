@@ -1,0 +1,35 @@
+﻿repo    <zeus-repo>
+branch  research/building-hazard-simulation
+head    76cebe8337331d3fe4b3ae972a6cffb0043f0bee 2026-11-06 19:17:09 +0800 愿景文档：Project 
+status  ## research/building-hazard-simulation...origin/research/building-hazard-simulation
+files   11069
+
+关键路径
+  --  L0–L5 契约       _wiki-methodology/_wiki/_methods/zeus-multiscale-l0-l5-contract.md
+  --  插件注册表          _sandbox/2026-10-31-sim-service/zs/plugin_registry.py
+  OK  大屏入口           _sandbox/2026-10-28-earth-dashboard/site/index.html
+  OK  城市渲染           _sandbox/2026-10-28-earth-dashboard/site/js/city.js
+  OK  建筑解析           _sandbox/2026-10-28-earth-dashboard/site/js/bld-worker.js
+  OK  城市数据生成         _sandbox/2026-10-28-earth-dashboard/prep/build_city23.py
+  OK  仿真服务           _sandbox/2026-10-31-sim-service/zs/api.py
+  OK  城市孪生           _sandbox/2026-10-29-citytwin/settings.yaml
+  OK  数据目录方法         _wiki-methodology/_wiki/_methods/zeus-data-catalog.md
+
+邮件所指对象
+  MISS  contract
+  MISS  plugin_registry
+  MISS  four_slot_manifest
+
+文件名命中数（内容请用编辑器搜）
+     0  inferred_facades
+     0  trained_radiance_field
+     0  map3dview
+     0  plugin_registry
+     0  multiscale
+
+数据目录
+  --  site/data
+  --  citytwin/data
+
+python 3.14.6 / numpy 2.4.4
+

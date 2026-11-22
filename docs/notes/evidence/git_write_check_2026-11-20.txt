@@ -1,0 +1,30 @@
+# ZEUS 写权限与 Gaia 访问核对（2026-11-20）
+
+> 来源：本次会话终端输出；原始记录在工作区研究包 `evidence/network_checks.md`。
+> 用途：支撑笔记“与 origin 同步 / write 权限可用”的表述；不是本周 11-22 的复跑。
+
+## 1. 首次核对（约 19:31，成功）
+
+$ git push --dry-run origin HEAD
+Everything up-to-date
+exit=0
+
+$ git ls-remote https://github.com/Gaia-Model/Gaia-2.0.git
+e04850fc8ef48a235c05572a8c53f3e07837c63f    HEAD
+16ab182e60c70bdd2cdb0a7768b965f3a60609f5    refs/archive/20261018/remote/agent/fix-routing-chat-voice
+706238ed22109a2ec6bdda35be8ef93305dcf171    refs/archive/20261018/remote/backup/pre-pr21-merge-20260619-0130
+...
+
+结论：
+- git push --dry-run 会与远端交互；成功说明 write 权限可用（不是只读）。
+- git ls-remote 能读到 Gaia-2.0 的 refs，说明邀请已生效，至少读权限已通。
+
+## 2. 复跑（约 19:47，网络失败）
+
+fatal: unable to access 'https://github.com/YonganZhang/yz-global-city-resilience-paper3.git/':
+Recv failure: Connection was reset
+
+fatal: unable to access 'https://github.com/Gaia-Model/Gaia-2.0.git/':
+Failed to connect to github.com:443 after 21106 ms: Could not connect to server
+
+结论：复跑失败是网络不可达，不是鉴权失败（鉴权失败会返回 403/401 或 Permission denied）。

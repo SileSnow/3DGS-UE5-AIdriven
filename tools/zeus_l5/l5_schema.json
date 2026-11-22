@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://zeus.local/schemas/l5_scene.schema.json",
+  "title": "ZEUS L5 scene spec v0.1",
+  "description": "局部视口（map3dview）的 3DGS 场景元数据。提案稿，字段以作者原契约为准。",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema", "level", "viewport", "scene_id", "frame", "extent", "gaussians", "provenance"],
+  "properties": {
+    "schema": {"const": "zeus.l5_scene/v0.1"},
+    "level": {"const": "L5"},
+    "viewport": {"type": "string", "minLength": 1},
+    "scene_id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+    "version": {"type": "integer", "minimum": 1},
+    "created_at": {"type": "string", "minLength": 1},
+    "frame": {
+      "type": "object",
+      "required": ["crs", "origin_wgs84", "axes", "units"],
+      "properties": {
+        "crs": {"type": "string", "enum": ["local_metric"]},
+        "origin_wgs84": {
+          "type": "object",
+          "required": ["lon", "lat"],
+          "properties": {
+            "lon": {"type": "number", "minimum": -180, "maximum": 180},
+            "lat": {"type": "number", "minimum": -90, "maximum": 90},
+            "alt_m": {"type": "number"}
+          }
+        },
+        "axes": {
+          "type": "object",
+          "required": ["x", "y", "z"],
+          "properties": {
+            "x": {"enum": ["east"]},
+            "y": {"enum": ["up"]},
+            "z": {"enum": ["south"]}
+          }
+        },
+        "units": {"enum": ["m"]},
+        "handedness": {"enum": ["right"]}
+      }
+    },
+    "extent": {
+      "type": "object",
+      "required": ["center", "size_m"],
+      "properties": {
+        "center": {
+          "type": "array", "minItems": 2, "maxItems": 2,
+          "items": {"type": "number"}
+        },
+        "size_m": {
+          "type": "array", "minItems": 2, "maxItems": 2,
+          "items": {"type": "number", "exclusiveMinimum": 0, "maximum": 300}
+        }
+      }
+    },
+    "gaussians": {
+      "type": "object",
+      "required": ["count", "format", "sh_degree"],
+      "properties": {
+        "count": {"type": "integer", "minimum": 1},
+        "file": {"type": ["string", "null"]},
+        "format": {"const": "3dgs_ply_v1"},
+        "sh_degree": {"type": "integer", "minimum": 0, "maximum": 3},
+        "scale_unit": {"enum": ["m", "cm"]},
+        "coordinate_system": {"enum": ["zeus_local_m", "ue_lhs_zup_cm"]},
+        "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "ue_import": {
+          "type": "object",
+          "properties": {
+            "scale": {"type": "number", "exclusiveMinimum": 0},
+            "axis_map": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "string"}}
+          }
+        }
+      }
+    },
+    "l4_source": {
+      "type": "object",
+      "properties": {
+        "file": {"type": "string"},
+        "building_count": {"type": "integer", "minimum": 0},
+        "tile_ids": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["inferred_facades", "trained_radiance_field"],
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {"type": "string"},
+              "license": {"type": "string"},
+              "url": {"type": "string"}
+            }
+          }
+        },
+        "inferred_facades": {"type": "boolean"},
+        "trained_radiance_field": {"type": "boolean"},
+        "observed_facade_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+        "training_views": {"type": "integer", "minimum": 0},
+        "val_psnr_db": {"type": ["number", "null"]},
+        "val_ssim": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "color_source": {"type": "string"},
+        "notes": {"type": "string"}
+      }
+    },
+    "quality": {
+      "type": "object",
+      "properties": {
+        "floaters_above_roof": {"type": ["number", "null"]},
+        "roof_coverage": {"type": ["number", "null"]},
+        "height_mae_m": {"type": ["number", "null"]}
+      }
+    },
+    "anchors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["bldg_id", "local"],
+        "properties": {
+          "bldg_id": {"type": "string"},
+          "local": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+          "wgs84": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}}
+        }
+      }
+    }
+  }
+}

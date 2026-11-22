@@ -1,0 +1,43 @@
+# tools/zeus_l5 实测（2026-11-22，本机 Python 3.14.6 + numpy 2.4.4）
+
+> 脚本位置：`dji_ue5_3dgs/tools/zeus_l5/`（2026-11-22 从工作区研究包移植入仓库）。
+> 本文件固化修复“屋面/墙面轴序不一致”之后的输出；修复前基线 sha256 已作废。
+
+$ cd dji_ue5_3dgs/tools/zeus_l5
+$ python zeus_frame.py --selftest
+selftest OK
+frame: kx=90440.8 m/deg, ky=110574.0 m/deg
+terrain center height = 10.000 m
+
+$ python make_l5_spec.py --demo --count 180000 --out <tmp>/zeus_l5_fixed
+{
+  "scene_id": "tokyo_demo_300m",
+  "buildings": 12,
+  "gaussians": 180000,
+  "counts_min_max": [8325, 29346],
+  "ply_bytes": 44641531,
+  "unit": "m",
+  "seconds": 1.92,
+  "flags": {"inferred_facades": true, "trained_radiance_field": false}
+}
+
+# PLY 契约与几何校验（独立脚本读回）
+element vertex: 180000
+property: 62
+payload: 44,640,000 B (= 180000 * 62 * 4)
+nan_float_count: 0
+sha256: 2c2570c2f0e943c1eb9faf2178c1248e40137ef334939eb557aa60748437ad07
+l5_scene.json 的 gaussians.sha256 与实测一致: true
+默认米制轴向: col0 x ∈ [-110.05, 80.05] m；col1 y(上) ∈ [0.00, 42.00] m；col2 z(南) ∈ [-80.05, 36.05] m
+
+$ python make_l5_spec.py --demo --count 180000 --unit cm --out <tmp>/zeus_l5_fixed_cm
+{
+  "buildings": 12, "gaussians": 180000, "ply_bytes": 44641531, "unit": "cm", "seconds": 5.24
+}
+sha256: 0d9391c130698c79d4278c03cd84a92346aa0f93c34a72a239db9af6d293e458
+UE 厘米轴向: col0 X ∈ [-11005, 8005] cm；col1 Y(南) ∈ [-8005, 3605] cm；col2 Z(上) ∈ [0.01, 4200] cm
+
+# 修复记录
+- 修复前：屋面采样返回 (x, z_south, y_up)，墙面返回 (x, y_up, z_south)，同一 PLY 混用两套轴序。
+- 修复后：屋面统一为 (x, y_up, z_south)；--unit cm 的 [0,2,1] 置换对屋面/墙面都成立。
+- 旧 sha256（修复前，作废）：3c5079b04ac07dd7904c2172aee26ba5674f6a1b1f03a8381d8bcb51434314e8
