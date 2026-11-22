@@ -90,7 +90,7 @@
 
 | 文档 | 内容 |
 |---|---|
-| [notes/2026-11-22-zeus-3dgs.md](notes/2026-11-22-zeus-3dgs.md) | **ZEUS 高尺度数据 → 小尺度 3DGS 学习笔记与对接方案**：五类数据用途表、L4/L5 接口草案、180k 小样实测、踩坑与待确认 |
+| [notes/261122笔记.md](notes/261122笔记.md) | **ZEUS 高尺度数据 → 小尺度 3DGS 学习笔记与对接方案**：五类数据用途表、L4/L5 接口草案、180k 小样实测、踩坑与下一步 |
 | [notes/evidence/inspect_zeus_76cebe8.txt](notes/evidence/inspect_zeus_76cebe8.txt) | ZEUS 仓库只读自检输出（分支/HEAD/关键文件缺失），2026-11-22 |
 | [notes/evidence/git_write_check_2026-11-20.txt](notes/evidence/git_write_check_2026-11-20.txt) | ZEUS 写权限与 Gaia 访问核对（首次成功 / 19:47 网络失败） |
 | [notes/evidence/l5_demo_run_2026-11-22.txt](notes/evidence/l5_demo_run_2026-11-22.txt) | 180k 高斯小样命令与 PLY 契约校验输出 |
